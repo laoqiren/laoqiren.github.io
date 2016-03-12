@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html>
 <head>
     <meta charset="utf-8">
     
     <title>wechat mobile project | 罗峡 的博客</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="项目总结" />
+    
     <meta name="description" content="微信订座系统项目总结第一次移动端的前端项目总结这次项目遇到了许多问题，也学到了许多，在这里分享一下这次项目的心得">
 <meta property="og:type" content="article">
 <meta property="og:title" content="wechat mobile project">
@@ -22,167 +25,102 @@
     
 
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
     <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
 
     <link rel="stylesheet" href="/css/style.css">
 
-    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
     
     
         <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
     
     
+        <link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+    
     
     
 
 </head>
+
 <body>
-    <div id="container">
+    <div id="wrap">
         <header id="header">
-    <div id="header-main" class="header-inner">
-        <div class="outer">
-            <a href="/" id="logo">
-                <i class="logo"></i>
-                <span class="site-title">罗峡 的博客</span>
-            </a>
-            <nav id="main-nav">
-                
-                    <a class="main-nav-link" href="/.">Home</a>
-                
-                    <a class="main-nav-link" href="/archives">Archives</a>
-                
-                    <a class="main-nav-link" href="/categories">Categories</a>
-                
-                    <a class="main-nav-link" href="/tags">Tags</a>
-                
-                    <a class="main-nav-link" href="/about">About</a>
-                
-            </nav>
-            
-                
-                <nav id="sub-nav">
-                    <div class="profile" id="profile-nav">
-                        <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/css/images/avatar.png" />
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </div>
-                </nav>
-            
-            <div id="search-form-wrap">
-
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-
-</div>
-        </div>
-    </div>
-    <div id="main-nav-mobile" class="header-sub header-inner">
-        <table class="menu outer">
-            <tr>
-                
-                    <td><a class="main-nav-link" href="/.">Home</a></td>
-                
-                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
-                
-                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
-                
-                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
-                
-                    <td><a class="main-nav-link" href="/about">About</a></td>
-                
-                <td>
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
                     
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">爱技术，爱生活</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/hexo-theme-hueman/">主页</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/hexo-theme-hueman/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
     <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
 
-                </td>
-            </tr>
-        </table>
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </header>
-
-        <div class="outer">
-            
-                
-
-<aside id="profile">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
-            <img id="avatar" src="/css/images/avatar.png" />
-            <h2 id="name">PPOffice</h2>
-            <h3 id="title">Web Developer &amp; Designer</h3>
-            <span id="location"><i class="fa fa-map-marker"></i>Harbin, China</span>
-            <a id="follow" target="_blank" href="https://github.com/ppoffice/">关注我</a>
-        </div>
-        <div class="article-info profile-block">
-            <div class="article-info-block">
-                2
-                <span>文章</span>
-            </div>
-            <div class="article-info-block">
-                2
-                <span>标签</span>
-            </div>
-        </div>
-        
-        <div class="profile-block social-links">
-            <table>
-                <tr>
-                    
-                    <td><a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
-                    
-                    <td><a href="/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
-                    
-                    <td><a href="/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
-                    
-                    <td><a href="/" target="_blank" title="dribbble"><i class="fa fa-dribbble"></i></a></td>
-                    
-                    <td><a href="/" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
-                    
-                </tr>
-            </table>
-        </div>
-        
-    </div>
-</aside>
-
-            
-            <section id="main"><article id="post-my-new-post" class="article article-type-post" itemscope itemprop="blogPost">
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-my-new-post" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
-        
-        
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-            wechat mobile project
+        wechat mobile project
         </h1>
     
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/03/12/my-new-post/">
-            <time datetime="2016-03-12T12:04:36.000Z" itemprop="datePublished">2016-03-12</time>
-        </a>
-    </div>
-
-
-                    
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/项目总结/">项目总结</a>
-    </div>
-
-                </div>
             </header>
         
-        <div class="article-entry" itemprop="articleBody">
-        
+        <div class="article-subtitle">
+            <a href="/2016/03/12/my-new-post/" class="article-date">
+    <time datetime="2016-03-12T12:04:36.000Z" itemprop="datePublished">2016-03-12</time>
+</a>
             
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目总结/">项目总结</a></li></ul>
+
+        </div>
+        <div class="article-entry" itemprop="articleBody">
             <h1 id="微信订座系统项目总结"><a href="#微信订座系统项目总结" class="headerlink" title="微信订座系统项目总结"></a>微信订座系统项目总结</h1><h3 id="第一次移动端的前端项目总结"><a href="#第一次移动端的前端项目总结" class="headerlink" title="第一次移动端的前端项目总结"></a>第一次移动端的前端项目总结</h3><h4 id="这次项目遇到了许多问题，也学到了许多，在这里分享一下这次项目的心得"><a href="#这次项目遇到了许多问题，也学到了许多，在这里分享一下这次项目的心得" class="headerlink" title="这次项目遇到了许多问题，也学到了许多，在这里分享一下这次项目的心得"></a>这次项目遇到了许多问题，也学到了许多，在这里分享一下这次项目的心得<a id="more"></a></h4><p>##### </p>
 <h5 id="一．项目整体流程"><a href="#一．项目整体流程" class="headerlink" title="一．项目整体流程"></a>一．项目整体流程</h5><pre><code>1. 分析用户需求，产品功能
 2. 设计图材料
@@ -208,24 +146,15 @@
 5. 代码可维护性
 6. 开发效率
 </code></pre>
-        
         </div>
         <footer class="article-footer">
-            <div class="share-container">
+            
 
 
 
-</div>
-
-    <a data-url="http://yoursite.com/2016/03/12/my-new-post/" data-id="cilp7a5zm0003hgqv1839ilje" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/03/12/my-new-post/" data-id="cilp7ioxg00000cqvj5ula4p4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
         $('body').on('click', function() {
             $('.article-share-box.on').removeClass('on');
         }).on('click', '.article-share-link', function(e) {
@@ -250,10 +179,10 @@
                     '<div id="' + id + '" class="article-share-box">',
                         '<input class="article-share-input" value="' + url + '">',
                         '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
                         '</div>',
                     '</div>'
                 ].join('');
@@ -283,35 +212,10 @@
     })(jQuery);
 </script>
 
-            
-    
-        <a href="http://yoursite.com/2016/03/12/my-new-post/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/03/12/my-new-post/">评论</a>
-    
-
         </footer>
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2016/03/12/snake-game/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    snake game
-                
-            </div>
-        </a>
-    
-    
-</nav>
-
-
-    
 </article>
 
-
-    
     <section id="comments">
     
         
@@ -322,11 +226,86 @@
     
     </section>
 
-</section>
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
             
-                <aside id="sidebar">
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
     
         
+<nav id="article-nav">
+    
+        <a href="/2016/03/12/snake-game/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            snake game
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
     <div class="widget-wrap">
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
@@ -339,6 +318,7 @@
     
     
         <span class="thumbnail-image thumbnail-none"></span>
+    
     
 </a>
                         </div>
@@ -358,6 +338,7 @@
     
         <span class="thumbnail-image thumbnail-none"></span>
     
+    
 </a>
                         </div>
                         
@@ -372,37 +353,41 @@
         </div>
     </div>
 
-    
-        
-    
-        
-    <div class="widget-wrap">
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
             <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
-    
-        
-    <div class="widget-wrap">
+
+            
+                
+    <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
             <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript源码/">javascript源码</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目总结/">项目总结</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
-    
-        
-    <div class="widget-wrap">
+
+            
+                
+    <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
             <a href="/tags/javascript源码/" style="font-size: 10px;">javascript源码</a> <a href="/tags/项目总结/" style="font-size: 10px;">项目总结</a>
         </div>
     </div>
 
-    
-        
+
+            
+                
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">链接</h3>
         <div class="widget">
@@ -417,23 +402,31 @@
     </div>
 
 
-    
-    <div id="toTop" class="fa fa-chevron-up"></div>
-</aside>
             
+        
+    </div>
+</aside>
+                </div>
+            </div>
         </div>
         <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2016 Luo Xia<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016 Luo Xia</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
         </div>
     </div>
 </footer>
         
     
     <script>
-    var disqus_shortname = 'hexo-theme-icarus';
+    var disqus_shortname = 'hexo-theme-hueman';
     
     
     var disqus_url = 'http://yoursite.com/2016/03/12/my-new-post/';
@@ -451,6 +444,11 @@
 
     
         <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+    
+        <script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+        <script src="/vendor/scrollLoading/main.js"></script>
     
 
 
