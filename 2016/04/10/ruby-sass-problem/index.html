@@ -3,17 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | 罗峡的博客</title>
+  <title>ruby-sass-problem | 罗峡的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="罗峡的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="关于windows下通过ruby安装sass和compass的问题安装sass和compass">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ruby-sass-problem">
+<meta property="og:url" content="http://yoursite.com/2016/04/10/ruby-sass-problem/index.html">
 <meta property="og:site_name" content="罗峡的博客">
-<meta property="og:description">
+<meta property="og:description" content="关于windows下通过ruby安装sass和compass的问题安装sass和compass">
+<meta property="og:image" content="http://7xsi10.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160410233014.png">
+<meta property="og:image" content="http://7xsi10.com2.z0.glb.clouddn.com/870258-20160405180306187-1063124604.png">
+<meta property="og:image" content="http://7xsi10.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160410233111.png">
+<meta property="og:updated_time" content="2016-04-10T15:49:26.137Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="罗峡的博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="ruby-sass-problem">
+<meta name="twitter:description" content="关于windows下通过ruby安装sass和compass的问题安装sass和compass">
+<meta name="twitter:image" content="http://7xsi10.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160410233014.png">
   
     <link rel="alternative" href="/atom.xml" title="罗峡的博客" type="application/atom+xml">
   
@@ -38,8 +43,8 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
-          isArchive: true,
+          isPost: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false,
@@ -239,143 +244,214 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-ruby-sass-problem" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/04/10/ruby-sass-problem/" class="article-date">
+      <time datetime="2016-04-10T15:25:08.000Z" itemprop="datePublished">2016-04-10</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ruby-sass-problem
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/04/10/ruby-sass-problem/" class="archive-article-date">
-      <time datetime="2016-04-10T15:25:08.000Z" itemprop="datePublished">04-10</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/10/ruby-sass-problem/">ruby-sass-problem</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
+        <h1 id="关于windows下通过ruby安装sass和compass的问题"><a href="#关于windows下通过ruby安装sass和compass的问题" class="headerlink" title="关于windows下通过ruby安装sass和compass的问题"></a>关于windows下通过ruby安装sass和compass的问题</h1><h3 id="安装sass和compass"><a href="#安装sass和compass" class="headerlink" title="安装sass和compass"></a>安装sass和compass</h3><a id="more"></a>
+<p>执行 gem sources -a <a href="https://ruby.taobao.org/出现如下错误" target="_blank" rel="external">https://ruby.taobao.org/出现如下错误</a><br><img src="http://7xsi10.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160410233014.png" alt="error"><br>缺少SSL证书</p>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><ol>
+<li>下载证书：<a href="https://curl.haxx.se/ca/cacert.pem" target="_blank" rel="external">官方地址</a>　<a href="http://pan.baidu.com/s/1pKJSlOf" target="_blank" rel="external">百度云盘</a></li>
+<li>将证书保存，比如我的保存到了C:\Ruby22-x64。</li>
+<li>配置证书的环境<img src="http://7xsi10.com2.z0.glb.clouddn.com/870258-20160405180306187-1063124604.png" alt="path"></li>
+<li>重启，再执行，当当当当，哈哈，成功了<img src="http://7xsi10.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160410233111.png" alt="succed"><h5 id="感谢angular社区前辈-会飞的鱼lala-提供的方法"><a href="#感谢angular社区前辈-会飞的鱼lala-提供的方法" class="headerlink" title="感谢angular社区前辈 会飞的鱼lala 提供的方法"></a>感谢angular社区前辈 会飞的鱼lala 提供的方法</h5></li>
+</ol>
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/03/14/font-end-technology/" class="archive-article-date">
-      <time datetime="2016-03-14T04:41:45.000Z" itemprop="datePublished">03-14</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/14/font-end-technology/">font end technology</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端体系/">前端体系</a></li></ul>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/04/10/ruby-sass-problem/">ruby-sass-problem</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
+        <p><span>发布时间:</span>2016年04月10日 - 23时25分</p>
+        <p><span>最后更新:</span>2016年04月10日 - 23时49分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/04/10/ruby-sass-problem/" title="ruby-sass-problem">http://yoursite.com/2016/04/10/ruby-sass-problem/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/04/10/ruby-sass-problem/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/03/14/font-end-technology/">
+                    font end technology
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/03/12/wechat-mobile-project/" class="archive-article-date">
-      <time datetime="2016-03-12T14:30:12.000Z" itemprop="datePublished">03-12</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/12/wechat-mobile-project/">wechat mobile project</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于windows下通过ruby安装sass和compass的问题"><span class="toc-number">1.</span> <span class="toc-text">关于windows下通过ruby安装sass和compass的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装sass和compass"><span class="toc-number">1.0.1.</span> <span class="toc-text">安装sass和compass</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#解决办法"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#感谢angular社区前辈-会飞的鱼lala-提供的方法"><span class="toc-number">1.0.1.1.1.</span> <span class="toc-text">感谢angular社区前辈 会飞的鱼lala 提供的方法</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目总结/">项目总结</a></li></ul>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+    <div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/04/10/ruby-sass-problem/" data-title="ruby-sass-problem" data-url="http://yoursite.com/2016/04/10/ruby-sass-problem/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luoxia520"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/03/14/font-end-technology/" title="下一篇: font end technology">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/03/12/snake-game/" class="archive-article-date">
-      <time datetime="2016-03-12T13:00:42.000Z" itemprop="datePublished">03-12</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/12/snake-game/">snake game</a>
-    </h1>
-  
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/04/10/ruby-sass-problem/">ruby-sass-problem</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/font-end-technology/">font end technology</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/wechat-mobile-project/">wechat mobile project</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/snake-game/">snake game</a></li></ul>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript源码/">javascript源码</a></li></ul>
-    </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
-
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
@@ -430,15 +506,6 @@
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
