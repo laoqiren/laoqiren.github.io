@@ -5,17 +5,17 @@
   
   <title>js模板引擎初体验之jade | 罗峡的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="从jade学习js模板引擎的使用">
+  <meta name="description" content="从jade初探js模板引擎思想">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js模板引擎初体验之jade">
 <meta property="og:url" content="http://yoursite.com/2016/04/22/js模板引擎初体验之jade/index.html">
 <meta property="og:site_name" content="罗峡的博客">
-<meta property="og:description" content="从jade学习js模板引擎的使用">
+<meta property="og:description" content="从jade初探js模板引擎思想">
 <meta property="og:image" content="http://7xsi10.com2.z0.glb.clouddn.com/table.png">
-<meta property="og:updated_time" content="2016-04-22T12:26:16.253Z">
+<meta property="og:updated_time" content="2016-04-22T12:34:30.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js模板引擎初体验之jade">
-<meta name="twitter:description" content="从jade学习js模板引擎的使用">
+<meta name="twitter:description" content="从jade初探js模板引擎思想">
 <meta name="twitter:image" content="http://7xsi10.com2.z0.glb.clouddn.com/table.png">
   
     <link rel="alternative" href="/atom.xml" title="罗峡的博客" type="application/atom+xml">
@@ -280,7 +280,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="从jade学习js模板引擎的使用"><a href="#从jade学习js模板引擎的使用" class="headerlink" title="从jade学习js模板引擎的使用 "></a>从jade学习js模板引擎的使用 <a id="more"></a></h1><h3 id="因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率"><a href="#因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率" class="headerlink" title="因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率"></a>因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率</h3><h4 id="这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面"><a href="#这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面" class="headerlink" title="这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面"></a>这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面</h4><p>之前的项目中，我是这么干的：通过ajax获取服务器返回的json数据,然后通过拼接字符串的形式来生成dom，再插入到页面。</p>
+        <h1 id="从jade初探js模板引擎思想"><a href="#从jade初探js模板引擎思想" class="headerlink" title="从jade初探js模板引擎思想 "></a>从jade初探js模板引擎思想 <a id="more"></a></h1><h3 id="因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率"><a href="#因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率" class="headerlink" title="因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率"></a>因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率</h3><h4 id="这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面"><a href="#这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面" class="headerlink" title="这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面"></a>这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面</h4><p>之前的项目中，我是这么干的：通过ajax获取服务器返回的json数据,然后通过拼接字符串的形式来生成dom，再插入到页面。</p>
 <p>jade在html元素内容中引入变量</p>
 <pre><code>p #{content}  //content变量表示文章内容
 </code></pre><p>通过each循环变量数组或对象</p>
@@ -336,7 +336,7 @@ document.body.innerHTML = addHtml;
         <p><span>本文标题:</span><a href="/2016/04/22/js模板引擎初体验之jade/">js模板引擎初体验之jade</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
         <p><span>发布时间:</span>2016年04月22日 - 19时22分</p>
-        <p><span>最后更新:</span>2016年04月22日 - 20时26分</p>
+        <p><span>最后更新:</span>2016年04月22日 - 20时34分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/04/22/js模板引擎初体验之jade/" title="js模板引擎初体验之jade">http://yoursite.com/2016/04/22/js模板引擎初体验之jade/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/04/22/js模板引擎初体验之jade/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -366,7 +366,7 @@ document.body.innerHTML = addHtml;
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#从jade学习js模板引擎的使用"><span class="toc-number">1.</span> <span class="toc-text">从jade学习js模板引擎的使用 </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率"><span class="toc-number">1.0.1.</span> <span class="toc-text">因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面</span></a></li></ol></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#从jade初探js模板引擎思想"><span class="toc-number">1.</span> <span class="toc-text">从jade初探js模板引擎思想 </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率"><span class="toc-number">1.0.1.</span> <span class="toc-text">因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面</span></a></li></ol></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
