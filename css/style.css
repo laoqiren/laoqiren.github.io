@@ -2023,7 +2023,7 @@ li:hover {
   border-color: #ddd;
   border-width: 1px;
   overflow: auto;
-  color: #4d4d4c;
+  color: #000;
   line-height: 22.400000000000002px;
 }
 .article-entry .highlight .gutter pre,

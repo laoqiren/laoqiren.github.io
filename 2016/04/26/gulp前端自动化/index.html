@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | 罗峡的博客</title>
+  <title>gulp前端自动化 | 罗峡的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="罗峡的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="gulp前端自动化配置使用gulp提高前端开发效率">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gulp前端自动化">
+<meta property="og:url" content="http://yoursite.com/2016/04/26/gulp前端自动化/index.html">
 <meta property="og:site_name" content="罗峡的博客">
-<meta property="og:description">
+<meta property="og:description" content="gulp前端自动化配置使用gulp提高前端开发效率">
+<meta property="og:updated_time" content="2016-04-26T08:36:58.968Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="罗峡的博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="gulp前端自动化">
+<meta name="twitter:description" content="gulp前端自动化配置使用gulp提高前端开发效率">
   
     <link rel="alternative" href="/atom.xml" title="罗峡的博客" type="application/atom+xml">
   
@@ -38,8 +39,8 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
-          isArchive: true,
+          isPost: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false,
@@ -239,240 +240,227 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-gulp前端自动化" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/04/26/gulp前端自动化/" class="archive-article-date">
-      <time datetime="2016-04-26T08:16:05.000Z" itemprop="datePublished">04-26</time>
+    <div class="article-meta">
+      <a href="/2016/04/26/gulp前端自动化/" class="article-date">
+      <time datetime="2016-04-26T08:16:05.000Z" itemprop="datePublished">2016-04-26</time>
 </a>
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/26/gulp前端自动化/">gulp前端自动化</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      gulp前端自动化
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
+        
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端自动化/">前端自动化</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="gulp前端自动化配置"><a href="#gulp前端自动化配置" class="headerlink" title="gulp前端自动化配置"></a>gulp前端自动化配置</h1><h3 id="使用gulp提高前端开发效率"><a href="#使用gulp提高前端开发效率" class="headerlink" title="使用gulp提高前端开发效率"></a>使用gulp提高前端开发效率</h3><a id="more"></a>
+<h4 id="gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。"><a href="#gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。" class="headerlink" title="gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。"></a>gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。</h4><p>分享我在使用过程中的心得</p>
+<p>使用gulp：</p>
+<ol>
+<li><p>全局安装gulp：</p>
+<p> npm install -g gulp</p>
+</li>
+<li><p>初始化项目，package.json可以帮助我们管理依赖，一个node package有两种依赖，一种是dependencies一种是devDependencies，其中前者依赖的项该是正常运行该包时所需要的依赖项，而后者则是开发的时候需要的依赖项，像一些进行单元测试之类的包。</p>
+<p> npm init</p>
+</li>
+<li><p>局部安装gulp:</p>
+<p> npm install –save-dev gulp</p>
+</li>
+<li><p>安装依赖插件:</p>
+<p> npm install –save-dev gulp-ruby-sass</p>
+</li>
+</ol>
+
+      
+    </div>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/04/22/js模板引擎初体验之jade/" class="archive-article-date">
-      <time datetime="2016-04-22T11:22:42.000Z" itemprop="datePublished">04-22</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/22/js模板引擎初体验之jade/">js模板引擎初体验之jade</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jade/">jade</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js模板引擎/">js模板引擎</a></li></ul>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/04/26/gulp前端自动化/">gulp前端自动化</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
+        <p><span>发布时间:</span>2016年04月26日 - 16时16分</p>
+        <p><span>最后更新:</span>2016年04月26日 - 16时36分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/04/26/gulp前端自动化/" title="gulp前端自动化">http://yoursite.com/2016/04/26/gulp前端自动化/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/04/26/gulp前端自动化/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/04/22/js模板引擎初体验之jade/">
+                    js模板引擎初体验之jade
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/04/21/nodejs刷百度贴吧回复/" class="archive-article-date">
-      <time datetime="2016-04-21T15:15:57.000Z" itemprop="datePublished">04-21</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/21/nodejs刷百度贴吧回复/">nodejs刷百度贴吧回复</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#gulp前端自动化配置"><span class="toc-number">1.</span> <span class="toc-text">gulp前端自动化配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用gulp提高前端开发效率"><span class="toc-number">1.0.1.</span> <span class="toc-text">使用gulp提高前端开发效率</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。</span></a></li></ol></li></ol></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+    <div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/04/26/gulp前端自动化/" data-title="gulp前端自动化" data-url="http://yoursite.com/2016/04/26/gulp前端自动化/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luoxia520"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/04/22/js模板引擎初体验之jade/" title="下一篇: js模板引擎初体验之jade">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/04/10/ruby-sass-problem/" class="archive-article-date">
-      <time datetime="2016-04-10T15:25:08.000Z" itemprop="datePublished">04-10</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/10/ruby-sass-problem/">ruby-sass-problem</a>
-    </h1>
-  
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/04/26/gulp前端自动化/">gulp前端自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/22/js模板引擎初体验之jade/">js模板引擎初体验之jade</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/nodejs刷百度贴吧回复/">nodejs刷百度贴吧回复</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/10/ruby-sass-problem/">ruby-sass-problem</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/14/font-end-technology/">font end technology</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/wechat-mobile-project/">wechat mobile project</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/snake-game/">snake game</a></li></ul>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sass/">sass</a></li></ul>
-    </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/03/14/font-end-technology/" class="archive-article-date">
-      <time datetime="2016-03-14T04:41:45.000Z" itemprop="datePublished">03-14</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/14/font-end-technology/">font end technology</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端体系/">前端体系</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/03/12/wechat-mobile-project/" class="archive-article-date">
-      <time datetime="2016-03-12T14:30:12.000Z" itemprop="datePublished">03-12</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/12/wechat-mobile-project/">wechat mobile project</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目总结/">项目总结</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/03/12/snake-game/" class="archive-article-date">
-      <time datetime="2016-03-12T13:00:42.000Z" itemprop="datePublished">03-12</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/12/snake-game/">snake game</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript源码/">javascript源码</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
@@ -527,15 +515,6 @@
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
