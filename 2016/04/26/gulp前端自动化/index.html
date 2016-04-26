@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/04/26/gulp前端自动化/index.html">
 <meta property="og:site_name" content="罗峡的博客">
 <meta property="og:description" content="gulp前端自动化配置使用gulp提高前端开发效率">
-<meta property="og:updated_time" content="2016-04-26T08:51:56.581Z">
+<meta property="og:updated_time" content="2016-04-26T15:13:44.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gulp前端自动化">
 <meta name="twitter:description" content="gulp前端自动化配置使用gulp提高前端开发效率">
@@ -283,17 +283,17 @@
 <p>使用gulp：</p>
 <ol>
 <li><p>全局安装gulp：</p>
-<p> npm install -g gulp</p>
-</li>
+<pre><code>npm install -g gulp
+</code></pre></li>
 <li><p>初始化项目，package.json可以帮助我们管理依赖，一个node package有两种依赖，一种是dependencies一种是devDependencies，其中前者依赖的项该是正常运行该包时所需要的依赖项，而后者则是开发的时候需要的依赖项，像一些进行单元测试之类的包。</p>
-<p> npm init</p>
-</li>
+<pre><code>npm init
+</code></pre></li>
 <li><p>局部安装gulp:</p>
-<p> npm install –save-dev gulp</p>
-</li>
+<pre><code>npm install --save-dev gulp
+</code></pre></li>
 <li><p>安装依赖插件:</p>
-<p> npm install –save-dev gulp-ruby-sass</p>
-</li>
+<pre><code>npm install --save-dev gulp-ruby-sass
+</code></pre></li>
 <li><p>我的配置:</p>
 </li>
 </ol>
@@ -336,7 +336,7 @@ gulp.task(&apos;styles&apos;, function() {
 //babel转换es2015到es5
 gulp.task(&apos;babel&apos;,function(){
    return gulp.src(&quot;app/js/*.js&quot;)// ES6 源码存放的路径
-    .pipe(babel())
+    .pipe(babel({presets: [&apos;es2015&apos;]}))
     .pipe(gulp.dest(&quot;build/js&quot;)); //转换成 ES5 存放的路径
    });
 
@@ -367,7 +367,7 @@ gulp.task(&apos;browser-sync&apos;, function () {
         <p><span>本文标题:</span><a href="/2016/04/26/gulp前端自动化/">gulp前端自动化</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
         <p><span>发布时间:</span>2016年04月26日 - 16时16分</p>
-        <p><span>最后更新:</span>2016年04月26日 - 16时51分</p>
+        <p><span>最后更新:</span>2016年04月26日 - 23时13分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/04/26/gulp前端自动化/" title="gulp前端自动化">http://yoursite.com/2016/04/26/gulp前端自动化/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/04/26/gulp前端自动化/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
