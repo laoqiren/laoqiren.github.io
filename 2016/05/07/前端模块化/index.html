@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>wechat mobile project | 罗峡的博客</title>
+  <title>前端模块化 | 罗峡的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="微信订座系统项目总结第一次移动端前端项目心得分享这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得">
+  <meta name="description" content="从CommonJS(AMD,CMD,UMD)规范到es6 module###本文记录requirejs的模块路径问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="wechat mobile project">
-<meta property="og:url" content="http://yoursite.com/2016/03/12/wechat-mobile-project/index.html">
+<meta property="og:title" content="前端模块化">
+<meta property="og:url" content="http://yoursite.com/2016/05/07/前端模块化/index.html">
 <meta property="og:site_name" content="罗峡的博客">
-<meta property="og:description" content="微信订座系统项目总结第一次移动端前端项目心得分享这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得">
-<meta property="og:updated_time" content="2016-04-07T14:50:59.282Z">
+<meta property="og:description" content="从CommonJS(AMD,CMD,UMD)规范到es6 module###本文记录requirejs的模块路径问题">
+<meta property="og:updated_time" content="2016-05-07T07:39:21.132Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wechat mobile project">
-<meta name="twitter:description" content="微信订座系统项目总结第一次移动端前端项目心得分享这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得">
+<meta name="twitter:title" content="前端模块化">
+<meta name="twitter:description" content="从CommonJS(AMD,CMD,UMD)规范到es6 module###本文记录requirejs的模块路径问题">
   
     <link rel="alternative" href="/atom.xml" title="罗峡的博客" type="application/atom+xml">
   
@@ -240,11 +240,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-wechat-mobile-project" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-前端模块化" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/12/wechat-mobile-project/" class="article-date">
-      <time datetime="2016-03-12T14:30:12.000Z" itemprop="datePublished">2016-03-12</time>
+      <a href="/2016/05/07/前端模块化/" class="article-date">
+      <time datetime="2016-05-07T06:04:59.000Z" itemprop="datePublished">2016-05-07</time>
 </a>
     </div>
   
@@ -257,7 +257,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      wechat mobile project
+      前端模块化
     </h1>
   
 
@@ -268,7 +268,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目总结/">项目总结</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/requirejs/">requirejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端模块化/">前端模块化</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -278,34 +278,108 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="微信订座系统项目总结"><a href="#微信订座系统项目总结" class="headerlink" title="微信订座系统项目总结"></a>微信订座系统项目总结</h1><h2 id="第一次移动端前端项目心得分享"><a href="#第一次移动端前端项目心得分享" class="headerlink" title="第一次移动端前端项目心得分享"></a>第一次移动端前端项目心得分享</h2><h3 id="这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得"><a href="#这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得" class="headerlink" title="这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得  "></a>这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得  <a id="more"></a></h3><h3 id="一．项目整体流程"><a href="#一．项目整体流程" class="headerlink" title="一．项目整体流程"></a>一．项目整体流程</h3><pre><code>1. 分析用户需求，产品功能
-2. 设计图材料
-3. 业务逻辑
-4. 分工合作
-5. 提交，不断完善，修复bug
-</code></pre><h3 id="二．遇到的问题及解决办法"><a href="#二．遇到的问题及解决办法" class="headerlink" title="二．遇到的问题及解决办法"></a>二．遇到的问题及解决办法</h3><h4 id="html部分"><a href="#html部分" class="headerlink" title="html部分:"></a>html部分:</h4><pre><code>1. html5新标签，新属性应用（input的placeholder属性，type=”date”）；
-2. 命名规则
-</code></pre><h4 id="css部分："><a href="#css部分：" class="headerlink" title="css部分："></a>css部分：</h4><pre><code>1. 设计图各部分尺寸比例，ps测量；
-2. 移动端适配，meta标签使用，视口等理解；
-3. 移动端对flex box布局方式的支持，考虑用浮动布局；
-4. 图片大小压缩问题，宽度设置，高度自适应;
-5. 苹果手机自动缩放屏幕问题，禁止用户缩放;
-</code></pre><h4 id="js部分："><a href="#js部分：" class="headerlink" title="js部分："></a>js部分：</h4><pre><code>1. 用闭包解决js无块级作用域的影响；
-2. 自定义特性不会自动添加到dom对象属性；
-3. 自定义dom对象属性也不会添加到特性；
-4. 与后台数据对接，封装函数，做好接口；
-</code></pre><h3 id="三．思考改进"><a href="#三．思考改进" class="headerlink" title="三．思考改进"></a>三．思考改进</h3><pre><code>1. 命名规范
-2. W3C标准
-3. 使用框架开发，bootstrap或者jquery mobile
-4. 简化逻辑，性能优化
-5. 代码可维护性
-6. 开发效率
-</code></pre><h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><pre><code>1. 图片和其他非代码文件放在单独的文件夹
-2. 变量声明和函数声明写在最前面，以增加代码的课维护性
-3. 使用动态改变元素的class来改变元素的样式
-4. 将雪碧图放到一个数组里，循环适用于多个元素
-5. html5在DOM上的扩展，自定义特性可以通过元素的dataset属性来访问自定义特性对于于DOM对象中的属性
-</code></pre>
+        <h1 id="从CommonJS-AMD-CMD-UMD-规范到es6-module"><a href="#从CommonJS-AMD-CMD-UMD-规范到es6-module" class="headerlink" title="从CommonJS(AMD,CMD,UMD)规范到es6 module"></a>从CommonJS(AMD,CMD,UMD)规范到es6 module</h1><p>###本文记录requirejs的模块路径问题<br><a id="more"></a></p>
+<h5 id="在于客户端，requirejs是AMD规范最好的实现者，关于requirejs在使用过程中遇到的问题记录，主要是路径问题。"><a href="#在于客户端，requirejs是AMD规范最好的实现者，关于requirejs在使用过程中遇到的问题记录，主要是路径问题。" class="headerlink" title="在于客户端，requirejs是AMD规范最好的实现者，关于requirejs在使用过程中遇到的问题记录，主要是路径问题。"></a>在于客户端，requirejs是AMD规范最好的实现者，关于requirejs在使用过程中遇到的问题记录，主要是路径问题。</h5><p>我的项目结构（测试用，不合理）：</p>
+<pre><code>----gulp
+    ----app
+        ----html
+                index.html
+        ----js
+                a.js
+                b.js
+                c.js
+        ----require.js
+        ----config.js
+    ----bower_comonents
+        ----jquery
+            ----dist
+                jquery.min.js
+</code></pre><ol>
+<li><p>当引入requirejs的时候指定data-main属性:(index.html)</p>
+<pre><code>&lt;script data-main=&quot;../config&quot; src=&quot;../require.js&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+<li><p>data-main作为入口文件，有个作用就是它会把模块的baseUrl设置为config所在目录</p>
+</li>
+<li><p>然后配置config.js:</p>
+<pre><code>require.config({
+    paths : {
+        jquery: [&apos;../bower_components/jquery/dist/jquery.min&apos;]
+    }
+});
+</code></pre></li>
+<li><p>baseUrl就是config文件所在目录，设定paths值当然根据baseUrl来，如这里就相当于gulp/app/../bower_components/jquery/dist/jquery.min，然后index.html:</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    require([&apos;jquery&apos;],function($){
+        $(&apos;body&apos;).append($(&apos;&lt;p&gt;hello&lt;/p&gt;&apos;));
+    })
+&lt;/script&gt;
+</code></pre><p>理论上是没问题的，但会报错，get app/jquery.js net::ERR_FILE_NOT_FOUND，这咋回事？paths根本没生效，然后我又试着显示地配置baseUrl属性（注意配置路径是针对于引入requirejs的那个html文件来的），照样报同样的错误，最后，我这样写：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;../require.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../config.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    require([&apos;jquery&apos;],function($){
+        $(&apos;body&apos;).append($(&apos;&lt;p&gt;hello&lt;/p&gt;&apos;));
+    })
+&lt;/script&gt;
+</code></pre></li>
+</ol>
+<p>也就是说，config分开加载，当然此时的config配置会有所变化，因为不是在data-main属性中引入，所有baseUrl默认的会是这里引入require的html文件的路径，所以：</p>
+<pre><code>require.config({
+    baseUrl:&apos;../../&apos;,
+    paths : {
+        jquery: [&apos;bower_components/jquery/dist/jquery.min&apos;]
+    }
+});
+</code></pre><p>这里baseUrl设置后就相当于gulp目录，然后现在在运行html,达到预期效果，why?</p>
+<h4 id="应该是这样：开始的例子中，引入require文件，加载执行require-js-然后异步加载config-js，config配置还没生效时，我后面的代码就执行了，由于已经设置data-main属性，所以回去加载app-js-jquery-js，没找到，所以挂了。"><a href="#应该是这样：开始的例子中，引入require文件，加载执行require-js-然后异步加载config-js，config配置还没生效时，我后面的代码就执行了，由于已经设置data-main属性，所以回去加载app-js-jquery-js，没找到，所以挂了。" class="headerlink" title="应该是这样：开始的例子中，引入require文件，加载执行require.js,然后异步加载config.js，config配置还没生效时，我后面的代码就执行了，由于已经设置data-main属性，所以回去加载app/js/jquery.js，没找到，所以挂了。"></a>应该是这样：开始的例子中，引入require文件，加载执行require.js,然后异步加载config.js，config配置还没生效时，我后面的代码就执行了，由于已经设置data-main属性，所以回去加载app/js/jquery.js，没找到，所以挂了。</h4><p>我的解决办法：<br>要么把代码放在config.js中，要么在config里引入我的代码模块</p>
+<h4 id="另外还有一个需要注意到的是，在定义模块的时候，define-id-dep-factory-的时候，dep依赖其他模块的目录有两种方式："><a href="#另外还有一个需要注意到的是，在定义模块的时候，define-id-dep-factory-的时候，dep依赖其他模块的目录有两种方式：" class="headerlink" title="另外还有一个需要注意到的是，在定义模块的时候，define(id,dep,factory)的时候，dep依赖其他模块的目录有两种方式："></a>另外还有一个需要注意到的是，在定义模块的时候，define(id,dep,factory)的时候，dep依赖其他模块的目录有两种方式：</h4><ol>
+<li>依据config显式地设置的baseUrl或者默认的baseUrl的路径结合paths配置</li>
+<li>./开头的路径，那么久不是根据baseUrl了，是根据这个模块本身的位置来的</li>
+</ol>
+<p>举个栗子：</p>
+<p>index.html:</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;../require.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../config.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/a.js&quot;&gt;
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    require([&apos;jquery&apos;],function($){
+        $(&apos;body&apos;).append($(&apos;&lt;p&gt;hello&lt;/p&gt;&apos;));
+    })
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;hello wrold&lt;/div&gt;
+&lt;/body&gt;
+</code></pre><p>config.js:</p>
+<pre><code>require.config({
+    baseUrl:&apos;../../&apos;,
+    paths : {
+        jquery: [&apos;bower_components/jquery/dist/jquery.min&apos;]
+    }
+});
+</code></pre><p>a.js:</p>
+<pre><code>require([&apos;app/js/b&apos;],function(b){
+    b.jq();
+});
+</code></pre><p>b.js:</p>
+<pre><code>//这里也可以define([&apos;jquery&apos;,&apos;./c&apos;],...)
+define([&apos;jquery&apos;,&apos;app/js/c&apos;],function($,c){
+    var b = {};
+    b.jq = function(){
+        $(&apos;body&apos;).append($(&apos;&lt;p&gt;hello&lt;/p&gt;&apos;));
+    };
+    console.log(c.name);
+    return b;
+});
+</code></pre><p>c.js:</p>
+<pre><code>define(function(){
+    return {
+        name:&apos;luoxia&apos;
+    };
+});
+</code></pre><p>b模块依赖c模块的情况说明这个问题，然后require是一定根据baseUrl来的</p>
+<h4 id="es2015来了，原生模块语法都支持了，官方是要用原生module语法抛弃CommonJS和AMD-CMD之类的模块规范啊，反正都有babel之类的转换器，为何不用起来呢？es2015的module和之前的一些规范是有区别的，比如引用而非值缓存啊之类的，需要慢慢学习研究哦。"><a href="#es2015来了，原生模块语法都支持了，官方是要用原生module语法抛弃CommonJS和AMD-CMD之类的模块规范啊，反正都有babel之类的转换器，为何不用起来呢？es2015的module和之前的一些规范是有区别的，比如引用而非值缓存啊之类的，需要慢慢学习研究哦。" class="headerlink" title="es2015来了，原生模块语法都支持了，官方是要用原生module语法抛弃CommonJS和AMD,CMD之类的模块规范啊，反正都有babel之类的转换器，为何不用起来呢？es2015的module和之前的一些规范是有区别的，比如引用而非值缓存啊之类的，需要慢慢学习研究哦。"></a>es2015来了，原生模块语法都支持了，官方是要用原生module语法抛弃CommonJS和AMD,CMD之类的模块规范啊，反正都有babel之类的转换器，为何不用起来呢？es2015的module和之前的一些规范是有区别的，比如引用而非值缓存啊之类的，需要慢慢学习研究哦。</h4>
       
     </div>
     
@@ -313,13 +387,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/03/12/wechat-mobile-project/">wechat mobile project</a></p>
+        <p><span>本文标题:</span><a href="/2016/05/07/前端模块化/">前端模块化</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
-        <p><span>发布时间:</span>2016年03月12日 - 22时30分</p>
-        <p><span>最后更新:</span>2016年04月07日 - 22时50分</p>
+        <p><span>发布时间:</span>2016年05月07日 - 14时04分</p>
+        <p><span>最后更新:</span>2016年05月07日 - 15时39分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/03/12/wechat-mobile-project/" title="wechat mobile project">http://yoursite.com/2016/03/12/wechat-mobile-project/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/03/12/wechat-mobile-project/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/07/前端模块化/" title="前端模块化">http://yoursite.com/2016/05/07/前端模块化/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/05/07/前端模块化/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -332,16 +406,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/03/14/font-end-technology/">
-                    font end technology
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/03/12/snake-game/">
-                    snake game
+                <a href="/2016/04/26/gulp前端自动化/">
+                    gulp前端自动化
                 </a>
             </div>
         
@@ -352,7 +420,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#微信订座系统项目总结"><span class="toc-number">1.</span> <span class="toc-text">微信订座系统项目总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一次移动端前端项目心得分享"><span class="toc-number">1.1.</span> <span class="toc-text">第一次移动端前端项目心得分享</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得"><span class="toc-number">1.1.1.</span> <span class="toc-text">这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得  </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一．项目整体流程"><span class="toc-number">1.1.2.</span> <span class="toc-text">一．项目整体流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二．遇到的问题及解决办法"><span class="toc-number">1.1.3.</span> <span class="toc-text">二．遇到的问题及解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#html部分"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">html部分:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#css部分："><span class="toc-number">1.1.3.2.</span> <span class="toc-text">css部分：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#js部分："><span class="toc-number">1.1.3.3.</span> <span class="toc-text">js部分：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三．思考改进"><span class="toc-number">1.1.4.</span> <span class="toc-text">三．思考改进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充："><span class="toc-number">1.1.5.</span> <span class="toc-text">补充：</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#从CommonJS-AMD-CMD-UMD-规范到es6-module"><span class="toc-number">1.</span> <span class="toc-text">从CommonJS(AMD,CMD,UMD)规范到es6 module</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#在于客户端，requirejs是AMD规范最好的实现者，关于requirejs在使用过程中遇到的问题记录，主要是路径问题。"><span class="toc-number">1.0.0.0.1.</span> <span class="toc-text">在于客户端，requirejs是AMD规范最好的实现者，关于requirejs在使用过程中遇到的问题记录，主要是路径问题。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#应该是这样：开始的例子中，引入require文件，加载执行require-js-然后异步加载config-js，config配置还没生效时，我后面的代码就执行了，由于已经设置data-main属性，所以回去加载app-js-jquery-js，没找到，所以挂了。"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">应该是这样：开始的例子中，引入require文件，加载执行require.js,然后异步加载config.js，config配置还没生效时，我后面的代码就执行了，由于已经设置data-main属性，所以回去加载app/js/jquery.js，没找到，所以挂了。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#另外还有一个需要注意到的是，在定义模块的时候，define-id-dep-factory-的时候，dep依赖其他模块的目录有两种方式："><span class="toc-number">1.0.0.2.</span> <span class="toc-text">另外还有一个需要注意到的是，在定义模块的时候，define(id,dep,factory)的时候，dep依赖其他模块的目录有两种方式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#es2015来了，原生模块语法都支持了，官方是要用原生module语法抛弃CommonJS和AMD-CMD之类的模块规范啊，反正都有babel之类的转换器，为何不用起来呢？es2015的module和之前的一些规范是有区别的，比如引用而非值缓存啊之类的，需要慢慢学习研究哦。"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">es2015来了，原生模块语法都支持了，官方是要用原生module语法抛弃CommonJS和AMD,CMD之类的模块规范啊，反正都有babel之类的转换器，为何不用起来呢？es2015的module和之前的一些规范是有区别的，比如引用而非值缓存啊之类的，需要慢慢学习研究哦。</span></a></li></ol></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -414,7 +482,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/03/12/wechat-mobile-project/" data-title="wechat mobile project" data-url="http://yoursite.com/2016/03/12/wechat-mobile-project/"></div>
+    <div class="ds-thread" data-thread-key="2016/05/07/前端模块化/" data-title="前端模块化" data-url="http://yoursite.com/2016/05/07/前端模块化/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -438,15 +506,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/03/14/font-end-technology/" title="上一篇: font end technology">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/03/12/snake-game/" title="下一篇: snake game">
+            <a href="/2016/04/26/gulp前端自动化/" title="下一篇: gulp前端自动化">
                 <i class="fa fa-angle-right"></i>
             </a>
         
