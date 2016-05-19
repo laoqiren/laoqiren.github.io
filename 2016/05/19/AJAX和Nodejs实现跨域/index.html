@@ -3,22 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>snake game | 罗峡的博客</title>
+  <title>AJAX和Nodejs实现跨域 | 罗峡的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="javascript原生贪吃蛇游戏">
+  <meta name="description" content="由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="snake game">
-<meta property="og:url" content="http://yoursite.com/2016/03/12/snake-game/index.html">
+<meta property="og:title" content="AJAX和Nodejs实现跨域">
+<meta property="og:url" content="http://yoursite.com/2016/05/19/AJAX和Nodejs实现跨域/index.html">
 <meta property="og:site_name" content="罗峡的博客">
-<meta property="og:description" content="javascript原生贪吃蛇游戏">
-<meta property="og:image" content="http://7xsi10.com2.z0.glb.clouddn.com/psb%20%282%29.jpg">
-<meta property="og:image" content="http://7xsi10.com2.z0.glb.clouddn.com/psb%20%281%29.jpg">
-<meta property="og:image" content="http://7xsi10.com2.z0.glb.clouddn.com/psb.jpg">
-<meta property="og:updated_time" content="2016-04-08T03:46:36.006Z">
+<meta property="og:description" content="由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。">
+<meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/jsonp.png">
+<meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/luoxia.png">
+<meta property="og:updated_time" content="2016-05-19T16:13:45.658Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="snake game">
-<meta name="twitter:description" content="javascript原生贪吃蛇游戏">
-<meta name="twitter:image" content="http://7xsi10.com2.z0.glb.clouddn.com/psb%20%282%29.jpg">
+<meta name="twitter:title" content="AJAX和Nodejs实现跨域">
+<meta name="twitter:description" content="由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。">
+<meta name="twitter:image" content="http://7xsi10.com1.z0.glb.clouddn.com/jsonp.png">
   
     <link rel="alternative" href="/atom.xml" title="罗峡的博客" type="application/atom+xml">
   
@@ -244,11 +243,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-snake-game" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-AJAX和Nodejs实现跨域" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/12/snake-game/" class="article-date">
-      <time datetime="2016-03-12T13:00:42.000Z" itemprop="datePublished">2016-03-12</time>
+      <a href="/2016/05/19/AJAX和Nodejs实现跨域/" class="article-date">
+      <time datetime="2016-05-19T15:01:53.000Z" itemprop="datePublished">2016-05-19</time>
 </a>
     </div>
   
@@ -261,7 +260,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      snake game
+      AJAX和Nodejs实现跨域
     </h1>
   
 
@@ -272,7 +271,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript源码/">javascript源码</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -282,9 +281,83 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="javascript原生贪吃蛇游戏"><a href="#javascript原生贪吃蛇游戏" class="headerlink" title="javascript原生贪吃蛇游戏"></a>javascript原生贪吃蛇游戏</h1><a id="more"></a>
-<h4 id="附上三张效果图"><a href="#附上三张效果图" class="headerlink" title="附上三张效果图"></a>附上三张效果图</h4><p><img src="http://7xsi10.com2.z0.glb.clouddn.com/psb%20%282%29.jpg" alt="snake1"><br><img src="http://7xsi10.com2.z0.glb.clouddn.com/psb%20%281%29.jpg" alt="snake2"><br><img src="http://7xsi10.com2.z0.glb.clouddn.com/psb.jpg" alt="snake3"></p>
-<h3 id="源码已经托管到我的github，点击进入我的github"><a href="#源码已经托管到我的github，点击进入我的github" class="headerlink" title="源码已经托管到我的github，点击进入我的github"></a>源码已经托管到我的github，点击进入<a href="https://github.com/laoqiren" target="_blank" rel="external">我的github</a></h3>
+        <h3 id="由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。"><a href="#由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。" class="headerlink" title="由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。"></a>由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。</h3><a id="more"></a>
+<h3 id="1-代理"><a href="#1-代理" class="headerlink" title="1. 代理"></a>1. 代理</h3><p>所谓代理，就是用后台技术实现代理服务器，前端访问代理服务器，代理服务器向实际服务器发起请求，拿到数据再返回给前端。 例如一个网站有两个服务器www.Chongqing.com和www.Hangzhou.com，在杭州的话想访问重庆服务器的资源，先直接访问杭州服务器，杭州服务器再从重庆服务器拉取数据最后返回给杭州的user-agent.</p>
+<h3 id="2-图像ping"><a href="#2-图像ping" class="headerlink" title="2. 图像ping"></a>2. 图像ping</h3><h4 id="虽然js有同源现在，但是，在html里有几个元素可以没有限制的访问任何网站的内容，比如-img-iframe-script-，哈哈哈哈哈哈，那么，就可以利用这一点实现跨域咯。"><a href="#虽然js有同源现在，但是，在html里有几个元素可以没有限制的访问任何网站的内容，比如-img-iframe-script-，哈哈哈哈哈哈，那么，就可以利用这一点实现跨域咯。" class="headerlink" title="虽然js有同源现在，但是，在html里有几个元素可以没有限制的访问任何网站的内容，比如 img,iframe,script  ，哈哈哈哈哈哈，那么，就可以利用这一点实现跨域咯。"></a>虽然js有同源现在，但是，在html里有几个元素可以没有限制的访问任何网站的内容，比如 img,iframe,script  ，哈哈哈哈哈哈，那么，就可以利用这一点实现跨域咯。</h4><p>图像ping用于客户端和服务端进行单向的简单的通信,只能发送get请求，无法访问服务器响应文本，在这里不详解；</p>
+<h3 id="3-JSONP"><a href="#3-JSONP" class="headerlink" title="3. JSONP"></a>3. JSONP</h3><h4 id="啥是JSONP-JSON-with-padding（参数式json-，实际上是对json的一种应用方法，将json数据传给回调函数，JSONP是通过script元素设计的，如下："><a href="#啥是JSONP-JSON-with-padding（参数式json-，实际上是对json的一种应用方法，将json数据传给回调函数，JSONP是通过script元素设计的，如下：" class="headerlink" title="啥是JSONP? JSON with padding（参数式json)，实际上是对json的一种应用方法，将json数据传给回调函数，JSONP是通过script元素设计的，如下："></a>啥是JSONP? JSON with padding（参数式json)，实际上是对json的一种应用方法，将json数据传给回调函数，JSONP是通过script元素设计的，如下：</h4><pre><code>&lt;script src=&apos;www.luoxia520.com/blog/?callback=callback&apos;&gt;&lt;/script&gt;
+&lt;script&gt;
+    function callback(data){
+        console.log(data.name);
+    }
+&lt;/script&gt;
+</code></pre><p>这里通过script可加载任意域内容的特点对异域进行强求，查询字符串包含callback参数，服务器传回的是可执行的js代码，即对于的callback(data)调用。当然服务端代码也要响应的更改。下面介绍。</p>
+<h3 id="这里以jquery的ajax为例"><a href="#这里以jquery的ajax为例" class="headerlink" title="这里以jquery的ajax为例:"></a>这里以jquery的ajax为例:</h3><ol>
+<li><p>前端ajax请求代码: testJsonp.html</p>
+<pre><code>$(function(){
+        $.ajax({
+            dataType: &apos;jsonp&apos;,
+            url: &apos;http://localhost:8088&apos;,
+            type:&apos;get&apos;,
+            success: function(data){
+                   $(&apos;#name&apos;).text(data);
+            }
+        });
+ });
+</code></pre></li>
+<li><p>用Nodejs实现得异域服务器代码:</p>
+<pre><code>var http = require(&apos;http&apos;);
+var urlLib = require(&apos;url&apos;);
+var data = {name:&apos;luoxia&apos;,year:18};
+http.createServer(function(req,res){
+    var parms = urlLib.parse(req.url,true);
+    var str = parms.query.callback + &apos;(&apos; + JSON.stringify(data) +&apos;)&apos;;
+    res.end(str);
+}).listen(8088);
+</code></pre></li>
+</ol>
+<p>jquery的ajax也是利用script的原理，只不过只要设置了dataType为jsonp的话，就自动回发送jsonp请求，我们可以看到testJsonp.html请求的URL:<br><img src="http://7xsi10.com1.z0.glb.clouddn.com/jsonp.png" alt="jsonp"><br>看到了吧，自动加上了callback查询字符串，callback的值是动态生成的，当然也可以指定其值，没啥影响，还有，前面的callback这个，也可以改的，通过jsonp属性指定，当然这是细节。</p>
+<p>nodejs通过查询callback值，即回调函数名，然后返回传递了json数据的可执行js字符串。</p>
+<p>最后成功地实现了跨域，哈哈哈哈哈哈哈哈。<br><img src="http://7xsi10.com1.z0.glb.clouddn.com/luoxia.png" alt="luoxia"></p>
+<h5 id="jsonp只能发送get请求。"><a href="#jsonp只能发送get请求。" class="headerlink" title="jsonp只能发送get请求。"></a>jsonp只能发送get请求。</h5><p>当然这里开始遇到了个问题，console老是报错</p>
+<pre><code>Failed to load resource: net::ERR_CACHE_MISS
+</code></pre><p>，好大一半天不知道咋解决，后面在论坛的悠悠建议下，给ajax请求url加了个协议，丫的，成了。。。或许无法自动补全吧，细节啊。。。。</p>
+<h3 id="4-CORS"><a href="#4-CORS" class="headerlink" title="4. CORS"></a>4. CORS</h3><h5 id="CORS即跨源资源共享，是W3C的草案，定义了必要时浏览器和异域服务器该如何进行跨域的沟通。CORS与JSONP相比，无疑更为先进、方便和可靠。"><a href="#CORS即跨源资源共享，是W3C的草案，定义了必要时浏览器和异域服务器该如何进行跨域的沟通。CORS与JSONP相比，无疑更为先进、方便和可靠。" class="headerlink" title="CORS即跨源资源共享，是W3C的草案，定义了必要时浏览器和异域服务器该如何进行跨域的沟通。CORS与JSONP相比，无疑更为先进、方便和可靠。"></a>CORS即跨源资源共享，是W3C的草案，定义了必要时浏览器和异域服务器该如何进行跨域的沟通。CORS与JSONP相比，无疑更为先进、方便和可靠。</h5><ol>
+<li><p>JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求。</p>
+</li>
+<li><p>使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理。</p>
+</li>
+<li><p>JSONP主要被老的浏览器支持，它们往往不支持CORS，而绝大多数现代浏览器都已经支持了CORS</p>
+</li>
+</ol>
+<p>要求请求头加入</p>
+<pre><code>Origin: host:port
+</code></pre><p>响应头必须加入和请求头同样host:port的响应信息:</p>
+<pre><code>Access-Control-Allow-Origin: host:port
+</code></pre><p>IE8以下的就别想了,IE8，IE9可以通过XDR实现，反正我觉得，垃圾IE,现在微软自己都放弃治疗了。。。。。。</p>
+<p>来具体看看实现例子，还是jquery的ajax:</p>
+<p>前端testCORS.html:</p>
+<pre><code>$(function(){
+        $.ajax({
+            url: &apos;http://localhost:8088&apos;,
+            type:&apos;get&apos;,
+            success: function(data){
+                   $(&apos;#name&apos;).text(JSON.parse(data).name);
+            }
+        });
+ });
+</code></pre><p>Node： CORS.js</p>
+<pre><code>var http = require(&apos;http&apos;);
+//var urlLib = require(&apos;url&apos;);
+var data = {name:&apos;luoxia&apos;,year:18};
+http.createServer(function(req,res){
+    var parms = urlLib.parse(req.url,true);
+    res.writeHead(200,{&apos;Access-Control-Allow-Origin&apos;:&apos;*&apos;,&apos;Access-Control-Allow-Method&apos;:&apos;GET,POST&apos;});
+    res.end(JSON.stringify(data));
+}).listen(8088);
+</code></pre><p>这里Access-Control-Allow-Origin可以设置为*代表允许说有域，当然也可以写具体的url。<br>最终是没问题的：</p>
+<p>CORS一定程度上缓解了CSRF,XSS等安全问题。</p>
+<p>明天就5.20，国际计量节！单身狗过国际计量节，new对象去了。。。</p>
+
       
     </div>
     
@@ -292,13 +365,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/03/12/snake-game/">snake game</a></p>
+        <p><span>本文标题:</span><a href="/2016/05/19/AJAX和Nodejs实现跨域/">AJAX和Nodejs实现跨域</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
-        <p><span>发布时间:</span>2016年03月12日 - 21时00分</p>
-        <p><span>最后更新:</span>2016年04月08日 - 11时46分</p>
+        <p><span>发布时间:</span>2016年05月19日 - 23时01分</p>
+        <p><span>最后更新:</span>2016年05月20日 - 00时13分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/03/12/snake-game/" title="snake game">http://yoursite.com/2016/03/12/snake-game/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/03/12/snake-game/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/19/AJAX和Nodejs实现跨域/" title="AJAX和Nodejs实现跨域">http://yoursite.com/2016/05/19/AJAX和Nodejs实现跨域/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/05/19/AJAX和Nodejs实现跨域/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -311,12 +384,12 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/03/12/wechat-mobile-project/">
-                    wechat mobile project
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/05/07/前端模块化/">
+                    前端模块化
                 </a>
             </div>
-        
         
     </nav>
 
@@ -325,7 +398,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript原生贪吃蛇游戏"><span class="toc-number">1.</span> <span class="toc-text">javascript原生贪吃蛇游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#附上三张效果图"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">附上三张效果图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源码已经托管到我的github，点击进入我的github"><span class="toc-number">1.0.1.</span> <span class="toc-text">源码已经托管到我的github，点击进入我的github</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。"><span class="toc-number">1.</span> <span class="toc-text">由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-代理"><span class="toc-number">2.</span> <span class="toc-text">1. 代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-图像ping"><span class="toc-number">3.</span> <span class="toc-text">2. 图像ping</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#虽然js有同源现在，但是，在html里有几个元素可以没有限制的访问任何网站的内容，比如-img-iframe-script-，哈哈哈哈哈哈，那么，就可以利用这一点实现跨域咯。"><span class="toc-number">3.1.</span> <span class="toc-text">虽然js有同源现在，但是，在html里有几个元素可以没有限制的访问任何网站的内容，比如 img,iframe,script  ，哈哈哈哈哈哈，那么，就可以利用这一点实现跨域咯。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-JSONP"><span class="toc-number">4.</span> <span class="toc-text">3. JSONP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#啥是JSONP-JSON-with-padding（参数式json-，实际上是对json的一种应用方法，将json数据传给回调函数，JSONP是通过script元素设计的，如下："><span class="toc-number">4.1.</span> <span class="toc-text">啥是JSONP? JSON with padding（参数式json)，实际上是对json的一种应用方法，将json数据传给回调函数，JSONP是通过script元素设计的，如下：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这里以jquery的ajax为例"><span class="toc-number">5.</span> <span class="toc-text">这里以jquery的ajax为例:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#jsonp只能发送get请求。"><span class="toc-number">5.0.1.</span> <span class="toc-text">jsonp只能发送get请求。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-CORS"><span class="toc-number">6.</span> <span class="toc-text">4. CORS</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CORS即跨源资源共享，是W3C的草案，定义了必要时浏览器和异域服务器该如何进行跨域的沟通。CORS与JSONP相比，无疑更为先进、方便和可靠。"><span class="toc-number">6.0.1.</span> <span class="toc-text">CORS即跨源资源共享，是W3C的草案，定义了必要时浏览器和异域服务器该如何进行跨域的沟通。CORS与JSONP相比，无疑更为先进、方便和可靠。</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -387,7 +460,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/03/12/snake-game/" data-title="snake game" data-url="http://yoursite.com/2016/03/12/snake-game/"></div>
+    <div class="ds-thread" data-thread-key="2016/05/19/AJAX和Nodejs实现跨域/" data-title="AJAX和Nodejs实现跨域" data-url="http://yoursite.com/2016/05/19/AJAX和Nodejs实现跨域/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -411,15 +484,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/03/12/wechat-mobile-project/" title="上一篇: wechat mobile project">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/05/07/前端模块化/" title="下一篇: 前端模块化">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
