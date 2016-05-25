@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>罗峡的博客</title>
+  <title>Category: web前端 | 罗峡的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="罗峡的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/web前端/index.html">
 <meta property="og:site_name" content="罗峡的博客">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -26,13 +26,8 @@
   
   <link rel="stylesheet" href="/css/style.css">
   
-      <style> .article { opacity: 0;} </style>
-  
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  
-    
-    
   
   
     <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -42,11 +37,11 @@
       var yiliaConfig = {
           fancybox: true,
           animate: true,
-          isHome: true,
+          isHome: false,
           isPost: false,
           isArchive: false,
           isTag: false,
-          isCategory: false,
+          isCategory: true,
           open_in_new: false,
       }
   </script>
@@ -246,381 +241,56 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-AJAX和Nodejs实现跨域" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2016/05/19/AJAX和Nodejs实现跨域/" class="article-date">
-      <time datetime="2016-05-19T15:01:53.000Z" itemprop="datePublished">2016-05-19</time>
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2016/05/07/前端模块化/" class="archive-article-date">
+      <time datetime="2016-05-07T06:04:59.000Z" itemprop="datePublished">05-07</time>
 </a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+        </div>
+         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/19/AJAX和Nodejs实现跨域/">AJAX和Nodejs实现跨域</a>
+      <a class="archive-article-title" href="/2016/05/07/前端模块化/">前端模块化</a>
     </h1>
   
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <div class="article-info info-on-archive">
           
-              <h3 id="由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。"><a href="#由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。" class="headerlink" title="由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。"></a>由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。</h3>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/05/19/AJAX和Nodejs实现跨域/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-前端模块化" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05/07/前端模块化/" class="article-date">
-      <time datetime="2016-05-07T06:04:59.000Z" itemprop="datePublished">2016-05-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/07/前端模块化/">前端模块化</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="AMD实现者之前端模块化工具requirejs"><a href="#AMD实现者之前端模块化工具requirejs" class="headerlink" title="AMD实现者之前端模块化工具requirejs"></a>AMD实现者之前端模块化工具requirejs</h1><h3 id="本文记录requirejs的模块路径问题"><a href="#本文记录requirejs的模块路径问题" class="headerlink" title="本文记录requirejs的模块路径问题"></a>本文记录requirejs的模块路径问题</h3>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/web前端/">web前端</a>
     </div>
 
 
-      
+          
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/requirejs/">requirejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端模块化/">前端模块化</a></li></ul>
     </div>
 
-      
-        <p class="article-more-link">
-          <a  href="/2016/05/07/前端模块化/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
 </article>
-
-
-
-
-
-
-
-
   
-    <article id="post-gulp前端自动化" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2016/04/26/gulp前端自动化/" class="article-date">
-      <time datetime="2016-04-26T08:16:05.000Z" itemprop="datePublished">2016-04-26</time>
-</a>
-    </div>
+    </div></section>
   
-  <div class="article-inner">
+
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/26/gulp前端自动化/">gulp前端自动化</a>
-    </h1>
-  
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="gulp前端自动化配置"><a href="#gulp前端自动化配置" class="headerlink" title="gulp前端自动化配置"></a>gulp前端自动化配置</h1><h3 id="使用gulp提高前端开发效率"><a href="#使用gulp提高前端开发效率" class="headerlink" title="使用gulp提高前端开发效率"></a>使用gulp提高前端开发效率</h3>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端自动化/">前端自动化</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/26/gulp前端自动化/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-js模板引擎初体验之jade" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/22/js模板引擎初体验之jade/" class="article-date">
-      <time datetime="2016-04-22T11:22:42.000Z" itemprop="datePublished">2016-04-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/22/js模板引擎初体验之jade/">js模板引擎初体验之jade</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="从jade初探js模板引擎思想"><a href="#从jade初探js模板引擎思想" class="headerlink" title="从jade初探js模板引擎思想 "></a>从jade初探js模板引擎思想
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jade/">jade</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js模板引擎/">js模板引擎</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/22/js模板引擎初体验之jade/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-nodejs刷百度贴吧回复" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/21/nodejs刷百度贴吧回复/" class="article-date">
-      <time datetime="2016-04-21T15:15:57.000Z" itemprop="datePublished">2016-04-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/21/nodejs刷百度贴吧回复/">nodejs刷百度贴吧回复</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="nodejs尝试之刷百度贴吧回复"><a href="#nodejs尝试之刷百度贴吧回复" class="headerlink" title="nodejs尝试之刷百度贴吧回复 "></a>nodejs尝试之刷百度贴吧回复
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/21/nodejs刷百度贴吧回复/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-ruby-sass-problem" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/10/ruby-sass-problem/" class="article-date">
-      <time datetime="2016-04-10T15:25:08.000Z" itemprop="datePublished">2016-04-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/10/ruby-sass-problem/">ruby-sass-problem</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="关于windows下通过ruby安装sass和compass的问题"><a href="#关于windows下通过ruby安装sass和compass的问题" class="headerlink" title="关于windows下通过ruby安装sass和compass的问题"></a>关于windows下通过ruby安装sass和compass的问题</h1><h3 id="安装sass和compass"><a href="#安装sass和compass" class="headerlink" title="安装sass和compass"></a>安装sass和compass</h3>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sass/">sass</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/10/ruby-sass-problem/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 </div>
       <footer id="footer">
     <div class="outer">
@@ -675,6 +345,15 @@
         };
     })
 </script>
+
+    <button class="hide-labels">TAG 开关</button>
+    <script>
+        $(document).ready(function() {
+            $("button").click(function() {
+                $(".article-info").toggle(200);
+            });
+        });
+    </script>
 
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
