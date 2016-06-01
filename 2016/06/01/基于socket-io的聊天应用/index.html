@@ -11,10 +11,17 @@
 <meta property="og:url" content="http://yoursite.com/2016/06/01/基于socket-io的聊天应用/index.html">
 <meta property="og:site_name" content="罗峡的博客">
 <meta property="og:description" content="WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket.IO是一个完全由JavaScript实现、基于Node.js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node.js。本文记录利用socket.io开发聊天室的实践">
-<meta property="og:updated_time" content="2016-06-01T14:13:31.995Z">
+<meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/chatUI.png">
+<meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/chatServer.png">
+<meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/chatconnect.png">
+<meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/user1.png">
+<meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/user2.png">
+<meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/user3.png">
+<meta property="og:updated_time" content="2016-06-01T15:55:28.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于socket.io的聊天应用">
 <meta name="twitter:description" content="WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket.IO是一个完全由JavaScript实现、基于Node.js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node.js。本文记录利用socket.io开发聊天室的实践">
+<meta name="twitter:image" content="http://7xsi10.com1.z0.glb.clouddn.com/chatUI.png">
   
     <link rel="alternative" href="/atom.xml" title="罗峡的博客" type="application/atom+xml">
   
@@ -285,7 +292,91 @@
       
           
         <h3 id="WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket-IO是一个完全由JavaScript实现、基于Node-js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node-js。"><a href="#WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket-IO是一个完全由JavaScript实现、基于Node-js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node-js。" class="headerlink" title="WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket.IO是一个完全由JavaScript实现、基于Node.js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node.js。"></a>WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket.IO是一个完全由JavaScript实现、基于Node.js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node.js。</h3><h4 id="本文记录利用socket-io开发聊天室的实践"><a href="#本文记录利用socket-io开发聊天室的实践" class="headerlink" title="本文记录利用socket.io开发聊天室的实践"></a>本文记录利用socket.io开发聊天室的实践</h4><a id="more"></a>
-<h5 id="Socket-IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket-IO实现的Polling通信机制包括Adobe-Flash-Socket、AJAX长轮询、AJAX-multipart-streaming、持久Iframe、JSONP轮询等。Socket-IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。"><a href="#Socket-IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket-IO实现的Polling通信机制包括Adobe-Flash-Socket、AJAX长轮询、AJAX-multipart-streaming、持久Iframe、JSONP轮询等。Socket-IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。" class="headerlink" title="Socket.IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket.IO实现的Polling通信机制包括Adobe Flash Socket、AJAX长轮询、AJAX multipart streaming、持久Iframe、JSONP轮询等。Socket.IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。"></a>Socket.IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket.IO实现的Polling通信机制包括Adobe Flash Socket、AJAX长轮询、AJAX multipart streaming、持久Iframe、JSONP轮询等。Socket.IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。</h5>
+<h5 id="Socket-IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket-IO实现的Polling通信机制包括Adobe-Flash-Socket、AJAX长轮询、AJAX-multipart-streaming、持久Iframe、JSONP轮询等。Socket-IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。"><a href="#Socket-IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket-IO实现的Polling通信机制包括Adobe-Flash-Socket、AJAX长轮询、AJAX-multipart-streaming、持久Iframe、JSONP轮询等。Socket-IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。" class="headerlink" title="Socket.IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket.IO实现的Polling通信机制包括Adobe Flash Socket、AJAX长轮询、AJAX multipart streaming、持久Iframe、JSONP轮询等。Socket.IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。"></a>Socket.IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket.IO实现的Polling通信机制包括Adobe Flash Socket、AJAX长轮询、AJAX multipart streaming、持久Iframe、JSONP轮询等。Socket.IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。</h5><h4 id="a-需要依赖的模块"><a href="#a-需要依赖的模块" class="headerlink" title="a. 需要依赖的模块"></a>a. 需要依赖的模块</h4><ol>
+<li>客户端jquery</li>
+<li>express</li>
+<li>express的静态文件服务</li>
+<li>http模块</li>
+<li>socket.io</li>
+</ol>
+<h5 id="Nodejs服务端server-js"><a href="#Nodejs服务端server-js" class="headerlink" title="Nodejs服务端server.js:"></a>Nodejs服务端server.js:</h5><pre><code>var app = require(&apos;express&apos;)();
+var http = require(&apos;http&apos;).Server(app);
+var io = require(&apos;socket.io&apos;)(http);
+var staticServer = require(&apos;express-static&apos;);
+</code></pre><h5 id="客户端引入socket-io包的soket-io-js"><a href="#客户端引入socket-io包的soket-io-js" class="headerlink" title="客户端引入socket.io包的soket.io.js"></a>客户端引入socket.io包的soket.io.js</h5><pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;./jquery.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><h4 id="b-客户端-index-html"><a href="#b-客户端-index-html" class="headerlink" title="b. 客户端 index.html"></a>b. 客户端 index.html</h4><h5 id="界面以清新简约为主，此处省略样式代码，最终界面效果如下："><a href="#界面以清新简约为主，此处省略样式代码，最终界面效果如下：" class="headerlink" title="界面以清新简约为主，此处省略样式代码，最终界面效果如下："></a>界面以清新简约为主，此处省略样式代码，最终界面效果如下：</h5><p><img src="http://7xsi10.com1.z0.glb.clouddn.com/chatUI.png" alt="UI"></p>
+<h5 id="来看几个客户端socket-io的API"><a href="#来看几个客户端socket-io的API" class="headerlink" title="来看几个客户端socket.io的API:"></a>来看几个客户端socket.io的API:</h5><ol>
+<li>io(String url,Obj opts) 暴露于window下，可传入建立连接的url字符串和用于设置连接的对象，如果不设置url,则默认建立到位客户端提供服务的服务器根目录</li>
+<li>emmit()事件机制，触发某个事件</li>
+</ol>
+<h5 id="index-html"><a href="#index-html" class="headerlink" title="index.html:"></a>index.html:</h5><ol>
+<li><p>建立连接:</p>
+<pre><code>var socket = io();
+</code></pre></li>
+<li><p>触发服务端用户加入事件join:</p>
+<pre><code>socket.emit(&apos;join&apos;,name);
+</code></pre></li>
+<li><p>消息发送，触发服务端消息发送事件text:</p>
+<pre><code>socket.emit(&apos;text&apos;,$(&apos;#msg&apos;).val());
+</code></pre></li>
+<li><p>监听由服务器当其他用户加入时触发的announcement事件,通知新用户加入:</p>
+<pre><code>socket.on(&apos;announcement&apos;,function(msg){
+            $(&apos;.otherEnter ul&apos;).append(&apos;&lt;li&gt;&apos;+msg+&apos;&lt;/li&gt;&apos;);
+        });
+</code></pre></li>
+<li><p>监听由服务端当其他用户有消息发送时触发的text事件，将新消息加入显示:</p>
+<pre><code>socket.on(&apos;text&apos;,function(content){
+            $(&apos;.chatList ul&apos;).append(&apos;&lt;li&gt;&apos;+ content +&apos;&lt;/li&gt;&apos;);
+        });
+</code></pre></li>
+<li><p>自己发的消息要在触发服务器text事件之前显示,因为socket.io广播是默认不给本用户触发指定事件的:</p>
+<pre><code>$(&apos;.chatList ul&apos;).append(&apos;&lt;li&gt;&lt;span&gt;me&lt;/span&gt;:&apos;+$(&apos;#msg&apos;).val()+&apos;&lt;/li&gt;&apos;)
+            socket.emit(&apos;text&apos;,$(&apos;#msg&apos;).val());
+</code></pre></li>
+</ol>
+<h4 id="c-服务端-server-js"><a href="#c-服务端-server-js" class="headerlink" title="c. 服务端 server.js"></a>c. 服务端 server.js</h4><ol>
+<li><p>建立静态文件服务器，用到express-static中间件:</p>
+<pre><code>app.use(staticServer(&apos;./&apos;));
+app.get(&apos;/&apos;,function(req,res){
+    res.render(&apos;index&apos;);
+});
+http.listen(8068,function(){
+    console.log(&quot;Sever has been listened at port 8068&quot;);
+});
+</code></pre><p><img src="http://7xsi10.com1.z0.glb.clouddn.com/chatServer.png" alt="server"></p>
+</li>
+<li><p>将http服务绑定到socket.io服务:</p>
+<pre><code>var io = require(&apos;socket.io&apos;)(http);
+</code></pre></li>
+<li><p>监听connection事件，当有新连接时触发:</p>
+<pre><code>io.on(&quot;connection&quot;,function(socket){
+    console.log(&quot;some on connected&quot;);
+}
+</code></pre><p><img src="http://7xsi10.com1.z0.glb.clouddn.com/chatconnect.png" alt="connect"></p>
+</li>
+<li><p>新用户连接:join事件,var total = 0;用于统计在线人数,每次新用户加入，通知其他所有用户，并完成total的更新，这就要用到socket.io的广播了，通过.broadcast来进行广播:</p>
+<pre><code>total++;
+console.log(name+&quot;joined&quot;);
+socket.broadcast.emit(&apos;announcement&apos;,name+&apos; joined in&apos;);
+socket.broadcast.emit(&apos;totalChange&apos;,total);  //广播用户总数改变事件
+</code></pre></li>
+<li><p>当某个链接断开时，需要通知其他用户，total更新,socket.io的disconnect事件，当链接断开时触发:</p>
+<pre><code>socket.on(&apos;disconnection&apos;,function(){
+        total--;
+        console.log(&apos;hi,leave&apos;);
+        socket.broadcast.emit(&apos;announcement&apos;,name+&apos; leved away&apos;);
+        socket.broadcast.emit(&apos;totalChange&apos;,total);
+    });
+</code></pre></li>
+<li><p>广播聊天内容:</p>
+<pre><code>socket.on(&apos;text&apos;,function(msg){
+    socket.broadcast.emit(&apos;text&apos;,&apos;&lt;span&gt;&apos;+name+&apos;&lt;/span&gt;&apos;+&apos;:&apos;+msg);
+});
+</code></pre></li>
+</ol>
+<h4 id="最终测试效果如下："><a href="#最终测试效果如下：" class="headerlink" title="最终测试效果如下："></a>最终测试效果如下：</h4><p><img src="http://7xsi10.com1.z0.glb.clouddn.com/user1.png" alt="user1"><br><img src="http://7xsi10.com1.z0.glb.clouddn.com/user2.png" alt="user2"><br><img src="http://7xsi10.com1.z0.glb.clouddn.com/user3.png" alt="user3"></p>
+<p>正如截图中的旁白君所说，应用还有bug和需要改善的地方，所以这篇文章会继续更新！<br>有兴趣的，可以到我的github查看应用全部源码:<br><a href="https://github.com/laoqiren/socket.io-demo" target="_blank" rel="external">我的github</a></p>
+
       
     </div>
     
@@ -296,7 +387,7 @@
         <p><span>本文标题:</span><a href="/2016/06/01/基于socket-io的聊天应用/">基于socket.io的聊天应用</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
         <p><span>发布时间:</span>2016年06月01日 - 22时07分</p>
-        <p><span>最后更新:</span>2016年06月01日 - 22时13分</p>
+        <p><span>最后更新:</span>2016年06月01日 - 23时55分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/06/01/基于socket-io的聊天应用/" title="基于socket.io的聊天应用">http://yoursite.com/2016/06/01/基于socket-io的聊天应用/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/06/01/基于socket-io的聊天应用/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -326,7 +417,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket-IO是一个完全由JavaScript实现、基于Node-js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node-js。"><span class="toc-number">1.</span> <span class="toc-text">WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket.IO是一个完全由JavaScript实现、基于Node.js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node.js。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#本文记录利用socket-io开发聊天室的实践"><span class="toc-number">1.1.</span> <span class="toc-text">本文记录利用socket.io开发聊天室的实践</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Socket-IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket-IO实现的Polling通信机制包括Adobe-Flash-Socket、AJAX长轮询、AJAX-multipart-streaming、持久Iframe、JSONP轮询等。Socket-IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。"><span class="toc-number">1.1.1.</span> <span class="toc-text">Socket.IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket.IO实现的Polling通信机制包括Adobe Flash Socket、AJAX长轮询、AJAX multipart streaming、持久Iframe、JSONP轮询等。Socket.IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket-IO是一个完全由JavaScript实现、基于Node-js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node-js。"><span class="toc-number">1.</span> <span class="toc-text">WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket.IO是一个完全由JavaScript实现、基于Node.js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node.js。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#本文记录利用socket-io开发聊天室的实践"><span class="toc-number">1.1.</span> <span class="toc-text">本文记录利用socket.io开发聊天室的实践</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Socket-IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket-IO实现的Polling通信机制包括Adobe-Flash-Socket、AJAX长轮询、AJAX-multipart-streaming、持久Iframe、JSONP轮询等。Socket-IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。"><span class="toc-number">1.1.1.</span> <span class="toc-text">Socket.IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket.IO实现的Polling通信机制包括Adobe Flash Socket、AJAX长轮询、AJAX multipart streaming、持久Iframe、JSONP轮询等。Socket.IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#a-需要依赖的模块"><span class="toc-number">1.2.</span> <span class="toc-text">a. 需要依赖的模块</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Nodejs服务端server-js"><span class="toc-number">1.2.1.</span> <span class="toc-text">Nodejs服务端server.js:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#客户端引入socket-io包的soket-io-js"><span class="toc-number">1.2.2.</span> <span class="toc-text">客户端引入socket.io包的soket.io.js</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-客户端-index-html"><span class="toc-number">1.3.</span> <span class="toc-text">b. 客户端 index.html</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#界面以清新简约为主，此处省略样式代码，最终界面效果如下："><span class="toc-number">1.3.1.</span> <span class="toc-text">界面以清新简约为主，此处省略样式代码，最终界面效果如下：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#来看几个客户端socket-io的API"><span class="toc-number">1.3.2.</span> <span class="toc-text">来看几个客户端socket.io的API:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#index-html"><span class="toc-number">1.3.3.</span> <span class="toc-text">index.html:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c-服务端-server-js"><span class="toc-number">1.4.</span> <span class="toc-text">c. 服务端 server.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最终测试效果如下："><span class="toc-number">1.5.</span> <span class="toc-text">最终测试效果如下：</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
