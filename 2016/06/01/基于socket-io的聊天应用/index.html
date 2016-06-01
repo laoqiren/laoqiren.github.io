@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/user1.png">
 <meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/user2.png">
 <meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/user3.png">
-<meta property="og:updated_time" content="2016-06-01T15:55:28.084Z">
+<meta property="og:updated_time" content="2016-06-01T15:57:27.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于socket.io的聊天应用">
 <meta name="twitter:description" content="WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket.IO是一个完全由JavaScript实现、基于Node.js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node.js。本文记录利用socket.io开发聊天室的实践">
@@ -303,7 +303,7 @@
 var http = require(&apos;http&apos;).Server(app);
 var io = require(&apos;socket.io&apos;)(http);
 var staticServer = require(&apos;express-static&apos;);
-</code></pre><h5 id="客户端引入socket-io包的soket-io-js"><a href="#客户端引入socket-io包的soket-io-js" class="headerlink" title="客户端引入socket.io包的soket.io.js"></a>客户端引入socket.io包的soket.io.js</h5><pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;./jquery.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><h5 id="客户端引入socket-io包的soket-io-js"><a href="#客户端引入socket-io包的soket-io-js" class="headerlink" title="客户端引入socket.io包的soket.io.js"></a>客户端引入socket.io包的soket.io.js</h5><pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;./socket.io.js&quot;&gt;&lt;/script&gt;
 </code></pre><h4 id="b-客户端-index-html"><a href="#b-客户端-index-html" class="headerlink" title="b. 客户端 index.html"></a>b. 客户端 index.html</h4><h5 id="界面以清新简约为主，此处省略样式代码，最终界面效果如下："><a href="#界面以清新简约为主，此处省略样式代码，最终界面效果如下：" class="headerlink" title="界面以清新简约为主，此处省略样式代码，最终界面效果如下："></a>界面以清新简约为主，此处省略样式代码，最终界面效果如下：</h5><p><img src="http://7xsi10.com1.z0.glb.clouddn.com/chatUI.png" alt="UI"></p>
 <h5 id="来看几个客户端socket-io的API"><a href="#来看几个客户端socket-io的API" class="headerlink" title="来看几个客户端socket.io的API:"></a>来看几个客户端socket.io的API:</h5><ol>
 <li>io(String url,Obj opts) 暴露于window下，可传入建立连接的url字符串和用于设置连接的对象，如果不设置url,则默认建立到位客户端提供服务的服务器根目录</li>
@@ -387,7 +387,7 @@ socket.broadcast.emit(&apos;totalChange&apos;,total);  //广播用户总数改�
         <p><span>本文标题:</span><a href="/2016/06/01/基于socket-io的聊天应用/">基于socket.io的聊天应用</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
         <p><span>发布时间:</span>2016年06月01日 - 22时07分</p>
-        <p><span>最后更新:</span>2016年06月01日 - 23时55分</p>
+        <p><span>最后更新:</span>2016年06月01日 - 23时57分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/06/01/基于socket-io的聊天应用/" title="基于socket.io的聊天应用">http://yoursite.com/2016/06/01/基于socket-io的聊天应用/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/06/01/基于socket-io的聊天应用/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
