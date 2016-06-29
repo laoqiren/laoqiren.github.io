@@ -1,0 +1,1029 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+    
+    <entry>
+      <title><![CDATA[基于socket.io的聊天应用]]></title>
+      <url>http://yoursite.com/2016/06/01/%E5%9F%BA%E4%BA%8Esocket-io%E7%9A%84%E8%81%8A%E5%A4%A9%E5%BA%94%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h3 id="WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket-IO是一个完全由JavaScript实现、基于Node-js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node-js。"><a href="#WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket-IO是一个完全由JavaScript实现、基于Node-js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node-js。" class="headerlink" title="WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket.IO是一个完全由JavaScript实现、基于Node.js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node.js。"></a>WebSocket是HTML5的一种新通信协议，它实现了浏览器与服务器之间的双向通讯。而Socket.IO是一个完全由JavaScript实现、基于Node.js、支持WebSocket的协议用于实时通信、跨平台的开源框架，它包括了客户端的JavaScript和服务器端的Node.js。</h3><h4 id="本文记录利用socket-io开发聊天室的实践"><a href="#本文记录利用socket-io开发聊天室的实践" class="headerlink" title="本文记录利用socket.io开发聊天室的实践"></a>本文记录利用socket.io开发聊天室的实践</h4><a id="more"></a>
+<h5 id="Socket-IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket-IO实现的Polling通信机制包括Adobe-Flash-Socket、AJAX长轮询、AJAX-multipart-streaming、持久Iframe、JSONP轮询等。Socket-IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。"><a href="#Socket-IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket-IO实现的Polling通信机制包括Adobe-Flash-Socket、AJAX长轮询、AJAX-multipart-streaming、持久Iframe、JSONP轮询等。Socket-IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。" class="headerlink" title="Socket.IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket.IO实现的Polling通信机制包括Adobe Flash Socket、AJAX长轮询、AJAX multipart streaming、持久Iframe、JSONP轮询等。Socket.IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。"></a>Socket.IO除了支持WebSocket通讯协议外，还支持许多种轮询（Polling）机制以及其它实时通信方式，并封装成了通用的接口，并且在服务端实现了这些实时机制的相应代码。Socket.IO实现的Polling通信机制包括Adobe Flash Socket、AJAX长轮询、AJAX multipart streaming、持久Iframe、JSONP轮询等。Socket.IO能够根据浏览器对通讯机制的支持情况自动地选择最佳的方式来实现网络实时应用。</h5><h4 id="a-需要依赖的模块"><a href="#a-需要依赖的模块" class="headerlink" title="a. 需要依赖的模块"></a>a. 需要依赖的模块</h4><ol>
+<li>客户端jquery</li>
+<li>express</li>
+<li>express的静态文件服务</li>
+<li>http模块</li>
+<li>socket.io</li>
+</ol>
+<h5 id="Nodejs服务端server-js"><a href="#Nodejs服务端server-js" class="headerlink" title="Nodejs服务端server.js:"></a>Nodejs服务端server.js:</h5><pre><code>var app = require(&apos;express&apos;)();
+var http = require(&apos;http&apos;).Server(app);
+var io = require(&apos;socket.io&apos;)(http);
+var staticServer = require(&apos;express-static&apos;);
+</code></pre><h5 id="客户端引入socket-io包的soket-io-js"><a href="#客户端引入socket-io包的soket-io-js" class="headerlink" title="客户端引入socket.io包的soket.io.js"></a>客户端引入socket.io包的soket.io.js</h5><pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;./socket.io.js&quot;&gt;&lt;/script&gt;
+</code></pre><h4 id="b-客户端-index-html"><a href="#b-客户端-index-html" class="headerlink" title="b. 客户端 index.html"></a>b. 客户端 index.html</h4><h5 id="界面以清新简约为主，此处省略样式代码，最终界面效果如下："><a href="#界面以清新简约为主，此处省略样式代码，最终界面效果如下：" class="headerlink" title="界面以清新简约为主，此处省略样式代码，最终界面效果如下："></a>界面以清新简约为主，此处省略样式代码，最终界面效果如下：</h5><p><img src="http://7xsi10.com1.z0.glb.clouddn.com/chatUI.png" alt="UI"></p>
+<h5 id="来看几个客户端socket-io的API"><a href="#来看几个客户端socket-io的API" class="headerlink" title="来看几个客户端socket.io的API:"></a>来看几个客户端socket.io的API:</h5><ol>
+<li>io(String url,Obj opts) 暴露于window下，可传入建立连接的url字符串和用于设置连接的对象，如果不设置url,则默认建立到位客户端提供服务的服务器根目录</li>
+<li>emmit()事件机制，触发某个事件</li>
+</ol>
+<h5 id="index-html"><a href="#index-html" class="headerlink" title="index.html:"></a>index.html:</h5><ol>
+<li><p>建立连接:</p>
+<pre><code>var socket = io();
+</code></pre></li>
+<li><p>触发服务端用户加入事件join:</p>
+<pre><code>socket.emit(&apos;join&apos;,name);
+</code></pre></li>
+<li><p>消息发送，触发服务端消息发送事件text:</p>
+<pre><code>socket.emit(&apos;text&apos;,$(&apos;#msg&apos;).val());
+</code></pre></li>
+<li><p>监听由服务器当其他用户加入时触发的announcement事件,通知新用户加入:</p>
+<pre><code>socket.on(&apos;announcement&apos;,function(msg){
+            $(&apos;.otherEnter ul&apos;).append(&apos;&lt;li&gt;&apos;+msg+&apos;&lt;/li&gt;&apos;);
+        });
+</code></pre></li>
+<li><p>监听由服务端当其他用户有消息发送时触发的text事件，将新消息加入显示:</p>
+<pre><code>socket.on(&apos;text&apos;,function(content){
+            $(&apos;.chatList ul&apos;).append(&apos;&lt;li&gt;&apos;+ content +&apos;&lt;/li&gt;&apos;);
+        });
+</code></pre></li>
+<li><p>自己发的消息要在触发服务器text事件之前显示,因为socket.io广播是默认不给本用户触发指定事件的:</p>
+<pre><code>$(&apos;.chatList ul&apos;).append(&apos;&lt;li&gt;&lt;span&gt;me&lt;/span&gt;:&apos;+$(&apos;#msg&apos;).val()+&apos;&lt;/li&gt;&apos;)
+            socket.emit(&apos;text&apos;,$(&apos;#msg&apos;).val());
+</code></pre></li>
+</ol>
+<h4 id="c-服务端-server-js"><a href="#c-服务端-server-js" class="headerlink" title="c. 服务端 server.js"></a>c. 服务端 server.js</h4><ol>
+<li><p>建立静态文件服务器，用到express-static中间件:</p>
+<pre><code>app.use(staticServer(&apos;./&apos;));
+app.get(&apos;/&apos;,function(req,res){
+    res.render(&apos;index&apos;);
+});
+http.listen(8068,function(){
+    console.log(&quot;Sever has been listened at port 8068&quot;);
+});
+</code></pre><p><img src="http://7xsi10.com1.z0.glb.clouddn.com/chatServer.png" alt="server"></p>
+</li>
+<li><p>将http服务绑定到socket.io服务:</p>
+<pre><code>var io = require(&apos;socket.io&apos;)(http);
+</code></pre></li>
+<li><p>监听connection事件，当有新连接时触发:</p>
+<pre><code>io.on(&quot;connection&quot;,function(socket){
+    console.log(&quot;some on connected&quot;);
+}
+</code></pre><p><img src="http://7xsi10.com1.z0.glb.clouddn.com/chatconnect.png" alt="connect"></p>
+</li>
+<li><p>新用户连接:join事件,var total = 0;用于统计在线人数,每次新用户加入，通知其他所有用户，并完成total的更新，这就要用到socket.io的广播了，通过.broadcast来进行广播:</p>
+<pre><code>total++;
+console.log(name+&quot;joined&quot;);
+socket.broadcast.emit(&apos;announcement&apos;,name+&apos; joined in&apos;);
+socket.broadcast.emit(&apos;totalChange&apos;,total);  //广播用户总数改变事件
+</code></pre></li>
+<li><p>当某个链接断开时，需要通知其他用户，total更新,socket.io的disconnect事件，当链接断开时触发:</p>
+<pre><code>socket.on(&apos;disconnection&apos;,function(){
+        total--;
+        console.log(&apos;hi,leave&apos;);
+        socket.broadcast.emit(&apos;announcement&apos;,name+&apos; leved away&apos;);
+        socket.broadcast.emit(&apos;totalChange&apos;,total);
+    });
+</code></pre></li>
+<li><p>广播聊天内容:</p>
+<pre><code>socket.on(&apos;text&apos;,function(msg){
+    socket.broadcast.emit(&apos;text&apos;,&apos;&lt;span&gt;&apos;+name+&apos;&lt;/span&gt;&apos;+&apos;:&apos;+msg);
+});
+</code></pre></li>
+</ol>
+<h4 id="最终测试效果如下："><a href="#最终测试效果如下：" class="headerlink" title="最终测试效果如下："></a>最终测试效果如下：</h4><p><img src="http://7xsi10.com1.z0.glb.clouddn.com/user1.png" alt="user1"><br><img src="http://7xsi10.com1.z0.glb.clouddn.com/user2.png" alt="user2"><br><img src="http://7xsi10.com1.z0.glb.clouddn.com/user3.png" alt="user3"></p>
+<p>正如截图中的旁白君所说，应用还有bug和需要改善的地方，所以这篇文章会继续更新！<br>有兴趣的，可以到我的github查看应用全部源码:<br><a href="https://github.com/laoqiren/socket.io-demo" target="_blank" rel="external">我的github</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[AJAX和Nodejs实现跨域]]></title>
+      <url>http://yoursite.com/2016/05/19/AJAX%E5%92%8CNodejs%E5%AE%9E%E7%8E%B0%E8%B7%A8%E5%9F%9F/</url>
+      <content type="html"><![CDATA[<h3 id="由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。"><a href="#由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。" class="headerlink" title="由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。"></a>由于出于安全方面的考虑，JavaScript有着跨源策略的限制，也就是某个域的网页只能对同域进行访问。本文记录几种跨域实现及我自己的实践。</h3><a id="more"></a>
+<h3 id="1-代理"><a href="#1-代理" class="headerlink" title="1. 代理"></a>1. 代理</h3><p>所谓代理，就是用后台技术实现代理服务器，前端访问代理服务器，代理服务器向实际服务器发起请求，拿到数据再返回给前端。 例如一个网站有两个服务器www.Chongqing.com和www.Hangzhou.com，在杭州的话想访问重庆服务器的资源，先直接访问杭州服务器，杭州服务器再从重庆服务器拉取数据最后返回给杭州的user-agent.</p>
+<h3 id="2-图像ping"><a href="#2-图像ping" class="headerlink" title="2. 图像ping"></a>2. 图像ping</h3><h4 id="虽然js有同源现在，但是，在html里有几个元素可以没有限制的访问任何网站的内容，比如-img-iframe-script-，哈哈哈哈哈哈，那么，就可以利用这一点实现跨域咯。"><a href="#虽然js有同源现在，但是，在html里有几个元素可以没有限制的访问任何网站的内容，比如-img-iframe-script-，哈哈哈哈哈哈，那么，就可以利用这一点实现跨域咯。" class="headerlink" title="虽然js有同源现在，但是，在html里有几个元素可以没有限制的访问任何网站的内容，比如 img,iframe,script  ，哈哈哈哈哈哈，那么，就可以利用这一点实现跨域咯。"></a>虽然js有同源现在，但是，在html里有几个元素可以没有限制的访问任何网站的内容，比如 img,iframe,script  ，哈哈哈哈哈哈，那么，就可以利用这一点实现跨域咯。</h4><p>图像ping用于客户端和服务端进行单向的简单的通信,只能发送get请求，无法访问服务器响应文本，在这里不详解；</p>
+<h3 id="3-iframe及HTML5跨文档消息传递-XDM"><a href="#3-iframe及HTML5跨文档消息传递-XDM" class="headerlink" title="3. iframe及HTML5跨文档消息传递(XDM)"></a>3. iframe及HTML5跨文档消息传递(XDM)</h3><h4 id="详细内容下篇文章补充"><a href="#详细内容下篇文章补充" class="headerlink" title="详细内容下篇文章补充"></a>详细内容下篇文章补充</h4><h3 id="4-JSONP"><a href="#4-JSONP" class="headerlink" title="4. JSONP"></a>4. JSONP</h3><h4 id="啥是JSONP-JSON-with-padding（参数式json-，实际上是对json的一种应用方法，将json数据传给回调函数，JSONP是通过script元素设计的，如下："><a href="#啥是JSONP-JSON-with-padding（参数式json-，实际上是对json的一种应用方法，将json数据传给回调函数，JSONP是通过script元素设计的，如下：" class="headerlink" title="啥是JSONP? JSON with padding（参数式json)，实际上是对json的一种应用方法，将json数据传给回调函数，JSONP是通过script元素设计的，如下："></a>啥是JSONP? JSON with padding（参数式json)，实际上是对json的一种应用方法，将json数据传给回调函数，JSONP是通过script元素设计的，如下：</h4><pre><code>&lt;script src=&apos;www.luoxia520.com/blog/?callback=callback&apos;&gt;&lt;/script&gt;
+&lt;script&gt;
+    function callback(data){
+        console.log(data.name);
+    }
+&lt;/script&gt;
+</code></pre><p>这里通过script可加载任意域内容的特点对异域进行强求，查询字符串包含callback参数，服务器传回的是可执行的js代码，即对于的callback(data)调用。当然服务端代码也要响应的更改。下面介绍。</p>
+<h3 id="这里以jquery的ajax为例"><a href="#这里以jquery的ajax为例" class="headerlink" title="这里以jquery的ajax为例:"></a>这里以jquery的ajax为例:</h3><ol>
+<li><p>前端ajax请求代码: testJsonp.html</p>
+<pre><code>$(function(){
+        $.ajax({
+            dataType: &apos;jsonp&apos;,
+            url: &apos;http://localhost:8088&apos;,
+            type:&apos;get&apos;,
+            success: function(data){
+                   $(&apos;#name&apos;).text(data);
+            }
+        });
+ });
+</code></pre></li>
+<li><p>用Nodejs实现得异域服务器代码:</p>
+<pre><code>var http = require(&apos;http&apos;);
+var urlLib = require(&apos;url&apos;);
+var data = {name:&apos;luoxia&apos;,year:18};
+http.createServer(function(req,res){
+    var parms = urlLib.parse(req.url,true);
+    var str = parms.query.callback + &apos;(&apos; + JSON.stringify(data) +&apos;)&apos;;
+    res.end(str);
+}).listen(8088);
+</code></pre></li>
+</ol>
+<p>jquery的ajax也是利用script的原理，只不过只要设置了dataType为jsonp的话，就自动回发送jsonp请求，我们可以看到testJsonp.html请求的URL:<br><img src="http://7xsi10.com1.z0.glb.clouddn.com/jsonp.png" alt="jsonp"><br>看到了吧，自动加上了callback查询字符串，callback的值是动态生成的，当然也可以指定其值，没啥影响，还有，前面的callback这个，也可以改的，通过jsonp属性指定，当然这是细节。</p>
+<p>nodejs通过查询callback值，即回调函数名，然后返回传递了json数据的可执行js字符串。</p>
+<p>最后成功地实现了跨域，哈哈哈哈哈哈哈哈。<br><img src="http://7xsi10.com1.z0.glb.clouddn.com/luoxia.png" alt="luoxia"></p>
+<h5 id="jsonp只能发送get请求。"><a href="#jsonp只能发送get请求。" class="headerlink" title="jsonp只能发送get请求。"></a>jsonp只能发送get请求。</h5><p>当然这里开始遇到了个问题，console老是报错</p>
+<pre><code>Failed to load resource: net::ERR_CACHE_MISS
+</code></pre><p>，好大一半天不知道咋解决，后面在论坛的悠悠建议下，给ajax请求url加了个协议，丫的，成了。。。或许无法自动补全吧，细节啊。。。。</p>
+<h3 id="5-CORS"><a href="#5-CORS" class="headerlink" title="5. CORS"></a>5. CORS</h3><h5 id="CORS即跨源资源共享，是W3C的草案，定义了必要时浏览器和异域服务器该如何进行跨域的沟通。CORS与JSONP相比，无疑更为先进、方便和可靠。"><a href="#CORS即跨源资源共享，是W3C的草案，定义了必要时浏览器和异域服务器该如何进行跨域的沟通。CORS与JSONP相比，无疑更为先进、方便和可靠。" class="headerlink" title="CORS即跨源资源共享，是W3C的草案，定义了必要时浏览器和异域服务器该如何进行跨域的沟通。CORS与JSONP相比，无疑更为先进、方便和可靠。"></a>CORS即跨源资源共享，是W3C的草案，定义了必要时浏览器和异域服务器该如何进行跨域的沟通。CORS与JSONP相比，无疑更为先进、方便和可靠。</h5><ol>
+<li><p>JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求。</p>
+</li>
+<li><p>使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理。</p>
+</li>
+<li><p>JSONP主要被老的浏览器支持，它们往往不支持CORS，而绝大多数现代浏览器都已经支持了CORS</p>
+</li>
+</ol>
+<p>要求请求头加入</p>
+<pre><code>Origin: host:port
+</code></pre><p>响应头必须加入和请求头同样host:port的响应信息:</p>
+<pre><code>Access-Control-Allow-Origin: host:port
+</code></pre><p>IE8以下的就别想了,IE8，IE9可以通过XDR实现，反正我觉得，垃圾IE,现在微软自己都放弃治疗了。。。。。。</p>
+<p>来具体看看实现例子，还是jquery的ajax:</p>
+<p>前端testCORS.html:</p>
+<pre><code>$(function(){
+        $.ajax({
+            url: &apos;http://localhost:8088&apos;,
+            type:&apos;get&apos;,
+            success: function(data){
+                   $(&apos;#name&apos;).text(JSON.parse(data).name);
+            }
+        });
+ });
+</code></pre><p>Node： CORS.js</p>
+<pre><code>var http = require(&apos;http&apos;);
+//var urlLib = require(&apos;url&apos;);
+var data = {name:&apos;luoxia&apos;,year:18};
+http.createServer(function(req,res){
+    var parms = urlLib.parse(req.url,true);
+    res.writeHead(200,{&apos;Access-Control-Allow-Origin&apos;:&apos;*&apos;,&apos;Access-Control-Allow-Method&apos;:&apos;GET,POST&apos;});
+    res.end(JSON.stringify(data));
+}).listen(8088);
+</code></pre><p>这里Access-Control-Allow-Origin可以设置为*代表允许说有域，当然也可以写具体的url。<br>最终是没问题的：</p>
+<p>CORS一定程度上缓解了CSRF,XSS等安全问题。</p>
+<p>明天就5.20，国际计量节！单身狗过国际计量节，new对象去了。。。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[前端模块化]]></title>
+      <url>http://yoursite.com/2016/05/07/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/</url>
+      <content type="html"><![CDATA[<h1 id="AMD实现者之前端模块化工具requirejs"><a href="#AMD实现者之前端模块化工具requirejs" class="headerlink" title="AMD实现者之前端模块化工具requirejs"></a>AMD实现者之前端模块化工具requirejs</h1><h3 id="本文记录requirejs的模块路径问题"><a href="#本文记录requirejs的模块路径问题" class="headerlink" title="本文记录requirejs的模块路径问题"></a>本文记录requirejs的模块路径问题</h3><a id="more"></a>
+<h5 id="在于客户端，requirejs是AMD规范最好的实现者，关于requirejs在使用过程中遇到的问题记录，主要是路径问题。（CommonJS-AMD-UMD等规范内容找个时间再总结下，以及后边与es6模块的对比）"><a href="#在于客户端，requirejs是AMD规范最好的实现者，关于requirejs在使用过程中遇到的问题记录，主要是路径问题。（CommonJS-AMD-UMD等规范内容找个时间再总结下，以及后边与es6模块的对比）" class="headerlink" title="在于客户端，requirejs是AMD规范最好的实现者，关于requirejs在使用过程中遇到的问题记录，主要是路径问题。（CommonJS,AMD,UMD等规范内容找个时间再总结下，以及后边与es6模块的对比）"></a>在于客户端，requirejs是AMD规范最好的实现者，关于requirejs在使用过程中遇到的问题记录，主要是路径问题。（CommonJS,AMD,UMD等规范内容找个时间再总结下，以及后边与es6模块的对比）</h5><p>我的项目结构（测试用，不合理）：</p>
+<pre><code>----gulp
+    ----app
+        ----html
+                index.html
+        ----js
+                a.js
+                b.js
+                c.js
+        ----require.js
+        ----config.js
+    ----bower_comonents
+        ----jquery
+            ----dist
+                jquery.min.js
+</code></pre><ol>
+<li><p>当引入requirejs的时候指定data-main属性:(index.html)</p>
+<pre><code>&lt;script data-main=&quot;../config&quot; src=&quot;../require.js&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+<li><p>data-main作为入口文件，有个作用就是它会把模块的baseUrl设置为config所在目录</p>
+</li>
+<li><p>然后配置config.js:</p>
+<pre><code>require.config({
+    paths : {
+        jquery: [&apos;../bower_components/jquery/dist/jquery.min&apos;]
+    }
+});
+</code></pre></li>
+<li><p>baseUrl就是config文件所在目录，设定paths值当然根据baseUrl来，如这里就相当于gulp/app/../bower_components/jquery/dist/jquery.min，然后index.html:</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    require([&apos;jquery&apos;],function($){
+        $(&apos;body&apos;).append($(&apos;&lt;p&gt;hello&lt;/p&gt;&apos;));
+    })
+&lt;/script&gt;
+</code></pre><p>理论上是没问题的，但会报错，get app/jquery.js net::ERR_FILE_NOT_FOUND，这咋回事？paths根本没生效，然后我又试着显示地配置baseUrl属性（注意配置路径是针对于引入requirejs的那个html文件来的），照样报同样的错误，最后，我这样写：</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;../require.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../config.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    require([&apos;jquery&apos;],function($){
+        $(&apos;body&apos;).append($(&apos;&lt;p&gt;hello&lt;/p&gt;&apos;));
+    })
+&lt;/script&gt;
+</code></pre></li>
+</ol>
+<p>也就是说，config分开加载，当然此时的config配置会有所变化，因为不是在data-main属性中引入，所有baseUrl默认的会是这里引入require的html文件的路径，所以：</p>
+<pre><code>require.config({
+    baseUrl:&apos;../../&apos;,
+    paths : {
+        jquery: [&apos;bower_components/jquery/dist/jquery.min&apos;]
+    }
+});
+</code></pre><p>这里baseUrl设置后就相当于gulp目录，然后现在在运行html,达到预期效果，why?</p>
+<h4 id="应该是这样：开始的例子中，引入require文件，加载执行require-js-然后异步加载config-js，config配置还没生效时，我后面的代码就执行了，由于已经设置data-main属性，所以回去加载app-js-jquery-js，没找到，所以挂了。"><a href="#应该是这样：开始的例子中，引入require文件，加载执行require-js-然后异步加载config-js，config配置还没生效时，我后面的代码就执行了，由于已经设置data-main属性，所以回去加载app-js-jquery-js，没找到，所以挂了。" class="headerlink" title="应该是这样：开始的例子中，引入require文件，加载执行require.js,然后异步加载config.js，config配置还没生效时，我后面的代码就执行了，由于已经设置data-main属性，所以回去加载app/js/jquery.js，没找到，所以挂了。"></a>应该是这样：开始的例子中，引入require文件，加载执行require.js,然后异步加载config.js，config配置还没生效时，我后面的代码就执行了，由于已经设置data-main属性，所以回去加载app/js/jquery.js，没找到，所以挂了。</h4><p>我的解决办法：<br>要么把代码放在config.js中，要么在config里引入我的代码模块,或者同步加载config配置，只不过是baseUrl不同而已。</p>
+<h4 id="另外还有一个需要注意到的是，在定义模块的时候，define-id-dep-factory-的时候，dep依赖其他模块的目录有两种方式："><a href="#另外还有一个需要注意到的是，在定义模块的时候，define-id-dep-factory-的时候，dep依赖其他模块的目录有两种方式：" class="headerlink" title="另外还有一个需要注意到的是，在定义模块的时候，define(id,dep,factory)的时候，dep依赖其他模块的目录有两种方式："></a>另外还有一个需要注意到的是，在定义模块的时候，define(id,dep,factory)的时候，dep依赖其他模块的目录有两种方式：</h4><ol>
+<li>依据config显式地设置的baseUrl或者默认的baseUrl的路径结合paths配置</li>
+<li>./开头的路径，那么久不是根据baseUrl了，是根据这个模块本身的位置来的</li>
+</ol>
+<p>举个栗子：</p>
+<p>index.html:</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;../require.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../config.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/a.js&quot;&gt;
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    require([&apos;jquery&apos;],function($){
+        $(&apos;body&apos;).append($(&apos;&lt;p&gt;hello&lt;/p&gt;&apos;));
+    })
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;hello wrold&lt;/div&gt;
+&lt;/body&gt;
+</code></pre><p>config.js:</p>
+<pre><code>require.config({
+    baseUrl:&apos;../../&apos;,
+    paths : {
+        jquery: [&apos;bower_components/jquery/dist/jquery.min&apos;]
+    }
+});
+</code></pre><p>a.js:</p>
+<pre><code>require([&apos;app/js/b&apos;],function(b){
+    b.jq();
+});
+</code></pre><p>b.js:</p>
+<pre><code>//这里也可以define([&apos;jquery&apos;,&apos;./c&apos;],...)
+define([&apos;jquery&apos;,&apos;app/js/c&apos;],function($,c){
+    var b = {};
+    b.jq = function(){
+        $(&apos;body&apos;).append($(&apos;&lt;p&gt;hello&lt;/p&gt;&apos;));
+    };
+    console.log(c.name);
+    return b;
+});
+</code></pre><p>c.js:</p>
+<pre><code>define(function(){
+    return {
+        name:&apos;luoxia&apos;
+    };
+});
+</code></pre><p>b模块依赖c模块的情况说明这个问题，然后require是一定根据baseUrl来的</p>
+<h4 id="es2015来了，原生模块语法都支持了，官方是要用原生module语法抛弃CommonJS和AMD-CMD之类的模块规范啊，反正都有babel之类的转换器，为何不用起来呢？es2015的module和之前的一些规范是有区别的，比如引用而非值缓存啊之类的，需要慢慢学习研究哦。"><a href="#es2015来了，原生模块语法都支持了，官方是要用原生module语法抛弃CommonJS和AMD-CMD之类的模块规范啊，反正都有babel之类的转换器，为何不用起来呢？es2015的module和之前的一些规范是有区别的，比如引用而非值缓存啊之类的，需要慢慢学习研究哦。" class="headerlink" title="es2015来了，原生模块语法都支持了，官方是要用原生module语法抛弃CommonJS和AMD,CMD之类的模块规范啊，反正都有babel之类的转换器，为何不用起来呢？es2015的module和之前的一些规范是有区别的，比如引用而非值缓存啊之类的，需要慢慢学习研究哦。"></a>es2015来了，原生模块语法都支持了，官方是要用原生module语法抛弃CommonJS和AMD,CMD之类的模块规范啊，反正都有babel之类的转换器，为何不用起来呢？es2015的module和之前的一些规范是有区别的，比如引用而非值缓存啊之类的，需要慢慢学习研究哦。</h4>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[gulp前端自动化]]></title>
+      <url>http://yoursite.com/2016/04/26/gulp%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96/</url>
+      <content type="html"><![CDATA[<h1 id="gulp前端自动化配置"><a href="#gulp前端自动化配置" class="headerlink" title="gulp前端自动化配置"></a>gulp前端自动化配置</h1><h3 id="使用gulp提高前端开发效率"><a href="#使用gulp提高前端开发效率" class="headerlink" title="使用gulp提高前端开发效率"></a>使用gulp提高前端开发效率</h3><a id="more"></a>
+<h4 id="gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。"><a href="#gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。" class="headerlink" title="gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。"></a>gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。</h4><p>分享我在使用过程中的心得</p>
+<p>使用gulp：</p>
+<ol>
+<li><p>全局安装gulp：</p>
+<pre><code>npm install -g gulp
+</code></pre></li>
+<li><p>初始化项目，package.json可以帮助我们管理依赖，一个node package有两种依赖，一种是dependencies一种是devDependencies，其中前者依赖的项该是正常运行该包时所需要的依赖项，而后者则是开发的时候需要的依赖项，像一些进行单元测试之类的包。</p>
+<pre><code>npm init
+</code></pre></li>
+<li><p>局部安装gulp:</p>
+<pre><code>npm install --save-dev gulp
+</code></pre></li>
+<li><p>安装依赖插件:</p>
+<pre><code>npm install --save-dev gulp-ruby-sass
+</code></pre></li>
+<li><p>我的配置:</p>
+</li>
+</ol>
+<pre><code>&apos;use strict&apos;;
+
+//引入依赖模块
+var gulp = require(&apos;gulp&apos;),
+   uglify = require(&apos;gulp-uglify&apos;),
+   babel = require(&apos;gulp-babel&apos;),
+   watch = require(&apos;gulp-watch&apos;),
+   sass = require(&apos;gulp-ruby-sass&apos;),
+   autoprefix = require(&apos;gulp-autoprefixer&apos;),
+   rename = require(&apos;gulp-rename&apos;),
+   concat = require(&apos;gulp-concat&apos;),
+   browserSync = require(&apos;browser-sync&apos;);
+
+//编译sass到css
+gulp.task(&apos;sass&apos;, function () {
+  return sass(&apos;app/sass/*.scss&apos;)
+    .on(&apos;error&apos;, sass.logError)
+    .pipe(gulp.dest(&apos;build/css/&apos;));
+});
+
+//合并多个js文件,压缩，并重命名
+gulp.task(&apos;concat&apos;, function () {
+    gulp.src(&apos;build/js/*.js&apos;)
+        .pipe(concat(&apos;all.js&apos;))
+        .pipe(uglify())
+        .pipe(rename(&apos;all.min.js&apos;))
+        .pipe(gulp.dest(&apos;dist/js&apos;));
+});
+
+// 自动补全css3浏览器兼容前缀
+gulp.task(&apos;styles&apos;, function() {
+  gulp.src([&apos;./build/css/test.css&apos;])
+    .pipe(autoprefix(&apos;last 2 versions&apos;))
+    .pipe(gulp.dest(&apos;./dist/css&apos;));
+});
+
+//babel转换es2015到es5
+gulp.task(&apos;babel&apos;,function(){
+   return gulp.src(&quot;app/js/*.js&quot;)// ES6 源码存放的路径
+    .pipe(babel({presets: [&apos;es2015&apos;]}))
+    .pipe(gulp.dest(&quot;build/js&quot;)); //转换成 ES5 存放的路径
+   });
+
+//监控es2015文件，sass文件，自动编译为es5文件，css文件
+gulp.task(&apos;watch&apos;, function () {
+   gulp.watch([&apos;app/js/es2015.js&apos;,&apos;app/sass/*.scss&apos;], [&apos;babel&apos;,&apos;sass&apos;]);
+});
+
+//浏览器实时自动更新状态，不用手动刷新
+gulp.task(&apos;browser-sync&apos;, function () {
+   var files = [
+      &apos;app/**/*&apos;
+   ];
+   browserSync.init(files, {
+      server: {
+         baseDir: [&apos;./app/html&apos;,&apos;./app/&apos;]
+      }
+   });
+});
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js模板引擎初体验之jade]]></title>
+      <url>http://yoursite.com/2016/04/22/js%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E5%88%9D%E4%BD%93%E9%AA%8C%E4%B9%8Bjade/</url>
+      <content type="html"><![CDATA[<h1 id="从jade初探js模板引擎思想"><a href="#从jade初探js模板引擎思想" class="headerlink" title="从jade初探js模板引擎思想 "></a>从jade初探js模板引擎思想 <a id="more"></a></h1><h3 id="因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率"><a href="#因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率" class="headerlink" title="因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率"></a>因为nodejs而接触了jade模板引擎，它可以提高前端开发的效率</h3><h4 id="这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面"><a href="#这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面" class="headerlink" title="这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面"></a>这篇博文我想写一下利用jade模板引擎更好的和后台对接，动态生成html页面</h4><p>之前的项目中，我是这么干的：通过ajax获取服务器返回的json数据,然后通过拼接字符串的形式来生成dom，再插入到页面。</p>
+<p>jade在html元素内容中引入变量</p>
+<pre><code>p #{content}  //content变量表示文章内容
+</code></pre><p>通过each循环变量数组或对象</p>
+<pre><code>- var array = [&apos;jack&apos;,&apos;jane&apos;,&apos;marry&apos;]
+- var obj = {name:&apos;luoxia&apos;,girlfriend:&apos;null&apos;}
+ul
+    each item in array
+        li item
+
+each key,value in obj
+    p #{key}:#{value}
+</code></pre><p>输出结果”:</p>
+<pre><code>&lt;ul&gt;
+    &lt;li&gt;jack&lt;/li&gt;
+    &lt;li&gt;jane&lt;/li&gt;
+    &lt;li&gt;marry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;name:luoxia&lt;/p&gt;
+&lt;p&gt;girlfriend:null&lt;/p&gt;
+</code></pre><p>现在加入要从服务器获取某个表格内容，而这个表格的内容是不断变化的，而且表格项数不确定，我们可以通过ajax获取一个包含表格内容的json对象（这里运用bootstrap框架)</p>
+<pre><code>//backData:
+{
+    sections:[{class:&apos;active&apos;,name:&apos;罗峡&apos;,addr:&apos;中国重庆&apos;},{class:&apos;info&apos;,name:&apos;小明&apos;,addr:&apos;火星&apos;},
+        {class:&apos;warning&apos;,name:&apos;大明&apos;,addr:&apos;遥远的地方&apos;}]
+};
+</code></pre><p>书写jade模板</p>
+<pre><code>//table.jade
+table(class=&apos;table table-bordered table-hover&apos;)
+thead
+    tr
+        td 姓名
+        td 地址
+tbody
+    each section in sections
+        tr(class=&apos;#{section.class}&apos;)
+            td #{section.name}
+            td #{section.addr}
+</code></pre><p>编译成模板js脚本</p>
+<pre><code>$ jade --client --no-debug table.jade
+rendered table.js
+</code></pre><p>在页面中引入jade的runtimejs文件和table.js文件,最后通过将json传递给table.js暴露出的方法</p>
+<pre><code>var addHtml = template(backData);
+document.body.innerHTML = addHtml;
+</code></pre><p>这样，动态生成格式类似的代码块就完成了。一个漂亮的表格:<br><img src="http://7xsi10.com2.z0.glb.clouddn.com/table.png" alt="table"></p>
+<p>在es2015语法中新增了一种叫做模板字符串的字符串字面量，模板字符串以反引号代替一般字符串的引号和双引号，变量或者表达式通过占位符${}语法来引入。但模板字符串本身不支持条件或循环等模板引擎类似的语法:</p>
+<pre><code>ul
+    for (var k in lis)
+        li= lis[k]
+</code></pre><p>嗯，但是es2015里有个东西叫做标签模板的东西，什么叫标签模板呢，就是一个标签（实际上是一个函数）后跟上模板字符串，而这个模板字符串会被作为参数传入前面的标签函数，第一个参数是未被占位符替换的部分组成的数组，而后面的参数都是各个变量，我们可以通过标签模板自定义功能：</p>
+<pre><code>let lis = [&apos;luoxia is good&apos;,&apos;luoxia is very good&apos;,&apos;luoxia can\&apos;t be more good&apos;];
+function addLis(s,...array){
+    let string = &apos;&apos;;
+    string += s[0];
+    for(let i=0; i&lt;array[0].length;i++){
+        string +=
+        `
+        &lt;li&gt;
+            ${array[0][i]}
+        &lt;/li&gt;`;
+    }
+    string += s[1];
+    return string;
+}
+console.log(addLis `&lt;ul&gt;
+            ${lis}&lt;/ul&gt;`);
+    /*
+            $ node es2015.js
+&lt;ul&gt;
+
+        &lt;li&gt;
+            luoxia is good
+        &lt;/li&gt;
+        &lt;li&gt;
+            luoxia is very good
+        &lt;/li&gt;
+        &lt;li&gt;
+            luoxia can&apos;t be more good
+        &lt;/li&gt;&lt;/ul&gt;
+    */
+</code></pre><p>不过略显麻烦啊感觉有木有（或许是我实现得麻烦）</p>
+<p>前端技术瞬息万变，模板引擎的时代或许早已过去，但是我们可以在学习中去体会它的思想，发现它的不足，在对比中成长，然后在实践中找到更适合具体场景的技术，不在追逐中迷失自我，而是让自己的心智，能力得到成长。（菜鸟的自白，不喜勿喷）</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[nodejs刷百度贴吧回复]]></title>
+      <url>http://yoursite.com/2016/04/21/nodejs%E5%88%B7%E7%99%BE%E5%BA%A6%E8%B4%B4%E5%90%A7%E5%9B%9E%E5%A4%8D/</url>
+      <content type="html"><![CDATA[<h1 id="nodejs尝试之刷百度贴吧回复"><a href="#nodejs尝试之刷百度贴吧回复" class="headerlink" title="nodejs尝试之刷百度贴吧回复 "></a>nodejs尝试之刷百度贴吧回复 <a id="more"></a></h1><h3 id="作为前端必备技能的nodejs-非常有趣"><a href="#作为前端必备技能的nodejs-非常有趣" class="headerlink" title="作为前端必备技能的nodejs,非常有趣"></a>作为前端必备技能的nodejs,非常有趣</h3><h4 id="利用NodeJs的http模块，很简单地就能做一个刷回复的脚本"><a href="#利用NodeJs的http模块，很简单地就能做一个刷回复的脚本" class="headerlink" title="利用NodeJs的http模块，很简单地就能做一个刷回复的脚本"></a>利用NodeJs的http模块，很简单地就能做一个刷回复的脚本</h4><p>这次借用高考吧一学妹的帖子来刷一刷，哈哈，邪恶邪恶<br><img src="http://7xsi10.com2.z0.glb.clouddn.com/shua1.png" alt="tie"><br>nodejs提供的http模块，我们需要用http模块的request方法想服务端发送请求来发送/接收信息</p>
+<ol>
+<li><p>require进两个模块</p>
+<p> var http = require(‘http’);<br> var querystring = require(‘querystring’);</p>
+</li>
+<li><p>request方法返回一个http.ClientRequest的实例，如果用POST方法向服务端发送数据，数据对象会被写入该对象，request方法接受两个参数，一个必须的options参数，一个可选的callback函数，callback函数可以接受到来自服务端的响应作为参数，options参数可以为字符串或者对象，字符串会被url模块的parse方法序列化为对象</p>
+</li>
+<li>打开学妹的帖子，我们编辑一条回复信息，然后查看网络面板，查看add的ajax请求信息<br><img src="http://7xsi10.com2.z0.glb.clouddn.com/shua2.png" alt="add"></li>
+<li>options参数的header属性值为请求头信息，当然得是Json对象</li>
+<li>注意Content-Length要设置为postData.length，不然可能请求失败</li>
+<li>在最开始的时候，老是出现如下错误:<br><img src="http://7xsi10.com2.z0.glb.clouddn.com/shua3.png" alt="error"><br>最后查阅错误代码，stackoverflow上的解决办法是不加http/https协议，果然，成功<br><img src="http://7xsi10.com2.z0.glb.clouddn.com/shua4.png" alt="success"></li>
+<li>然后，邪恶的加个定时器，一直刷，看结果<br><img src="http://7xsi10.com2.z0.glb.clouddn.com/many.png" alt="many"><br><img src="http://7xsi10.com2.z0.glb.clouddn.com/shua6.png" alt="many"></li>
+<li>很好玩吧，不过多次刷会出现验证码的，哎，刚学，知识技能不熟悉，只能写个简单的yy一下了，不过这测验也能看出百度的安全并不是那么好，哈哈</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ruby-sass-problem]]></title>
+      <url>http://yoursite.com/2016/04/10/ruby-sass-problem/</url>
+      <content type="html"><![CDATA[<h1 id="关于windows下通过ruby安装sass和compass的问题"><a href="#关于windows下通过ruby安装sass和compass的问题" class="headerlink" title="关于windows下通过ruby安装sass和compass的问题"></a>关于windows下通过ruby安装sass和compass的问题</h1><h3 id="安装sass和compass"><a href="#安装sass和compass" class="headerlink" title="安装sass和compass"></a>安装sass和compass</h3><a id="more"></a>
+<p>执行 gem sources -a <a href="https://ruby.taobao.org/出现如下错误" target="_blank" rel="external">https://ruby.taobao.org/出现如下错误</a><br><img src="http://7xsi10.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160410233014.png" alt="error"><br>缺少SSL证书</p>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><ol>
+<li>下载证书：<a href="https://curl.haxx.se/ca/cacert.pem" target="_blank" rel="external">官方地址</a>　<a href="http://pan.baidu.com/s/1pKJSlOf" target="_blank" rel="external">百度云盘</a></li>
+<li>将证书保存，比如我的保存到了C:\Ruby22-x64。</li>
+<li>配置证书的环境<img src="http://7xsi10.com2.z0.glb.clouddn.com/870258-20160405180306187-1063124604.png" alt="path"></li>
+<li>重启，再执行，当当当当，哈哈，成功了<img src="http://7xsi10.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160410233111.png" alt="succed"><h5 id="感谢angular社区前辈-会飞的鱼lala-提供的方法"><a href="#感谢angular社区前辈-会飞的鱼lala-提供的方法" class="headerlink" title="感谢angular社区前辈 会飞的鱼lala 提供的方法"></a>感谢angular社区前辈 会飞的鱼lala 提供的方法</h5></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[front end technology]]></title>
+      <url>http://yoursite.com/2016/03/14/front-end-technology/</url>
+      <content type="html"><![CDATA[<h2 id="2015-2016-前端技能体系图"><a href="#2015-2016-前端技能体系图" class="headerlink" title="2015-2016 前端技能体系图"></a>2015-2016 前端技能体系图</h2><h3 id="转自ouvens的github"><a href="#转自ouvens的github" class="headerlink" title="转自ouvens的github"></a>转自ouvens的github</h3><h4 id="茫茫前端大海，学海无涯，苦作舟"><a href="#茫茫前端大海，学海无涯，苦作舟" class="headerlink" title="茫茫前端大海，学海无涯，苦作舟  "></a>茫茫前端大海，学海无涯，苦作舟  <a id="more"></a></h4><p><img src="http://static.open-open.com/news/uploadImg/20160126/20160126133319_831.png" alt="前端知识体系图"></p>
+<h2 id="一、框架与组件"><a href="#一、框架与组件" class="headerlink" title="一、框架与组件"></a>一、框架与组件</h2><h3 id="bootstrap等UI框架设计与实现"><a href="#bootstrap等UI框架设计与实现" class="headerlink" title="bootstrap等UI框架设计与实现"></a>bootstrap等UI框架设计与实现</h3><ul>
+<li><p>伸缩布局：grid网格布局</p>
+</li>
+<li><p>基础UI样式：元素reset、按钮、图片、菜单、表单</p>
+</li>
+<li><p>组件UI样式：按钮组、字体图标、下拉菜单、输入框组、导航组、面包屑、分页、标签、轮播、弹出框、列表、多媒体、警告</p>
+</li>
+<li><p>响应式布局：布局、结构、样式、媒体、javascript响应式</p>
+</li>
+<li><p>第三方插件：插件管理</p>
+</li>
+</ul>
+<h3 id="jQuery、zepto使用原理以及插件开发"><a href="#jQuery、zepto使用原理以及插件开发" class="headerlink" title="jQuery、zepto使用原理以及插件开发"></a>jQuery、zepto使用原理以及插件开发</h3><ul>
+<li><p>支持amd、cmd、全局变量的模块化封装</p>
+</li>
+<li><p>$.fn.method = function(){}</p>
+</li>
+</ul>
+<h3 id="mvc-mvvm框架原理设计，vue-angular-avalon等"><a href="#mvc-mvvm框架原理设计，vue-angular-avalon等" class="headerlink" title="mvc/mvvm框架原理设计，vue/angular/avalon等"></a>mvc/mvvm框架原理设计，vue/angular/avalon等</h3><ul>
+<li><p>directive设计：html、text、class、html、attr、repeat、ref，可扩展</p>
+</li>
+<li><p>filter设计：bool、upperCase、lowerCase，可扩展</p>
+</li>
+<li><p>表达式设计：if-else等实现</p>
+</li>
+<li><p>viewmodel结构设计：例如数据，元素，方法的挂载与作用域</p>
+</li>
+<li><p>数据更变检测：函数触发，脏数据检测、对象hijacking</p>
+</li>
+</ul>
+<h3 id="polymer-angular2思想与设计思路"><a href="#polymer-angular2思想与设计思路" class="headerlink" title="polymer/angular2思想与设计思路"></a>polymer/angular2思想与设计思路</h3><ul>
+<li><p>import技术</p>
+</li>
+<li><p>template和script引入方式</p>
+</li>
+<li><p>css样式命名空间隔离</p>
+</li>
+<li><p>简单复用第三方库</p>
+</li>
+</ul>
+<h3 id="reactjs原理与使用"><a href="#reactjs原理与使用" class="headerlink" title="reactjs原理与使用"></a>reactjs原理与使用</h3><ul>
+<li><p>virtual dom单向数据绑定</p>
+</li>
+<li><p>js执行语法方式</p>
+</li>
+<li><p>UI由状态控制</p>
+</li>
+</ul>
+<h3 id="commonJS-AMD-CMD"><a href="#commonJS-AMD-CMD" class="headerlink" title="commonJS/AMD/CMD"></a>commonJS/AMD/CMD</h3><ul>
+<li><p>模块引入</p>
+</li>
+<li><p>模块定义</p>
+</li>
+<li><p>模块标识</p>
+</li>
+<li><p>UMD解决不同规范兼容性的问题，例如webpack封装</p>
+</li>
+<li><p>模块懒执行(CMD)与与预执行(AMD)</p>
+</li>
+</ul>
+<h3 id="loadJs模块化加载原理与实现"><a href="#loadJs模块化加载原理与实现" class="headerlink" title="loadJs模块化加载原理与实现"></a>loadJs模块化加载原理与实现</h3><ul>
+<li><p>创建script标签，需要id映射到资源url</p>
+</li>
+<li><p>onload加载模块队列判断</p>
+</li>
+<li><p>全部加载完成后触发</p>
+</li>
+<li><p>加载失败问题优化</p>
+</li>
+<li><p>requirejs、modjs、seajs</p>
+</li>
+</ul>
+<h3 id="polyfill、shim原理与实现"><a href="#polyfill、shim原理与实现" class="headerlink" title="polyfill、shim原理与实现"></a>polyfill、shim原理与实现</h3><ul>
+<li><p>polyfill提供了开发者们希望浏览器原生提供支持的功能特性</p>
+</li>
+<li><p>shim将新的API引入到旧的环境中,且仅靠旧环境中已有的手段实现</p>
+</li>
+</ul>
+<h3 id="virtual-Dom、Incremental-DOM"><a href="#virtual-Dom、Incremental-DOM" class="headerlink" title="virtual Dom、Incremental DOM"></a>virtual Dom、Incremental DOM</h3><ul>
+<li><p>1.用js对象树表示dom树结构，根据该对象树构建dom树</p>
+</li>
+<li><p>2.状态改变时，重新构建对象，和旧的对象对比，记录两个对象树差异</p>
+</li>
+<li><p>3.将对象树差异应用到dom中</p>
+</li>
+<li><p>小结:js对象模拟dom(elem.js)，virtual dom diff算法(diff.js)、差异渲染dom(patch.js)</p>
+</li>
+<li><p>incremental dom在状态改变时扫描旧对象树将差异直接应用到dom中</p>
+</li>
+</ul>
+<h3 id="shadow-dom"><a href="#shadow-dom" class="headerlink" title="shadow dom"></a>shadow dom</h3><ul>
+<li><p>隔离外部环境用于封装组件：结构、样式、行为</p>
+</li>
+<li><p>实现形式：新标签、class类属性 + 构建编译</p>
+</li>
+</ul>
+<h3 id="webwork与service-Worker"><a href="#webwork与service-Worker" class="headerlink" title="webwork与service Worker"></a>webwork与service Worker</h3><ul>
+<li><p>webwork与主线程机制，on/post</p>
+</li>
+<li><p>serviceworker可作为浏览器请求代理</p>
+</li>
+<li><p>应用场景</p>
+</li>
+</ul>
+<h3 id="ES6转ES5、Babel与ES6开发规范体系"><a href="#ES6转ES5、Babel与ES6开发规范体系" class="headerlink" title="ES6转ES5、Babel与ES6开发规范体系"></a>ES6转ES5、Babel与ES6开发规范体系</h3><ul>
+<li><p>ES6编码规范全</p>
+</li>
+<li><p>ES6在babel下兼容性</p>
+</li>
+<li><p>ES6在node下兼容性与性能</p>
+</li>
+<li><p>ES6新特性：看编码规范</p>
+</li>
+<li><p>aurelia ES6前端框架</p>
+</li>
+</ul>
+<h3 id="Isomorphic-JavaScript"><a href="#Isomorphic-JavaScript" class="headerlink" title="Isomorphic JavaScript"></a>Isomorphic JavaScript</h3><ul>
+<li><p>同构原理</p>
+</li>
+<li><p>同构方案 Rendr</p>
+</li>
+<li><p>nodejs: 服务器</p>
+</li>
+<li><p>hapi: 应用服务</p>
+</li>
+<li><p>backbone.js: 后台mvc</p>
+</li>
+<li><p>requirejs: 模块加载</p>
+</li>
+<li><p>jquery: dom处理</p>
+</li>
+<li><p>reactjs同构:React + Flux + Koa</p>
+</li>
+</ul>
+<h3 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h3><ul>
+<li><p>函数触发:vuejs</p>
+</li>
+<li><p>脏数据检测:angular</p>
+</li>
+<li><p>对象hijacking:avalon</p>
+</li>
+</ul>
+<h3 id="browserify运行原理"><a href="#browserify运行原理" class="headerlink" title="browserify运行原理"></a>browserify运行原理</h3><ul>
+<li><p>1.从入口模块开始分析require函数调用</p>
+</li>
+<li><p>2.根据依赖生成AST</p>
+</li>
+<li><p>3.根据AST找到每个模块的模块名</p>
+</li>
+<li><p>4.得到每个模块的依赖关系，生成一个依赖字典</p>
+</li>
+<li><p>5.包装每个模块（传入依赖字典以及export和require函数），生成执行的js</p>
+</li>
+</ul>
+<h3 id="performance-timing"><a href="#performance-timing" class="headerlink" title="performance timing"></a>performance timing</h3><ul>
+<li><p>performance timing api</p>
+</li>
+<li><p>performance timing 过程</p>
+</li>
+<li><p>performance timing 性能计算</p>
+</li>
+<li><p>performanceTrace库</p>
+</li>
+</ul>
+<h3 id="组件UI与js组件规范化"><a href="#组件UI与js组件规范化" class="headerlink" title="组件UI与js组件规范化"></a>组件UI与js组件规范化</h3><ul>
+<li><p>组件编码规范</p>
+</li>
+<li><p>组件目录规范：组件目录与公用目录</p>
+</li>
+<li><p>组件构建规范：构建环境支持</p>
+</li>
+<li><p>组件模块化管理：spm，bowserify</p>
+</li>
+<li><p>组件复用性管理</p>
+</li>
+<li><p>第三方组件接入成本</p>
+</li>
+</ul>
+<h3 id="immutable-JavaScript"><a href="#immutable-JavaScript" class="headerlink" title="immutable JavaScript"></a>immutable JavaScript</h3><h3 id="generator与promise原理与使用"><a href="#generator与promise原理与使用" class="headerlink" title="generator与promise原理与使用"></a>generator与promise原理与使用</h3><h2 id="二、构建生态"><a href="#二、构建生态" class="headerlink" title="二、构建生态"></a>二、构建生态</h2><h3 id="grunt-gulp开发环境任务编写"><a href="#grunt-gulp开发环境任务编写" class="headerlink" title="grunt/gulp开发环境任务编写"></a>grunt/gulp开发环境任务编写</h3><ul>
+<li><p>文件处理插件：html、scss、js、image、font、其它</p>
+</li>
+<li><p>优化插件：雪碧图、图片压缩、iconfont构建</p>
+</li>
+<li><p>发布替换插件</p>
+</li>
+<li><p>打包、压缩包插件：组件自动分析</p>
+</li>
+<li><p>白名单配置</p>
+</li>
+<li><p>自定义插件编写</p>
+</li>
+</ul>
+<h3 id="npm、jspm、bower包管理工具"><a href="#npm、jspm、bower包管理工具" class="headerlink" title="npm、jspm、bower包管理工具"></a>npm、jspm、bower包管理工具</h3><h3 id="r-js、browserify、webpack、webpack-2、Rollup打包工具使用"><a href="#r-js、browserify、webpack、webpack-2、Rollup打包工具使用" class="headerlink" title="r.js、browserify、webpack、webpack 2、Rollup打包工具使用"></a>r.js、browserify、webpack、webpack 2、Rollup打包工具使用</h3><ul>
+<li><p>原理：根据依赖配置文件对文件进行依赖打包</p>
+</li>
+<li><p>webpack支持更多的规范打包，AMD,Commonjs</p>
+</li>
+<li><p>webpack+babel/reactjs+reflux</p>
+</li>
+</ul>
+<h3 id="fis3构建与插件开发、构建环境、fis3构建离线包"><a href="#fis3构建与插件开发、构建环境、fis3构建离线包" class="headerlink" title="fis3构建与插件开发、构建环境、fis3构建离线包"></a>fis3构建与插件开发、构建环境、fis3构建离线包</h3><h3 id="web-Component：rosetta-org、x-view、Q、riot、nova"><a href="#web-Component：rosetta-org、x-view、Q、riot、nova" class="headerlink" title="web Component：rosetta-org、x-view、Q、riot、nova"></a>web Component：rosetta-org、x-view、Q、riot、nova</h3><h3 id="brunch构建工具"><a href="#brunch构建工具" class="headerlink" title="brunch构建工具"></a>brunch构建工具</h3><h2 id="三、开发技巧与调试"><a href="#三、开发技巧与调试" class="headerlink" title="三、开发技巧与调试"></a>三、开发技巧与调试</h2><h3 id="fiddler加willow基础组合调试"><a href="#fiddler加willow基础组合调试" class="headerlink" title="fiddler加willow基础组合调试"></a>fiddler加willow基础组合调试</h3><ul>
+<li><p>常见配置与分析</p>
+</li>
+<li><p>结合浏览器调试</p>
+</li>
+</ul>
+<h3 id="werien、vorlonjs远程调试，chrome-inspect"><a href="#werien、vorlonjs远程调试，chrome-inspect" class="headerlink" title="werien、vorlonjs远程调试，chrome inspect"></a>werien、vorlonjs远程调试，chrome inspect</h3><h3 id="mockjs，F-M-S-Front-Mock-Server-模拟调试使用与cgi自动调试"><a href="#mockjs，F-M-S-Front-Mock-Server-模拟调试使用与cgi自动调试" class="headerlink" title="mockjs，F.M.S(Front Mock Server)模拟调试使用与cgi自动调试"></a>mockjs，F.M.S(Front Mock Server)模拟调试使用与cgi自动调试</h3><h3 id="macha-phantomjs-casperjs-karma测试自动化任务使用"><a href="#macha-phantomjs-casperjs-karma测试自动化任务使用" class="headerlink" title="macha/phantomjs/casperjs/karma测试自动化任务使用"></a>macha/phantomjs/casperjs/karma测试自动化任务使用</h3><h3 id="自动化UI测试，海豚"><a href="#自动化UI测试，海豚" class="headerlink" title="自动化UI测试，海豚"></a>自动化UI测试，海豚</h3><h3 id="node-supervior、node-inspector、karma"><a href="#node-supervior、node-inspector、karma" class="headerlink" title="node-supervior、node-inspector、karma"></a>node-supervior、node-inspector、karma</h3><h3 id="开发发布系统流程"><a href="#开发发布系统流程" class="headerlink" title="开发发布系统流程"></a>开发发布系统流程</h3><h3 id="sublime高效插件"><a href="#sublime高效插件" class="headerlink" title="sublime高效插件"></a>sublime高效插件</h3><ul>
+<li>emmet工具使用、 sublimelinter、 babel snippets、 sublimeLint、 SassBeautify 、 emmet 快速编辑、 jsxlint、 SideBarEnhancements、 SnippetsMaker、 SublimeCodeIntel、 css snippets、 ColorPicker、 html/css/js Pretty、 SpinnetMacker、 DocBlockr、 MultiEditUtils、 javascript &amp; node spinnet、 JavaScript &amp; NodeJS Snippets、 jsLint、cssLint<h3 id="代码自动化检查fecs"><a href="#代码自动化检查fecs" class="headerlink" title="代码自动化检查fecs"></a>代码自动化检查fecs</h3></li>
+</ul>
+<h2 id="四、html、css与重构"><a href="#四、html、css与重构" class="headerlink" title="四、html、css与重构"></a>四、html、css与重构</h2><h3 id="jpeg、webp、apng、bpg图片"><a href="#jpeg、webp、apng、bpg图片" class="headerlink" title="jpeg、webp、apng、bpg图片"></a>jpeg、webp、apng、bpg图片</h3><ul>
+<li><p>编码原理</p>
+</li>
+<li><p>特点与优劣势</p>
+</li>
+<li><p>适用场景</p>
+</li>
+</ul>
+<h3 id="iconfont使用与实现原理"><a href="#iconfont使用与实现原理" class="headerlink" title="iconfont使用与实现原理"></a>iconfont使用与实现原理</h3><ul>
+<li><p>自动打包构建方法</p>
+</li>
+<li><p>iconfont兼容性写法</p>
+</li>
+<li><p>fonthello、fontawesome、icomoon.io、iconfont.cn线上工具</p>
+</li>
+</ul>
+<h3 id="页面响应式设计"><a href="#页面响应式设计" class="headerlink" title="页面响应式设计"></a>页面响应式设计</h3><ul>
+<li><p>layout布局响应式</p>
+</li>
+<li><p>html结构响应式</p>
+</li>
+<li><p>css样式响应式</p>
+</li>
+<li><p>image媒体响应式</p>
+</li>
+<li><p>javascript响应式</p>
+</li>
+<li><p>media query与平台判断</p>
+</li>
+</ul>
+<h3 id="css重置"><a href="#css重置" class="headerlink" title="css重置"></a>css重置</h3><ul>
+<li><p>reset</p>
+</li>
+<li><p>nomalize</p>
+</li>
+<li><p>neat</p>
+</li>
+</ul>
+<h3 id="sass-compass-less-postcss常用语法与使用"><a href="#sass-compass-less-postcss常用语法与使用" class="headerlink" title="sass/compass/less/postcss常用语法与使用"></a>sass/compass/less/postcss常用语法与使用</h3><ul>
+<li><p>常用语法功能</p>
+</li>
+<li><p>组件化UI设计管理</p>
+</li>
+<li><p>构建工具实现方案</p>
+</li>
+<li><p>雪碧图自动合成</p>
+</li>
+<li><p>iconfont自动接入等等</p>
+</li>
+</ul>
+<h3 id="media-query与常见页面尺寸了解"><a href="#media-query与常见页面尺寸了解" class="headerlink" title="media query与常见页面尺寸了解"></a>media query与常见页面尺寸了解</h3><ul>
+<li><p>媒体类型引入和媒体特性引入</p>
+</li>
+<li><p>device-width适应</p>
+</li>
+<li><p>retina屏幕适应</p>
+</li>
+</ul>
+<h3 id="em-rem原理与实现"><a href="#em-rem原理与实现" class="headerlink" title="em,rem原理与实现"></a>em,rem原理与实现</h3><ul>
+<li><p>rem计算：width*retina/10，相当于屏幕宽度为10rem</p>
+</li>
+<li><p>字体在rem情况下仍然使用px</p>
+</li>
+</ul>
+<h3 id="code4ui、code4app、初页、maka等"><a href="#code4ui、code4app、初页、maka等" class="headerlink" title="code4ui、code4app、初页、maka等"></a>code4ui、code4app、初页、maka等</h3><ul>
+<li><p>前端dom操作即使刷新前端页面</p>
+</li>
+<li><p>根据dom操作生成组件config配置保存到db</p>
+</li>
+<li><p>根据config配置使用r.js或webpack打包</p>
+</li>
+<li><p>发布打包后输出文件</p>
+</li>
+</ul>
+<h3 id="css3动画"><a href="#css3动画" class="headerlink" title="css3动画"></a>css3动画</h3><ul>
+<li><p>transform</p>
+</li>
+<li><p>animation</p>
+</li>
+<li><p>transiction</p>
+</li>
+<li><p>3D加速与动画加速</p>
+</li>
+<li><p>动画库</p>
+</li>
+<li><p>缓动函数速查表： <a href="http://www.xuanfengge.com/easeing/easeing/" target="_blank" rel="external">http://www.xuanfengge.com/easeing/easeing/</a></p>
+</li>
+<li><p>Ceaser： <a href="http://xuanfengge.com/easeing/ceaser/" target="_blank" rel="external">http://xuanfengge.com/easeing/ceaser/</a></p>
+</li>
+<li><p>cubic-bezier： <a href="http://cubic-bezier.com/" target="_blank" rel="external">http://cubic-bezier.com/</a></p>
+</li>
+</ul>
+<h3 id="css网格布局"><a href="#css网格布局" class="headerlink" title="css网格布局"></a>css网格布局</h3><ul>
+<li>susy</li>
+<li><p>Responsive Grid System</p>
+</li>
+<li><p>Fluid 960 Grid(adaptjs)</p>
+</li>
+<li><p>Simple Grid</p>
+</li>
+</ul>
+<h3 id="搜索引擎与前端SEO"><a href="#搜索引擎与前端SEO" class="headerlink" title="搜索引擎与前端SEO"></a>搜索引擎与前端SEO</h3><ul>
+<li><p>tdk优化</p>
+</li>
+<li><p>页面内容优化</p>
+</li>
+<li><p>唯一的H1标题</p>
+</li>
+<li><p>img设置alt属性</p>
+</li>
+<li><p>nofollow</p>
+</li>
+<li><p>url优化</p>
+</li>
+<li><p>统一链接</p>
+</li>
+<li><p>301跳转</p>
+</li>
+<li><p>canonical</p>
+</li>
+<li><p>robot优化</p>
+</li>
+<li><p>robots.txt</p>
+</li>
+<li><p>meta robots</p>
+</li>
+<li><p>sitemap</p>
+</li>
+<li><p>SEO工具</p>
+</li>
+<li><p>各种站长工具等</p>
+</li>
+</ul>
+<h3 id="浏览器缓存种类，resources-webSQL-indexDB-localstorage-cookie-app-cache-cache-storage"><a href="#浏览器缓存种类，resources-webSQL-indexDB-localstorage-cookie-app-cache-cache-storage" class="headerlink" title="浏览器缓存种类，resources,webSQL,indexDB, localstorage,cookie,app cache,cache storage"></a>浏览器缓存种类，resources,webSQL,indexDB, localstorage,cookie,app cache,cache storage</h3><ul>
+<li><p>store.js、cookie.js</p>
+<h3 id="UI框架"><a href="#UI框架" class="headerlink" title="UI框架"></a>UI框架</h3></li>
+<li><p>bootstrap、jqwidgets、semantic ui、amaze ui</p>
+</li>
+<li><p>微信手Q ui: frozenui、weui、blend ui</p>
+</li>
+<li><p>extjs、echart图表ui</p>
+</li>
+</ul>
+<h2 id="五、native-hybrid-桌面开发"><a href="#五、native-hybrid-桌面开发" class="headerlink" title="五、native/hybrid/桌面开发"></a>五、native/hybrid/桌面开发</h2><h3 id="ionic移动开发方案"><a href="#ionic移动开发方案" class="headerlink" title="ionic移动开发方案"></a>ionic移动开发方案</h3><ul>
+<li><p>运行架构</p>
+</li>
+<li><p>hybrid混合开发</p>
+</li>
+<li><p>cordova交互</p>
+</li>
+<li><p>离线包更新</p>
+</li>
+<li><p>性能瓶颈</p>
+</li>
+</ul>
+<h3 id="nativescript移动开发方案"><a href="#nativescript移动开发方案" class="headerlink" title="nativescript移动开发方案"></a>nativescript移动开发方案</h3><h3 id="react-Native移动开发方案"><a href="#react-Native移动开发方案" class="headerlink" title="react Native移动开发方案"></a>react Native移动开发方案</h3><ul>
+<li><p>运行架构：js引擎</p>
+</li>
+<li><p>性能缺陷与内存泄露</p>
+</li>
+<li><p>更新机制</p>
+</li>
+<li><p>使用场景</p>
+</li>
+</ul>
+<h3 id="android-ios原生开发与框架"><a href="#android-ios原生开发与框架" class="headerlink" title="android/ios原生开发与框架"></a>android/ios原生开发与框架</h3><ul>
+<li><p>java</p>
+</li>
+<li><p>oc、swift</p>
+</li>
+<li><p>web与native交互</p>
+</li>
+<li><p>屏幕旋转</p>
+</li>
+<li><p>摇一摇</p>
+</li>
+<li><p>录像，拍照，选取本地图片</p>
+</li>
+<li><p>打电话，发短信</p>
+</li>
+<li><p>电池电量</p>
+</li>
+<li><p>地理位置</p>
+</li>
+<li><p>日期选择</p>
+</li>
+<li><p>开启硬件加速</p>
+</li>
+</ul>
+<h3 id="桌面应用开发"><a href="#桌面应用开发" class="headerlink" title="桌面应用开发"></a>桌面应用开发</h3><ul>
+<li><p>nodewebkit</p>
+</li>
+<li><p>atom-shell(后改名为electron)</p>
+</li>
+<li><p>网易Hex</p>
+</li>
+<li><p>pomelo(游戏服务器框架)</p>
+</li>
+<li><p>react desktop</p>
+</li>
+<li><p>appjs:appjs.com</p>
+</li>
+</ul>
+<h2 id="六、前端-H5优化-另一个图已给出"><a href="#六、前端-H5优化-另一个图已给出" class="headerlink" title="六、前端/H5优化(另一个图已给出)"></a>六、前端/H5优化(另一个图已给出)</h2><h3 id="yslow、pagespeed"><a href="#yslow、pagespeed" class="headerlink" title="yslow、pagespeed"></a>yslow、pagespeed</h3><h3 id="移动web性能优化"><a href="#移动web性能优化" class="headerlink" title="移动web性能优化"></a>移动web性能优化</h3><ul>
+<li><p>手机浏览器”省流量”原理</p>
+</li>
+<li><p>增量更新原理及注意事项</p>
+</li>
+<li><p>本地存储的应用</p>
+</li>
+<li><p>加载优化</p>
+</li>
+<li><p>图片优化</p>
+</li>
+<li><p>单页面及路由实现</p>
+</li>
+<li><p>业内著名站点案例分析</p>
+</li>
+</ul>
+<h2 id="七、全栈-全端开发"><a href="#七、全栈-全端开发" class="headerlink" title="七、全栈/全端开发"></a>七、全栈/全端开发</h2><p>###　express/node club + mongodb、thinkjs等框架</p>
+<h3 id="node-js直出"><a href="#node-js直出" class="headerlink" title="node.js直出"></a>node.js直出</h3><h3 id="实时web开发，meteo-express-io"><a href="#实时web开发，meteo-express-io" class="headerlink" title="实时web开发，meteo/express.io"></a>实时web开发，meteo/express.io</h3><h3 id="MEAN-mongodb-express-angular-nodejs"><a href="#MEAN-mongodb-express-angular-nodejs" class="headerlink" title="MEAN(mongodb/express/angular/nodejs)"></a>MEAN(mongodb/express/angular/nodejs)</h3><h3 id="http与http2协议、bigpipe、pipeline"><a href="#http与http2协议、bigpipe、pipeline" class="headerlink" title="http与http2协议、bigpipe、pipeline"></a>http与http2协议、bigpipe、pipeline</h3><h3 id="离线缓存，cookie、localstorage、indexdb"><a href="#离线缓存，cookie、localstorage、indexdb" class="headerlink" title="离线缓存，cookie、localstorage、indexdb"></a>离线缓存，cookie、localstorage、indexdb</h3><h3 id="cdn与dns"><a href="#cdn与dns" class="headerlink" title="cdn与dns"></a>cdn与dns</h3><ul>
+<li><p>动态域名加速</p>
+</li>
+<li><p>cdn原理与cdn combo</p>
+</li>
+</ul>
+<h2 id="八、研究实验"><a href="#八、研究实验" class="headerlink" title="八、研究实验"></a>八、研究实验</h2><h3 id="WebAssembly、webTRC、typescript"><a href="#WebAssembly、webTRC、typescript" class="headerlink" title="WebAssembly、webTRC、typescript"></a>WebAssembly、webTRC、typescript</h3><h3 id="Material-design规范的前端框架"><a href="#Material-design规范的前端框架" class="headerlink" title="Material design规范的前端框架"></a>Material design规范的前端框架</h3><ul>
+<li><p>交互动效库</p>
+<h3 id="AMP-HTML规范"><a href="#AMP-HTML规范" class="headerlink" title="AMP-HTML规范"></a>AMP-HTML规范</h3></li>
+<li><p>使用受限HTML以及缓存技术来提高移动网络中静态内容的性能</p>
+</li>
+<li><p>添加自定义的元素代替禁用掉的元素：amp-audio, amp-img、amp-video等</p>
+</li>
+</ul>
+<h2 id="九、数据分析与监控"><a href="#九、数据分析与监控" class="headerlink" title="九、数据分析与监控"></a>九、数据分析与监控</h2><ul>
+<li><p>badjs数据上报</p>
+</li>
+<li><p>捕获错误两种方法：onerror、try-catch。抽样上报，先onerror统计语法错误，如果是script error，再使用tryjs。</p>
+</li>
+<li><p>后台统计方法、不同业务接入体系、抽样统计</p>
+</li>
+<li><p>onerror:可以捕捉语法错误和运行时错误；可以拿到出错的信息，堆栈，出错文件、行号、列号；当前页面执行的js脚本出错都会捕捉到；跨域的资源需要特殊头部支持。</p>
+</li>
+<li><p>try-catch:无法捕捉语法错误，只能捕捉运行时错误；可以拿到出错的信息，堆栈，出错文件、行号、列号；需要借助工具把function块以及文件块加入try,catch，可以在这个阶段打入更多的静态信息。</p>
+</li>
+</ul>
+<h3 id="点击热力图clickHeat、heatMap"><a href="#点击热力图clickHeat、heatMap" class="headerlink" title="点击热力图clickHeat、heatMap"></a>点击热力图clickHeat、heatMap</h3><h3 id="js加载失败优化方案"><a href="#js加载失败优化方案" class="headerlink" title="js加载失败优化方案"></a>js加载失败优化方案</h3><ul>
+<li><p>失败重发机制</p>
+</li>
+<li><p>加载源域名服务器文件</p>
+</li>
+<li><p>https反劫持</p>
+</li>
+</ul>
+<h3 id="百度alog数据上报"><a href="#百度alog数据上报" class="headerlink" title="百度alog数据上报"></a>百度alog数据上报</h3><h2 id="十、其它软技能"><a href="#十、其它软技能" class="headerlink" title="十、其它软技能"></a>十、其它软技能</h2><h3 id="axure-原型图设计"><a href="#axure-原型图设计" class="headerlink" title="axure 原型图设计"></a>axure 原型图设计</h3><h3 id="xmind脑图管理"><a href="#xmind脑图管理" class="headerlink" title="xmind脑图管理"></a>xmind脑图管理</h3><h3 id="效率管理"><a href="#效率管理" class="headerlink" title="效率管理"></a>效率管理</h3><h3 id="can-i-use、github"><a href="#can-i-use、github" class="headerlink" title="can i use、github"></a>can i use、github</h3><h3 id="知识管理-总结分享"><a href="#知识管理-总结分享" class="headerlink" title="知识管理/总结分享"></a>知识管理/总结分享</h3><h3 id="产品思维与技能"><a href="#产品思维与技能" class="headerlink" title="产品思维与技能"></a>产品思维与技能</h3><h2 id="十一、前端技术网站"><a href="#十一、前端技术网站" class="headerlink" title="十一、前端技术网站"></a>十一、前端技术网站</h2><h3 id="技术社区"><a href="#技术社区" class="headerlink" title="技术社区"></a>技术社区</h3><ul>
+<li><p>w3c tech、w3c plus、w3 help</p>
+</li>
+<li><p>div.io、nodeParty</p>
+</li>
+<li><p>稀土掘金、前端早读课</p>
+</li>
+<li><p>alloyteam、html5基地</p>
+</li>
+<li><p>W3 help</p>
+</li>
+</ul>
+<h3 id="行业会议"><a href="#行业会议" class="headerlink" title="行业会议"></a>行业会议</h3><ul>
+<li><p>segmentfault会议</p>
+</li>
+<li><p>深js、杭js</p>
+</li>
+<li><p>GMIC(全球移动互联网大会)</p>
+</li>
+<li><p>D2、webrebuild</p>
+</li>
+<li><p>infoQ内容、Qcon、velocity</p>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[微信订座系统项目总结]]></title>
+      <url>http://yoursite.com/2016/03/12/%E5%BE%AE%E4%BF%A1%E8%AE%A2%E5%BA%A7%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<h1 id="微信订座系统项目总结"><a href="#微信订座系统项目总结" class="headerlink" title="微信订座系统项目总结"></a>微信订座系统项目总结</h1><h2 id="第一次移动端前端项目心得分享"><a href="#第一次移动端前端项目心得分享" class="headerlink" title="第一次移动端前端项目心得分享"></a>第一次移动端前端项目心得分享</h2><h3 id="这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得"><a href="#这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得" class="headerlink" title="这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得  "></a>这次项目，遇到了许多问题，也学到了许多，在这里分享一下心得  <a id="more"></a></h3><h3 id="一．项目整体流程"><a href="#一．项目整体流程" class="headerlink" title="一．项目整体流程"></a>一．项目整体流程</h3><pre><code>1. 分析用户需求，产品功能
+2. 设计图材料
+3. 业务逻辑
+4. 分工合作
+5. 提交， 不断完善，修复bug
+</code></pre><h3 id="二．遇到的问题及解决办法"><a href="#二．遇到的问题及解决办法" class="headerlink" title="二．遇到的问题及解决办法"></a>二．遇到的问题及解决办法</h3><h4 id="html部分"><a href="#html部分" class="headerlink" title="html部分:"></a>html部分:</h4><pre><code>1. html5新标签，新属性应用（input的placeholder属性，type=”date”）；
+2. 命名规则
+</code></pre><h4 id="css部分："><a href="#css部分：" class="headerlink" title="css部分："></a>css部分：</h4><pre><code>1. 设计图各部分尺寸比例，ps测量；
+2. 移动端适配，meta标签使用，视口等理解；
+3. 移动端对flex box布局方式的支持，考虑用浮动布局；
+4. 图片大小压缩问题，宽度设置，高度自适应;
+5. 苹果手机自动缩放屏幕问题，禁止用户缩放;
+</code></pre><h4 id="js部分："><a href="#js部分：" class="headerlink" title="js部分："></a>js部分：</h4><pre><code>1. 用闭包解决js无块级作用域的影响；
+2. 自定义特性不会自动添加到dom对象属性；
+3. 自定义dom对象属性也不会添加到特性；
+4. 与后台数据对接，封装函数，做好接口；
+</code></pre><h3 id="三．思考改进"><a href="#三．思考改进" class="headerlink" title="三．思考改进"></a>三．思考改进</h3><pre><code>1. 命名规范
+2. W3C标准
+3. 使用框架开发，bootstrap或者jquery mobile
+4. 简化逻辑，性能优化
+5. 代码可维护性
+6. 开发效率
+</code></pre><h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><pre><code>1. 图片和其他非代码文件放在单独的文件夹
+2. 变量声明和函数声明写在最前面，以增加代码的可维护性
+3. 使用动态改变元素的class来改变元素的样式
+4. 将雪碧图放到一个数组里，循环适用于多个元素
+5. html5在DOM上的扩展，自定义特性可以通过元素的dataset属性来访问自定义特性对于于DOM对象中的属性
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[snake game]]></title>
+      <url>http://yoursite.com/2016/03/12/snake-game/</url>
+      <content type="html"><![CDATA[<h1 id="javascript原生贪吃蛇游戏"><a href="#javascript原生贪吃蛇游戏" class="headerlink" title="javascript原生贪吃蛇游戏"></a>javascript原生贪吃蛇游戏</h1><a id="more"></a>
+<h4 id="附上三张效果图"><a href="#附上三张效果图" class="headerlink" title="附上三张效果图"></a>附上三张效果图</h4><p><img src="http://7xsi10.com2.z0.glb.clouddn.com/psb%20%282%29.jpg" alt="snake1"><br><img src="http://7xsi10.com2.z0.glb.clouddn.com/psb%20%281%29.jpg" alt="snake2"><br><img src="http://7xsi10.com2.z0.glb.clouddn.com/psb.jpg" alt="snake3"></p>
+<h3 id="源码已经托管到我的github，点击进入我的github"><a href="#源码已经托管到我的github，点击进入我的github" class="headerlink" title="源码已经托管到我的github，点击进入我的github"></a>源码已经托管到我的github，点击进入<a href="https://github.com/laoqiren" target="_blank" rel="external">我的github</a></h3>]]></content>
+    </entry>
+    
+  
+  
+</search>
