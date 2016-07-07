@@ -43,8 +43,8 @@ func(1,2,3);
 <p>b. es7的includes()方法，这个如果找到就返回true,但是使用的判断方法并不是全等操作符，可以正确判断NaN和NaN,+0和-0的关系;</p>
 <p>c. find()和findIndex()方法，执行传入的回调函数，返回第一个符合条件的项/索引</p>
 <h4 id="6-数组的栈，队列方法"><a href="#6-数组的栈，队列方法" class="headerlink" title="6. 数组的栈，队列方法"></a>6. 数组的栈，队列方法</h4><p>a. 栈，后进先出(LIFO)，push()从数组末尾推入任意项，pop()移除最后一项<br>b. 队列，先进先出(FIFO)，shift()从前端移除第一项，push()从末端添加一项<br>c. unshift()从前端增加任意项</p>
-<h4 id="7-迭代方法"><a href="#7-迭代方法" class="headerlink" title="7. 迭代方法"></a>7. 迭代方法</h4><pre><code>every(),filter(),forEach(),map(),some()方法，都接受2个参数，要执行的回调函数，以及该函数的执行作用域,而回调函数接受三个参数：项的值，项的索引，数组本身，它们有区别，具体省略
-</code></pre><p>曾经遇到过的一个问题，看下面代码：</p>
+<h4 id="7-迭代方法"><a href="#7-迭代方法" class="headerlink" title="7. 迭代方法"></a>7. 迭代方法</h4><p> every(),filter(),forEach(),map(),some()方法，都接受2个参数，要执行的回调函数，以及该函数的执行作用域,而回调函数接受三个参数：项的值，项的索引，数组本身，它们有区别，具体省略</p>
+<p>曾经遇到过的一个问题，看下面代码：</p>
 <pre><code>function Score(){
     this.scores = [];
 }
