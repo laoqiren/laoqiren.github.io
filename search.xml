@@ -9,8 +9,7 @@
       <content type="html"><![CDATA[<h3 id="这篇文章是第一篇关于算法与数据结构的文章，有关于数组，后续会有系列性的更新与算法与数据结构有关的文章，其中包括es6的扩展方法"><a href="#这篇文章是第一篇关于算法与数据结构的文章，有关于数组，后续会有系列性的更新与算法与数据结构有关的文章，其中包括es6的扩展方法" class="headerlink" title="这篇文章是第一篇关于算法与数据结构的文章，有关于数组，后续会有系列性的更新与算法与数据结构有关的文章，其中包括es6的扩展方法"></a>这篇文章是第一篇关于算法与数据结构的文章，有关于数组，后续会有系列性的更新与算法与数据结构有关的文章，其中包括es6的扩展方法</h3><a id="more"></a>
 <h4 id="1-数组的创建"><a href="#1-数组的创建" class="headerlink" title="1. 数组的创建:"></a>1. 数组的创建:</h4><h5 id="a-构造函数方法"><a href="#a-构造函数方法" class="headerlink" title="a. 构造函数方法"></a>a. 构造函数方法</h5><pre><code>let colors = new Array();
 </code></pre><p>传递的参数有两种情况，参数为一个时，表示数组长度，返回空数组，而参数个数大于一，则表示每项的值，这种不同的表现方式有些蛋疼，而es6的Array.of()方法则用一致性的变现方式将一组值生成数组</p>
-<p>#####b. 字面量</p>
-<pre><code>let colors = [&apos;white&apos;,&apos;red&apos;,&apos;orange&apos;];
+<h5 id="b-字面量"><a href="#b-字面量" class="headerlink" title="b. 字面量"></a>b. 字面量</h5><pre><code>let colors = [&apos;white&apos;,&apos;red&apos;,&apos;orange&apos;];
 </code></pre><p>字面量创建并不自动调用构造函数</p>
 <h4 id="2-判断是否为数组"><a href="#2-判断是否为数组" class="headerlink" title="2. 判断是否为数组"></a>2. 判断是否为数组</h4><p>instanceof方法，Array.isArray()方法，前者在多个 全局执行环境的时候，从一个执行全局传给另一个全局则两者具有不同的Array()构造函数，因此不能正确判断。所以通常使用后者，</p>
 <p>第三种方法 Object.prototype.toString()方法（不仅限于数组）如:</p>
