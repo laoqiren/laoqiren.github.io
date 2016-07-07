@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/07/数据结构与算法之数组/index.html">
 <meta property="og:site_name" content="罗峡的博客">
 <meta property="og:description" content="这篇文章是第一篇关于算法与数据结构的文章，有关于数组，后续会有系列性的更新与算法与数据结构有关的文章，其中包括es6的扩展方法">
-<meta property="og:updated_time" content="2016-07-07T03:39:35.277Z">
+<meta property="og:updated_time" content="2016-07-07T03:42:20.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之数组">
 <meta name="twitter:description" content="这篇文章是第一篇关于算法与数据结构的文章，有关于数组，后续会有系列性的更新与算法与数据结构有关的文章，其中包括es6的扩展方法">
@@ -312,8 +312,12 @@
 <pre><code>function countSymbols(string) {
   return Array.from(string).length;
 }
-</code></pre><p>d. 前面讲过的Array.of()方法，将一组值转换为数组，参数个数不同，行为一致<br>e. 扩展运算符…，只能转换具有遍历器接口的数据，不能转换类似数组的对象（即具有length属性的对象):<br>        function func(){<br>            let arr = […arguments];//[1,2,3]<br>        }<br>        func(1,2,3);</p>
-<h4 id="5-查找方法"><a href="#5-查找方法" class="headerlink" title="5. 查找方法"></a>5. 查找方法</h4><p>a. indexOf()和lastIndexOf()返回指定元素的位置，会使用全等操作符(不可以正确判断NaN和NaN,+0和-0的关系)</p>
+</code></pre><p>d. 前面讲过的Array.of()方法，将一组值转换为数组，参数个数不同，行为一致<br>e. 扩展运算符…，只能转换具有遍历器接口的数据，不能转换类似数组的对象（即具有length属性的对象):</p>
+<pre><code>function func(){
+    let arr = [...arguments];//[1,2,3]
+}
+func(1,2,3);
+</code></pre><h4 id="5-查找方法"><a href="#5-查找方法" class="headerlink" title="5. 查找方法"></a>5. 查找方法</h4><p>a. indexOf()和lastIndexOf()返回指定元素的位置，会使用全等操作符(不可以正确判断NaN和NaN,+0和-0的关系)</p>
 <p>b. es7的includes()方法，这个如果找到就返回true,但是使用的判断方法并不是全等操作符，可以正确判断NaN和NaN,+0和-0的关系;</p>
 <p>c. find()和findIndex()方法，执行传入的回调函数，返回第一个符合条件的项/索引</p>
 <h4 id="6-数组的栈，队列方法"><a href="#6-数组的栈，队列方法" class="headerlink" title="6. 数组的栈，队列方法"></a>6. 数组的栈，队列方法</h4><p>a. 栈，后进先出(LIFO)，push()从数组末尾推入任意项，pop()移除最后一项<br>b. 队列，先进先出(FIFO)，shift()从前端移除第一项，push()从末端添加一项<br>c. unshift()从前端增加任意项</p>
@@ -401,7 +405,7 @@ new Array(3).fill(7)
         <p><span>本文标题:</span><a href="/2016/07/07/数据结构与算法之数组/">数据结构与算法之数组</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
         <p><span>发布时间:</span>2016年07月07日 - 09时21分</p>
-        <p><span>最后更新:</span>2016年07月07日 - 11时39分</p>
+        <p><span>最后更新:</span>2016年07月07日 - 11时42分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/07/数据结构与算法之数组/" title="数据结构与算法之数组">http://yoursite.com/2016/07/07/数据结构与算法之数组/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/07/07/数据结构与算法之数组/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
