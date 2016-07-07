@@ -12,10 +12,9 @@
 <p>#####b. 字面量</p>
 <pre><code>let colors = [&apos;white&apos;,&apos;red&apos;,&apos;orange&apos;];
 </code></pre><p>字面量创建并不自动调用构造函数</p>
-<h4 id="2-判断是否为数组"><a href="#2-判断是否为数组" class="headerlink" title="2. 判断是否为数组"></a>2. 判断是否为数组</h4><pre><code>instanceof方法，Array.isArray()方法，前者在多个 全局执行环境的时候，从一个执行全局传给另一个全局则两者具有不同的Array()构造函数，因此不能正确判断。所以通常使用后者，第三种方法 Object.prototype.toString()方法（不仅限于数组）如:
-
-
-    Object.prototype.toString.call(arr) === &apos;[object Array]&apos;
+<h4 id="2-判断是否为数组"><a href="#2-判断是否为数组" class="headerlink" title="2. 判断是否为数组"></a>2. 判断是否为数组</h4><p>instanceof方法，Array.isArray()方法，前者在多个 全局执行环境的时候，从一个执行全局传给另一个全局则两者具有不同的Array()构造函数，因此不能正确判断。所以通常使用后者，</p>
+<p>第三种方法 Object.prototype.toString()方法（不仅限于数组）如:</p>
+<pre><code>Object.prototype.toString.call(arr) === &apos;[object Array]&apos;
 </code></pre><h4 id="3-遍历读写数组"><a href="#3-遍历读写数组" class="headerlink" title="3. 遍历读写数组"></a>3. 遍历读写数组</h4><h5 id="a-起初，咱们用着非常原始的方法，那便是for循环；"><a href="#a-起初，咱们用着非常原始的方法，那便是for循环；" class="headerlink" title="a.  起初，咱们用着非常原始的方法，那便是for循环；"></a>a.  起初，咱们用着非常原始的方法，那便是for循环；</h5><h5 id="b-由于Js中数组是一种特殊的对象，数组的索引便是数组对象的属性名，我们可以用for-in循环来访问数组"><a href="#b-由于Js中数组是一种特殊的对象，数组的索引便是数组对象的属性名，我们可以用for-in循环来访问数组" class="headerlink" title="b.  由于Js中数组是一种特殊的对象，数组的索引便是数组对象的属性名，我们可以用for-in循环来访问数组:"></a>b.  由于Js中数组是一种特殊的对象，数组的索引便是数组对象的属性名，我们可以用for-in循环来访问数组:</h5><pre><code>for(let index in arr){
     console.log(arr[index]);
 }
