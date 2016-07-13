@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/07/数据结构与算法之数组/index.html">
 <meta property="og:site_name" content="罗峡的博客">
 <meta property="og:description" content="这篇文章是第一篇关于算法与数据结构的文章，有关于数组，后续会有系列性的更新与算法与数据结构有关的文章，其中包括es6的扩展方法">
-<meta property="og:updated_time" content="2016-07-07T06:02:30.769Z">
+<meta property="og:updated_time" content="2016-07-13T01:35:01.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之数组">
 <meta name="twitter:description" content="这篇文章是第一篇关于算法与数据结构的文章，有关于数组，后续会有系列性的更新与算法与数据结构有关的文章，其中包括es6的扩展方法">
@@ -296,7 +296,8 @@
     console.log(arr[index]);
 }
 </code></pre><p>这个方式本身就不是用于数组遍历的，会产生很多问题（具体省略）</p>
-<h5 id="c-ES2015的-for-of循环："><a href="#c-ES2015的-for-of循环：" class="headerlink" title="c. ES2015的 for-of循环："></a>c. ES2015的 for-of循环：</h5><pre><code>for(let num in arr){
+<h5 id="c-forEach-function-elment-index-arr-…"><a href="#c-forEach-function-elment-index-arr-…" class="headerlink" title="c. forEach(function(elment,index,arr){…})"></a>c. forEach(function(elment,index,arr){…})</h5><p>不能使用break,continue控制语句</p>
+<h5 id="d-ES2015的-for-of循环："><a href="#d-ES2015的-for-of循环：" class="headerlink" title="d. ES2015的 for-of循环："></a>d. ES2015的 for-of循环：</h5><pre><code>for(let num in arr){
     console.log(num)
 }
 </code></pre><p>当然，for-of循环并不只限于访问数组，还可以访问各种具有遍历器接口的类数组,比如Map类型的结构:</p>
@@ -393,7 +394,15 @@ new Array(3).fill(7)
 </code></pre><h4 id="10-数组的空位"><a href="#10-数组的空位" class="headerlink" title="10. 数组的空位:"></a>10. 数组的空位:</h4><p>空位并不等于undefined，es5有许多不一致的表现</p>
 <p>forEach(), filter(), every() 和some()都会跳过空位。<br>map()会跳过空位，但会保留这个值<br>join()和toString()会将空位视为undefined，而undefined和null会被处理成空字符串。</p>
 <p>es6视空位为undefined</p>
-
+<h4 id="11-其他技巧"><a href="#11-其他技巧" class="headerlink" title="11.其他技巧"></a>11.其他技巧</h4><p>a. 数组快速去重：原理是set数据结构成员不重复</p>
+<pre><code>let arr = [1,3,3,5,5];
+let newArr = [...new Set(arr)];
+console.log(newArr);//[1,3,5]
+</code></pre><p>对于有字符串之类的情况如何：[1,3,’3’,5,’5’]如果你的目的是要让字符串转换成数值再判断，这也很好办，不过是加了处理函数罢了：</p>
+<pre><code>let arr = [1,3,&apos;3&apos;,5,&apos;5&apos;];
+let newArr = [...new Set(arr.map(element=&gt;parseInt(element)))];
+console.log(newArr);//[1,3,5]
+</code></pre>
       
     </div>
     
@@ -404,7 +413,7 @@ new Array(3).fill(7)
         <p><span>本文标题:</span><a href="/2016/07/07/数据结构与算法之数组/">数据结构与算法之数组</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
         <p><span>发布时间:</span>2016年07月07日 - 09时21分</p>
-        <p><span>最后更新:</span>2016年07月07日 - 14时02分</p>
+        <p><span>最后更新:</span>2016年07月13日 - 09时35分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/07/数据结构与算法之数组/" title="数据结构与算法之数组">http://yoursite.com/2016/07/07/数据结构与算法之数组/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/07/07/数据结构与算法之数组/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -434,7 +443,7 @@ new Array(3).fill(7)
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#这篇文章是第一篇关于算法与数据结构的文章，有关于数组，后续会有系列性的更新与算法与数据结构有关的文章，其中包括es6的扩展方法"><span class="toc-number">1.</span> <span class="toc-text">这篇文章是第一篇关于算法与数据结构的文章，有关于数组，后续会有系列性的更新与算法与数据结构有关的文章，其中包括es6的扩展方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-数组的创建"><span class="toc-number">1.1.</span> <span class="toc-text">1. 数组的创建:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-构造函数方法"><span class="toc-number">1.1.1.</span> <span class="toc-text">a. 构造函数方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-字面量"><span class="toc-number">1.1.2.</span> <span class="toc-text">b. 字面量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-判断是否为数组"><span class="toc-number">1.2.</span> <span class="toc-text">2. 判断是否为数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-遍历读写数组"><span class="toc-number">1.3.</span> <span class="toc-text">3. 遍历读写数组</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-起初，咱们用着非常原始的方法，那便是for循环；"><span class="toc-number">1.3.1.</span> <span class="toc-text">a.  起初，咱们用着非常原始的方法，那便是for循环；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-由于Js中数组是一种特殊的对象，数组的索引便是数组对象的属性名，我们可以用for-in循环来访问数组"><span class="toc-number">1.3.2.</span> <span class="toc-text">b.  由于Js中数组是一种特殊的对象，数组的索引便是数组对象的属性名，我们可以用for-in循环来访问数组:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-ES2015的-for-of循环："><span class="toc-number">1.3.3.</span> <span class="toc-text">c. ES2015的 for-of循环：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-其他类型数据与数组的转换"><span class="toc-number">1.4.</span> <span class="toc-text">4. 其他类型数据与数组的转换:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#数组转换为字符串"><span class="toc-number">1.4.1.</span> <span class="toc-text">数组转换为字符串:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#其他类型转换为数组"><span class="toc-number">1.4.2.</span> <span class="toc-text">其他类型转换为数组:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-查找方法"><span class="toc-number">1.5.</span> <span class="toc-text">5. 查找方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-数组的栈，队列方法"><span class="toc-number">1.6.</span> <span class="toc-text">6. 数组的栈，队列方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-迭代方法"><span class="toc-number">1.7.</span> <span class="toc-text">7. 迭代方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-排序"><span class="toc-number">1.8.</span> <span class="toc-text">8. 排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-其他的操作方法"><span class="toc-number">1.9.</span> <span class="toc-text">9. 其他的操作方法:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-数组的空位"><span class="toc-number">1.10.</span> <span class="toc-text">10. 数组的空位:</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#这篇文章是第一篇关于算法与数据结构的文章，有关于数组，后续会有系列性的更新与算法与数据结构有关的文章，其中包括es6的扩展方法"><span class="toc-number">1.</span> <span class="toc-text">这篇文章是第一篇关于算法与数据结构的文章，有关于数组，后续会有系列性的更新与算法与数据结构有关的文章，其中包括es6的扩展方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-数组的创建"><span class="toc-number">1.1.</span> <span class="toc-text">1. 数组的创建:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-构造函数方法"><span class="toc-number">1.1.1.</span> <span class="toc-text">a. 构造函数方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-字面量"><span class="toc-number">1.1.2.</span> <span class="toc-text">b. 字面量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-判断是否为数组"><span class="toc-number">1.2.</span> <span class="toc-text">2. 判断是否为数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-遍历读写数组"><span class="toc-number">1.3.</span> <span class="toc-text">3. 遍历读写数组</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-起初，咱们用着非常原始的方法，那便是for循环；"><span class="toc-number">1.3.1.</span> <span class="toc-text">a.  起初，咱们用着非常原始的方法，那便是for循环；</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-由于Js中数组是一种特殊的对象，数组的索引便是数组对象的属性名，我们可以用for-in循环来访问数组"><span class="toc-number">1.3.2.</span> <span class="toc-text">b.  由于Js中数组是一种特殊的对象，数组的索引便是数组对象的属性名，我们可以用for-in循环来访问数组:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-forEach-function-elment-index-arr-…"><span class="toc-number">1.3.3.</span> <span class="toc-text">c. forEach(function(elment,index,arr){…})</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#d-ES2015的-for-of循环："><span class="toc-number">1.3.4.</span> <span class="toc-text">d. ES2015的 for-of循环：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-其他类型数据与数组的转换"><span class="toc-number">1.4.</span> <span class="toc-text">4. 其他类型数据与数组的转换:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#数组转换为字符串"><span class="toc-number">1.4.1.</span> <span class="toc-text">数组转换为字符串:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#其他类型转换为数组"><span class="toc-number">1.4.2.</span> <span class="toc-text">其他类型转换为数组:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-查找方法"><span class="toc-number">1.5.</span> <span class="toc-text">5. 查找方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-数组的栈，队列方法"><span class="toc-number">1.6.</span> <span class="toc-text">6. 数组的栈，队列方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-迭代方法"><span class="toc-number">1.7.</span> <span class="toc-text">7. 迭代方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-排序"><span class="toc-number">1.8.</span> <span class="toc-text">8. 排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-其他的操作方法"><span class="toc-number">1.9.</span> <span class="toc-text">9. 其他的操作方法:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-数组的空位"><span class="toc-number">1.10.</span> <span class="toc-text">10. 数组的空位:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-其他技巧"><span class="toc-number">1.11.</span> <span class="toc-text">11.其他技巧</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
