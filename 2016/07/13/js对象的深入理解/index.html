@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/13/js对象的深入理解/index.html">
 <meta property="og:site_name" content="罗峡的博客">
 <meta property="og:description" content="JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是与传统的面向对象语言不同，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。">
-<meta property="og:updated_time" content="2016-07-13T11:37:28.397Z">
+<meta property="og:updated_time" content="2016-07-13T11:40:55.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js对象的深入理解">
 <meta name="twitter:description" content="JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是与传统的面向对象语言不同，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。">
@@ -288,8 +288,9 @@
 <h6 id="从刀耕火种到工程化开发，从es5到es2015-，语言本身在不断完善，es2015的Class便是将js创建对象的最佳模式和继承的最佳方式规范化，实质还是基于原型对象和原型链，这样就减轻了开发人员的负担，这便是语言的进步吧。"><a href="#从刀耕火种到工程化开发，从es5到es2015-，语言本身在不断完善，es2015的Class便是将js创建对象的最佳模式和继承的最佳方式规范化，实质还是基于原型对象和原型链，这样就减轻了开发人员的负担，这便是语言的进步吧。" class="headerlink" title="从刀耕火种到工程化开发，从es5到es2015+，语言本身在不断完善，es2015的Class便是将js创建对象的最佳模式和继承的最佳方式规范化，实质还是基于原型对象和原型链，这样就减轻了开发人员的负担，这便是语言的进步吧。"></a>从刀耕火种到工程化开发，从es5到es2015+，语言本身在不断完善，es2015的Class便是将js创建对象的最佳模式和继承的最佳方式规范化，实质还是基于原型对象和原型链，这样就减轻了开发人员的负担，这便是语言的进步吧。</h6><h3 id="一-js里的对象是什么？"><a href="#一-js里的对象是什么？" class="headerlink" title="一. js里的对象是什么？"></a>一. js里的对象是什么？</h3><h4 id="js的七种数据类型："><a href="#js的七种数据类型：" class="headerlink" title="js的七种数据类型："></a>js的七种数据类型：</h4><p>基本数据类型：Undefined,Null,Boolean,Number,String，Symbol(es6新增);</p>
 <p>引用数据类型：Object</p>
 <h5 id="它们之间的联系："><a href="#它们之间的联系：" class="headerlink" title="它们之间的联系："></a>它们之间的联系：</h5><p>我们有一个typeof操作符可以判断数据类型，有两个特性情况：</p>
-<p>typeof null //object<br>typeof function //function</p>
-<p>可见虽然null是一种基本类型值，但是它表示空的对象引用，这里就有个问题：</p>
+<pre><code>typeof null //object
+typeof function //function
+</code></pre><p>可见虽然null是一种基本类型值，但是它表示空的对象引用，这里就有个问题：</p>
 <p>对象为空和空对象引用的区别？</p>
 <h6 id="对象为空"><a href="#对象为空" class="headerlink" title="对象为空:"></a>对象为空:</h6><pre><code>let obj = {};
 </code></pre><p>看似空空，其实非也，不要忘了，这个对象是继承自Object类型的，而Object原型上又有许多方法和属性，比如toString()等；</p>
@@ -442,13 +443,20 @@ console.log(sub2.arr);//[1,2,3,4];
 </code></pre><p>发现子类型的两个不同实例的引用类型即这里的数组值会互相影响，这是由于这个数组属性是存在于Sub原型对象内的，这样Sub实例对象就共享了这个数组，当然会互相影响。</p>
 <h4 id="继承的方式"><a href="#继承的方式" class="headerlink" title="继承的方式"></a>继承的方式</h4><ol>
 <li>原型链的方式，上例；</li>
-<li><p>借用构造函数:</p>
-<p> function Super(){</p>
-<pre><code>this.arr = [1,2,3];
-</code></pre><p> }<br> function Sub(){</p>
-<pre><code>Super.apply(this);
-</code></pre><p> }<br> let sub1 = new Sub();<br> let sub2 = new Sub();<br> sub1.arr.push(4);<br> console.log(sub2.arr);//[1,2,3];<br>原理就是在new Sub()的时候，实际上是执行了内部的Super.apply(this)，这样Super函数执行，内部的this又指向的是Sub的实例对象，自然而然的就让所有父类型构造函数的属性和方法给了子类实例，但是这个方式如同构造函数模式创建对象一样，无法公用属性和方法，浪费。</p>
-</li>
+<li>借用构造函数:</li>
+</ol>
+<pre><code>function Super(){
+    this.arr = [1,2,3];
+}
+function Sub(){
+    Super.apply(this);
+}
+let sub1 = new Sub();
+let sub2 = new Sub();
+sub1.arr.push(4);
+console.log(sub2.arr);//[1,2,3];
+</code></pre><p>原理就是在new Sub()的时候，实际上是执行了内部的Super.apply(this)，这样Super函数执行，内部的this又指向的是Sub的实例对象，自然而然的就让所有父类型构造函数的属性和方法给了子类实例，但是这个方式如同构造函数模式创建对象一样，无法公用属性和方法，浪费。</p>
+<ol>
 <li>组合继承:</li>
 </ol>
 <p>可以这么想，和组合方式的创建对象模式类似的思想。</p>
@@ -593,7 +601,7 @@ console.log(sub.constructor);//Function Sup
         <p><span>本文标题:</span><a href="/2016/07/13/js对象的深入理解/">js对象的深入理解</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
         <p><span>发布时间:</span>2016年07月13日 - 09时47分</p>
-        <p><span>最后更新:</span>2016年07月13日 - 19时37分</p>
+        <p><span>最后更新:</span>2016年07月13日 - 19时40分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/13/js对象的深入理解/" title="js对象的深入理解">http://yoursite.com/2016/07/13/js对象的深入理解/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/07/13/js对象的深入理解/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
