@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/13/js对象的深入理解/index.html">
 <meta property="og:site_name" content="罗峡的博客">
 <meta property="og:description" content="JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是与传统的面向对象语言不同，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。">
-<meta property="og:updated_time" content="2016-07-13T11:07:28.023Z">
+<meta property="og:updated_time" content="2016-07-13T11:37:28.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js对象的深入理解">
 <meta name="twitter:description" content="JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是与传统的面向对象语言不同，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。">
@@ -287,8 +287,7 @@
         <h3 id="JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是与传统的面向对象语言不同，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。"><a href="#JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是与传统的面向对象语言不同，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。" class="headerlink" title="JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是与传统的面向对象语言不同，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。"></a>JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是与传统的面向对象语言不同，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。</h3><a id="more"></a>
 <h6 id="从刀耕火种到工程化开发，从es5到es2015-，语言本身在不断完善，es2015的Class便是将js创建对象的最佳模式和继承的最佳方式规范化，实质还是基于原型对象和原型链，这样就减轻了开发人员的负担，这便是语言的进步吧。"><a href="#从刀耕火种到工程化开发，从es5到es2015-，语言本身在不断完善，es2015的Class便是将js创建对象的最佳模式和继承的最佳方式规范化，实质还是基于原型对象和原型链，这样就减轻了开发人员的负担，这便是语言的进步吧。" class="headerlink" title="从刀耕火种到工程化开发，从es5到es2015+，语言本身在不断完善，es2015的Class便是将js创建对象的最佳模式和继承的最佳方式规范化，实质还是基于原型对象和原型链，这样就减轻了开发人员的负担，这便是语言的进步吧。"></a>从刀耕火种到工程化开发，从es5到es2015+，语言本身在不断完善，es2015的Class便是将js创建对象的最佳模式和继承的最佳方式规范化，实质还是基于原型对象和原型链，这样就减轻了开发人员的负担，这便是语言的进步吧。</h6><h3 id="一-js里的对象是什么？"><a href="#一-js里的对象是什么？" class="headerlink" title="一. js里的对象是什么？"></a>一. js里的对象是什么？</h3><h4 id="js的七种数据类型："><a href="#js的七种数据类型：" class="headerlink" title="js的七种数据类型："></a>js的七种数据类型：</h4><p>基本数据类型：Undefined,Null,Boolean,Number,String，Symbol(es6新增);</p>
 <p>引用数据类型：Object</p>
-<p>#####它们之间的联系：</p>
-<p>我们有一个typeof操作符可以判断数据类型，有两个特性情况：</p>
+<h5 id="它们之间的联系："><a href="#它们之间的联系：" class="headerlink" title="它们之间的联系："></a>它们之间的联系：</h5><p>我们有一个typeof操作符可以判断数据类型，有两个特性情况：</p>
 <p>typeof null //object<br>typeof function //function</p>
 <p>可见虽然null是一种基本类型值，但是它表示空的对象引用，这里就有个问题：</p>
 <p>对象为空和空对象引用的区别？</p>
@@ -355,7 +354,7 @@ var obj2 = new Obj(&apos;Jane&apos;,18);
     }
 }
 </code></pre><p>js的构造函数可以在this对象上直接加方法哎。。。这是外观上的差别，而理解js对象，关键是要理解两个核心：原型对象和原型链，而原型链是继承的实现机制，我们先来看看原型对象：</p>
-<h4 id="原型对象："><a href="#原型对象：" class="headerlink" title="原型对象："></a>原型对象：</h4><p>这个东西最好是有图解，但是好麻烦，我还是总结一下我的理解算了吧，需要图解的可以看书或者其它文章</p>
+<h5 id="原型对象："><a href="#原型对象：" class="headerlink" title="原型对象："></a>原型对象：</h5><p>这个东西最好是有图解，但是好麻烦，我还是总结一下我的理解算了吧，需要图解的可以看书或者其它文章</p>
 <p>对于任意一个构造函数（函数），就如上例的Obj,函数也是对象，而函数会自动拥有一个属性，那便是prototype属性，它的值是一个指针，这个指针指向哪里呢，指向的便是这个函数的原型对象，prototype，这个原型对象拥有一个默认的属性constructor,其指向原型对象的拥有者，即构造函数本身:</p>
 <pre><code>console.log(Obj.prototype.constructor)//Obj
 </code></pre><p>上述的构造函数的this指向哪里呢？this的话题又是一个很多坑的话题，this的定义本来就是函数赖以执行的环境，当我们通过构造函数实例化一个对象的时候，这个this就指向了这个实例对象，这个实例对象就拥有了上例中初始化的属性和方法，而这些属性和方法都在哪里呢？就是在实例对象上，</p>
@@ -415,7 +414,7 @@ console.log(person2.arr)//[&apos;jane&apos;,18];
 <ol>
 <li>其他模式：动态原型模式，寄生构造函数模式，稳妥构造函数模式，适用于特定场景。</li>
 </ol>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>js的继承和其他语言不同，她是基于原型链的继承。用个例子说话：</p>
+<h3 id="三-继承"><a href="#三-继承" class="headerlink" title="三.继承"></a>三.继承</h3><p>js的继承和其他语言不同，她是基于原型链的继承。用个例子说话：</p>
 <pre><code>function Super(){
     this.superName = &apos;super&apos;;
 }
@@ -509,12 +508,12 @@ let sub2 = new Sub();
 sub1.arr.push(4);
 console.log(sub2.arr);//[1,2,3];
 </code></pre><p>大家可以看到，这个例子并没有显式地设置Sub的原型对象，而是将Super的原型对象复制了一份给Sub，这样的话在Super实例上的属性当然不会跑到Sub上了，这个模式最理想。</p>
-<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>在java中，所谓多态，便是某个对象既属于子类型，又属于父类型，js中也有类似的概率，instanceof操作符就是用来判断实例和原型的关系：</p>
+<h3 id="四-多态"><a href="#四-多态" class="headerlink" title="四.多态"></a>四.多态</h3><p>在java中，所谓多态，便是某个对象既属于子类型，又属于父类型，js中也有类似的概率，instanceof操作符就是用来判断实例和原型的关系：</p>
 <pre><code>console.log(sub1 instanceof Object);//true
 console.log(sub1 instaceof Sub);//true
 console.log(sub1 instanceof Super);//true
 </code></pre><p>可见，sub1是属于子类型，父类型，也是Object类型的</p>
-<h3 id="ES2015当中的Class及继承"><a href="#ES2015当中的Class及继承" class="headerlink" title="ES2015当中的Class及继承"></a>ES2015当中的Class及继承</h3><p>直接上栗子：</p>
+<h3 id="五-ES2015当中的Class及继承"><a href="#五-ES2015当中的Class及继承" class="headerlink" title="五.ES2015当中的Class及继承"></a>五.ES2015当中的Class及继承</h3><p>直接上栗子：</p>
 <pre><code>class A{
     constructor(name){
         this.name = name;
@@ -570,7 +569,7 @@ Object.setPrototypeOf(B, A);
 <pre><code>console.log(b.hasOwnProperty(&apos;name&apos;));//true
 console.log(b.__proto__.hasOwnProperty(&apos;name&apos;));//false
 </code></pre><p>说明name是存在于b实例对象上的,B的原型对象上没有这个name属性。</p>
-<p>发现它们的联系了吗？前面讲es5的继承方式有个组合继承方式和寄生组合方式，两种的区别就在于，组合继承方式会在子类型原型上创建多余的属性，而后者，我也在代码里说过，其实质就是设置：</p>
+<h4 id="es2015和es5继承的联系"><a href="#es2015和es5继承的联系" class="headerlink" title="es2015和es5继承的联系"></a>es2015和es5继承的联系</h4><p>发现它们的联系了吗？前面讲es5的继承方式有个组合继承方式和寄生组合方式，两种的区别就在于，组合继承方式会在子类型原型上创建多余的属性，而后者，我也在代码里说过，其实质就是设置：</p>
 <pre><code>Sub.prototype.__proto__ = Sup.prototype
 </code></pre><p>而这个，正好是es2015 class的继承关系。</p>
 <p>聪明的你会想，我们在</p>
@@ -583,9 +582,7 @@ console.log(b.__proto__.hasOwnProperty(&apos;name&apos;));//false
 console.log(sub.constructor);//Function Sup
 </code></pre></li>
 </ol>
-<p>es2015的class实质上是和es5差不多的，不过让书写方式更于理解，而且提供了最佳实践的创建对象的方式，就是使用组合构造函数和原型模式来创建对象，而且继承也是最合理的寄生组合方式，这就让开发人员不必去自我揣度最好的方案，让精华成为约定俗成，，这大概就是语言的不断进步吧，希望js变得越来越强大，保持进步，未来会更好！</p>
-<p>啊，这算是目前最长的一篇文章了吧，头都大了，js中的坑真是又大又多，但相信我们会在总结中不断成长，文中有什么欠妥的地方，渴望大家的建议。</p>
-
+<h6 id="es2015的class实质上是和es5差不多的，不过让书写方式更于理解，而且提供了最佳实践的创建对象的方式，就是使用组合构造函数和原型模式来创建对象，而且继承也是最合理的寄生组合方式，这就让开发人员不必去自我揣度最好的方案，让精华成为约定俗成，，这大概就是语言的不断进步吧，希望js变得越来越强大，保持进步，未来会更好！"><a href="#es2015的class实质上是和es5差不多的，不过让书写方式更于理解，而且提供了最佳实践的创建对象的方式，就是使用组合构造函数和原型模式来创建对象，而且继承也是最合理的寄生组合方式，这就让开发人员不必去自我揣度最好的方案，让精华成为约定俗成，，这大概就是语言的不断进步吧，希望js变得越来越强大，保持进步，未来会更好！" class="headerlink" title="es2015的class实质上是和es5差不多的，不过让书写方式更于理解，而且提供了最佳实践的创建对象的方式，就是使用组合构造函数和原型模式来创建对象，而且继承也是最合理的寄生组合方式，这就让开发人员不必去自我揣度最好的方案，让精华成为约定俗成，，这大概就是语言的不断进步吧，希望js变得越来越强大，保持进步，未来会更好！"></a>es2015的class实质上是和es5差不多的，不过让书写方式更于理解，而且提供了最佳实践的创建对象的方式，就是使用组合构造函数和原型模式来创建对象，而且继承也是最合理的寄生组合方式，这就让开发人员不必去自我揣度最好的方案，让精华成为约定俗成，，这大概就是语言的不断进步吧，希望js变得越来越强大，保持进步，未来会更好！</h6><h4 id="啊，这算是目前最长的一篇文章了吧，头都大了，js中的坑真是又大又多，但相信我们会在总结中不断成长，文中有什么欠妥的地方，渴望大家的建议。"><a href="#啊，这算是目前最长的一篇文章了吧，头都大了，js中的坑真是又大又多，但相信我们会在总结中不断成长，文中有什么欠妥的地方，渴望大家的建议。" class="headerlink" title="啊，这算是目前最长的一篇文章了吧，头都大了，js中的坑真是又大又多，但相信我们会在总结中不断成长，文中有什么欠妥的地方，渴望大家的建议。"></a>啊，这算是目前最长的一篇文章了吧，头都大了，js中的坑真是又大又多，但相信我们会在总结中不断成长，文中有什么欠妥的地方，渴望大家的建议。</h4>
       
     </div>
     
@@ -596,7 +593,7 @@ console.log(sub.constructor);//Function Sup
         <p><span>本文标题:</span><a href="/2016/07/13/js对象的深入理解/">js对象的深入理解</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
         <p><span>发布时间:</span>2016年07月13日 - 09时47分</p>
-        <p><span>最后更新:</span>2016年07月13日 - 19时07分</p>
+        <p><span>最后更新:</span>2016年07月13日 - 19时37分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/13/js对象的深入理解/" title="js对象的深入理解">http://yoursite.com/2016/07/13/js对象的深入理解/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/07/13/js对象的深入理解/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -626,7 +623,7 @@ console.log(sub.constructor);//Function Sup
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是与传统的面向对象语言不同，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。"><span class="toc-number">1.</span> <span class="toc-text">JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是与传统的面向对象语言不同，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#从刀耕火种到工程化开发，从es5到es2015-，语言本身在不断完善，es2015的Class便是将js创建对象的最佳模式和继承的最佳方式规范化，实质还是基于原型对象和原型链，这样就减轻了开发人员的负担，这便是语言的进步吧。"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">从刀耕火种到工程化开发，从es5到es2015+，语言本身在不断完善，es2015的Class便是将js创建对象的最佳模式和继承的最佳方式规范化，实质还是基于原型对象和原型链，这样就减轻了开发人员的负担，这便是语言的进步吧。</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一-js里的对象是什么？"><span class="toc-number">2.</span> <span class="toc-text">一. js里的对象是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#js的七种数据类型："><span class="toc-number">2.1.</span> <span class="toc-text">js的七种数据类型：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#对象为空"><span class="toc-number">2.1.0.1.</span> <span class="toc-text">对象为空:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#空对象引用："><span class="toc-number">2.1.0.2.</span> <span class="toc-text">空对象引用：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#js中一切皆对象，我的理解："><span class="toc-number">2.1.0.3.</span> <span class="toc-text">js中一切皆对象，我的理解：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-让我们一起new对象吧（这个我的理解就是封装）"><span class="toc-number">3.</span> <span class="toc-text">二. 让我们一起new对象吧（这个我的理解就是封装）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#两种方式："><span class="toc-number">3.1.</span> <span class="toc-text">两种方式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建对象："><span class="toc-number">3.2.</span> <span class="toc-text">创建对象：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原型对象："><span class="toc-number">3.3.</span> <span class="toc-text">原型对象：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建对象的几种模式"><span class="toc-number">3.4.</span> <span class="toc-text">创建对象的几种模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承"><span class="toc-number">4.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#继承的方式"><span class="toc-number">4.1.</span> <span class="toc-text">继承的方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多态"><span class="toc-number">4.2.</span> <span class="toc-text">多态</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES2015当中的Class及继承"><span class="toc-number">5.</span> <span class="toc-text">ES2015当中的Class及继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#class的对象创建："><span class="toc-number">5.1.</span> <span class="toc-text">class的对象创建：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#class的继承"><span class="toc-number">5.2.</span> <span class="toc-text">class的继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#es5和es2015继承的区别："><span class="toc-number">5.3.</span> <span class="toc-text">es5和es2015继承的区别：</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是与传统的面向对象语言不同，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。"><span class="toc-number">1.</span> <span class="toc-text">JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是与传统的面向对象语言不同，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#从刀耕火种到工程化开发，从es5到es2015-，语言本身在不断完善，es2015的Class便是将js创建对象的最佳模式和继承的最佳方式规范化，实质还是基于原型对象和原型链，这样就减轻了开发人员的负担，这便是语言的进步吧。"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">从刀耕火种到工程化开发，从es5到es2015+，语言本身在不断完善，es2015的Class便是将js创建对象的最佳模式和继承的最佳方式规范化，实质还是基于原型对象和原型链，这样就减轻了开发人员的负担，这便是语言的进步吧。</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一-js里的对象是什么？"><span class="toc-number">2.</span> <span class="toc-text">一. js里的对象是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#js的七种数据类型："><span class="toc-number">2.1.</span> <span class="toc-text">js的七种数据类型：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#它们之间的联系："><span class="toc-number">2.1.1.</span> <span class="toc-text">它们之间的联系：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#对象为空"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">对象为空:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#空对象引用："><span class="toc-number">2.1.1.2.</span> <span class="toc-text">空对象引用：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#js中一切皆对象，我的理解："><span class="toc-number">2.1.1.3.</span> <span class="toc-text">js中一切皆对象，我的理解：</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-让我们一起new对象吧（这个我的理解就是封装）"><span class="toc-number">3.</span> <span class="toc-text">二. 让我们一起new对象吧（这个我的理解就是封装）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#两种方式："><span class="toc-number">3.1.</span> <span class="toc-text">两种方式：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建对象："><span class="toc-number">3.2.</span> <span class="toc-text">创建对象：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#原型对象："><span class="toc-number">3.2.1.</span> <span class="toc-text">原型对象：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建对象的几种模式"><span class="toc-number">3.3.</span> <span class="toc-text">创建对象的几种模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-继承"><span class="toc-number">4.</span> <span class="toc-text">三.继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#继承的方式"><span class="toc-number">4.1.</span> <span class="toc-text">继承的方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四-多态"><span class="toc-number">5.</span> <span class="toc-text">四.多态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五-ES2015当中的Class及继承"><span class="toc-number">6.</span> <span class="toc-text">五.ES2015当中的Class及继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#class的对象创建："><span class="toc-number">6.1.</span> <span class="toc-text">class的对象创建：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#class的继承"><span class="toc-number">6.2.</span> <span class="toc-text">class的继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#es2015和es5继承的联系"><span class="toc-number">6.3.</span> <span class="toc-text">es2015和es5继承的联系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#es5和es2015继承的区别："><span class="toc-number">6.4.</span> <span class="toc-text">es5和es2015继承的区别：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#es2015的class实质上是和es5差不多的，不过让书写方式更于理解，而且提供了最佳实践的创建对象的方式，就是使用组合构造函数和原型模式来创建对象，而且继承也是最合理的寄生组合方式，这就让开发人员不必去自我揣度最好的方案，让精华成为约定俗成，，这大概就是语言的不断进步吧，希望js变得越来越强大，保持进步，未来会更好！"><span class="toc-number">6.4.0.1.</span> <span class="toc-text">es2015的class实质上是和es5差不多的，不过让书写方式更于理解，而且提供了最佳实践的创建对象的方式，就是使用组合构造函数和原型模式来创建对象，而且继承也是最合理的寄生组合方式，这就让开发人员不必去自我揣度最好的方案，让精华成为约定俗成，，这大概就是语言的不断进步吧，希望js变得越来越强大，保持进步，未来会更好！</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#啊，这算是目前最长的一篇文章了吧，头都大了，js中的坑真是又大又多，但相信我们会在总结中不断成长，文中有什么欠妥的地方，渴望大家的建议。"><span class="toc-number">6.5.</span> <span class="toc-text">啊，这算是目前最长的一篇文章了吧，头都大了，js中的坑真是又大又多，但相信我们会在总结中不断成长，文中有什么欠妥的地方，渴望大家的建议。</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
