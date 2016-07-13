@@ -304,7 +304,7 @@ console.log(b.__proto__.hasOwnProperty(&apos;name&apos;));//false
 </code></pre><p>而这个，正好是es2015 class的继承关系。</p>
 <p>聪明的你会想，我们在</p>
 <pre><code>Sub.prototype = new Sup()；
-</code></pre><p>时不就是让Sub.prototype.__proto<strong>等于Sup.prototype吗，没错，其结果确实是这样，但是用new的时候我们就执行了构造函数，让内部实例属性存在于prototype里了，而我们直接设置Sub.prototype.\</strong>proto__ = Sup.prototype只是创建prototype的实例</p>
+</code></pre><p>时不就是让Sub.prototype.__proto__等于Sup.prototype吗，没错，其结果确实是这样，但是用new的时候我们就执行了构造函数，让内部实例属性存在于prototype里了，而我们直接设置Sub.prototype.__proto__ = Sup.prototype只是创建prototype的实例</p>
 <h4 id="es5和es2015继承的区别："><a href="#es5和es2015继承的区别：" class="headerlink" title="es5和es2015继承的区别："></a>es5和es2015继承的区别：</h4><ol>
 <li>对于父类型的构造函数，es5通过apply()或者call()方法指定其在子类型的实例上运行，这里是先有子类型实例的this,再去调用父类型构造函数的，而es2015就不一样了，先要通过super()的运行，才有this,即子类型的构造函数内的this是父类型构造函数给与的，指向子类型实例，所以必须先调用super，才能使用this</li>
 <li><p>es5子类型实例的constuctor默认指向的是父类型构造函数，而es2015指向子类型构造函数：</p>

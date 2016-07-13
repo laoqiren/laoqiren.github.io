@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/13/js对象的深入理解/index.html">
 <meta property="og:site_name" content="罗峡的博客">
 <meta property="og:description" content="JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是对比传统的面向对象语言，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。">
-<meta property="og:updated_time" content="2016-07-13T11:49:55.361Z">
+<meta property="og:updated_time" content="2016-07-13T11:52:47.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js对象的深入理解">
 <meta name="twitter:description" content="JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是对比传统的面向对象语言，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。">
@@ -582,7 +582,7 @@ console.log(b.__proto__.hasOwnProperty(&apos;name&apos;));//false
 </code></pre><p>而这个，正好是es2015 class的继承关系。</p>
 <p>聪明的你会想，我们在</p>
 <pre><code>Sub.prototype = new Sup()；
-</code></pre><p>时不就是让Sub.prototype.__proto<strong>等于Sup.prototype吗，没错，其结果确实是这样，但是用new的时候我们就执行了构造函数，让内部实例属性存在于prototype里了，而我们直接设置Sub.prototype.\</strong>proto__ = Sup.prototype只是创建prototype的实例</p>
+</code></pre><p>时不就是让Sub.prototype.__proto__等于Sup.prototype吗，没错，其结果确实是这样，但是用new的时候我们就执行了构造函数，让内部实例属性存在于prototype里了，而我们直接设置Sub.prototype.__proto__ = Sup.prototype只是创建prototype的实例</p>
 <h4 id="es5和es2015继承的区别："><a href="#es5和es2015继承的区别：" class="headerlink" title="es5和es2015继承的区别："></a>es5和es2015继承的区别：</h4><ol>
 <li>对于父类型的构造函数，es5通过apply()或者call()方法指定其在子类型的实例上运行，这里是先有子类型实例的this,再去调用父类型构造函数的，而es2015就不一样了，先要通过super()的运行，才有this,即子类型的构造函数内的this是父类型构造函数给与的，指向子类型实例，所以必须先调用super，才能使用this</li>
 <li><p>es5子类型实例的constuctor默认指向的是父类型构造函数，而es2015指向子类型构造函数：</p>
@@ -601,7 +601,7 @@ console.log(sub.constructor);//Function Sup
         <p><span>本文标题:</span><a href="/2016/07/13/js对象的深入理解/">js对象的深入理解</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
         <p><span>发布时间:</span>2016年07月13日 - 09时47分</p>
-        <p><span>最后更新:</span>2016年07月13日 - 19时49分</p>
+        <p><span>最后更新:</span>2016年07月13日 - 19时52分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/13/js对象的深入理解/" title="js对象的深入理解">http://yoursite.com/2016/07/13/js对象的深入理解/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/07/13/js对象的深入理解/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
