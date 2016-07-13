@@ -81,14 +81,14 @@ var obj2 = new Obj(&apos;Jane&apos;,18);
 <p>对于任意一个构造函数（函数），就如上例的Obj,函数也是对象，而函数会自动拥有一个属性，那便是prototype属性，它的值是一个指针，这个指针指向哪里呢，指向的便是这个函数的原型对象，prototype，这个原型对象拥有一个默认的属性constructor,其指向原型对象的拥有者，即构造函数本身:</p>
 <pre><code>console.log(Obj.prototype.constructor)//Obj
 </code></pre><p>上述的构造函数的this指向哪里呢？this的话题又是一个很多坑的话题，this的定义本来就是函数赖以执行的环境，当我们通过构造函数实例化一个对象的时候，这个this就指向了这个实例对象，这个实例对象就拥有了上例中初始化的属性和方法，而这些属性和方法都在哪里呢？就是在实例对象上，</p>
-<p>对，没错，这些属性和方法由于通过构造函数的方式初始化，当new Obj()的时候，便初始化给了实例对象，而除了这些自定义初始化的属性和方法，实例对象内部有一个属性：<strong>proto</strong>，这个属性的值也是一个指针，它指向了构造函数的原型对象prototype:</p>
+<p>对，没错，这些属性和方法由于通过构造函数的方式初始化，当new Obj()的时候，便初始化给了实例对象，而除了这些自定义初始化的属性和方法，实例对象内部有一个属性：__proto__，这个属性的值也是一个指针，它指向了构造函数的原型对象prototype:</p>
 <pre><code>console.log(obj1.__proto__)//Obj.prototype
 </code></pre><p>下面几个情形:</p>
 <pre><code>Object.__proto__//Function.prototype
 Function.__proto__//Function.prototype
 Function.prototype.__proto__//Object.prototype
 Object.prototype.__proto__//null
-</code></pre><p>可见，Object构造函数是Function的实例，而Function的原型对象又是Object的实例，即Function继承于Object，任何构造函数，其本身作为对象，它们都是Function的实例，当然<strong>proto</strong>指向Function</p>
+</code></pre><p>可见，Object构造函数是Function的实例，而Function的原型对象又是Object的实例，即Function继承于Object，任何构造函数，其本身作为对象，它们都是Function的实例，当然__proto__指向Function</p>
 <p>我们会发现，基于构造函数的方式创建对象有一个不足，那就是对于一些公用的方法和属性，我们在实例化不同的对象时，会创建多个本来可以公用的方法，这不就是一种浪费吗？</p>
 <p>再来看看下面的例子：</p>
 <pre><code>function Obj2(){

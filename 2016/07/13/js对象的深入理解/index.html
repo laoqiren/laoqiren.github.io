@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/13/js对象的深入理解/index.html">
 <meta property="og:site_name" content="罗峡的博客">
 <meta property="og:description" content="JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是对比传统的面向对象语言，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。">
-<meta property="og:updated_time" content="2016-07-13T11:42:39.692Z">
+<meta property="og:updated_time" content="2016-07-13T11:46:47.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js对象的深入理解">
 <meta name="twitter:description" content="JavaScript作为一门非常灵活的动态语言，可以有许多不同的编程范式，而面向对象也是其中之一，但是对比传统的面向对象语言，Js有着很多不同，比如原型链的继承方式等等。由于很多容易混淆的概率问题，这篇文章总结一下我在学习和实践当中对js对象的理解。">
@@ -359,14 +359,14 @@ var obj2 = new Obj(&apos;Jane&apos;,18);
 <p>对于任意一个构造函数（函数），就如上例的Obj,函数也是对象，而函数会自动拥有一个属性，那便是prototype属性，它的值是一个指针，这个指针指向哪里呢，指向的便是这个函数的原型对象，prototype，这个原型对象拥有一个默认的属性constructor,其指向原型对象的拥有者，即构造函数本身:</p>
 <pre><code>console.log(Obj.prototype.constructor)//Obj
 </code></pre><p>上述的构造函数的this指向哪里呢？this的话题又是一个很多坑的话题，this的定义本来就是函数赖以执行的环境，当我们通过构造函数实例化一个对象的时候，这个this就指向了这个实例对象，这个实例对象就拥有了上例中初始化的属性和方法，而这些属性和方法都在哪里呢？就是在实例对象上，</p>
-<p>对，没错，这些属性和方法由于通过构造函数的方式初始化，当new Obj()的时候，便初始化给了实例对象，而除了这些自定义初始化的属性和方法，实例对象内部有一个属性：<strong>proto</strong>，这个属性的值也是一个指针，它指向了构造函数的原型对象prototype:</p>
+<p>对，没错，这些属性和方法由于通过构造函数的方式初始化，当new Obj()的时候，便初始化给了实例对象，而除了这些自定义初始化的属性和方法，实例对象内部有一个属性：__proto__，这个属性的值也是一个指针，它指向了构造函数的原型对象prototype:</p>
 <pre><code>console.log(obj1.__proto__)//Obj.prototype
 </code></pre><p>下面几个情形:</p>
 <pre><code>Object.__proto__//Function.prototype
 Function.__proto__//Function.prototype
 Function.prototype.__proto__//Object.prototype
 Object.prototype.__proto__//null
-</code></pre><p>可见，Object构造函数是Function的实例，而Function的原型对象又是Object的实例，即Function继承于Object，任何构造函数，其本身作为对象，它们都是Function的实例，当然<strong>proto</strong>指向Function</p>
+</code></pre><p>可见，Object构造函数是Function的实例，而Function的原型对象又是Object的实例，即Function继承于Object，任何构造函数，其本身作为对象，它们都是Function的实例，当然__proto__指向Function</p>
 <p>我们会发现，基于构造函数的方式创建对象有一个不足，那就是对于一些公用的方法和属性，我们在实例化不同的对象时，会创建多个本来可以公用的方法，这不就是一种浪费吗？</p>
 <p>再来看看下面的例子：</p>
 <pre><code>function Obj2(){
@@ -601,7 +601,7 @@ console.log(sub.constructor);//Function Sup
         <p><span>本文标题:</span><a href="/2016/07/13/js对象的深入理解/">js对象的深入理解</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
         <p><span>发布时间:</span>2016年07月13日 - 09时47分</p>
-        <p><span>最后更新:</span>2016年07月13日 - 19时42分</p>
+        <p><span>最后更新:</span>2016年07月13日 - 19时46分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/13/js对象的深入理解/" title="js对象的深入理解">http://yoursite.com/2016/07/13/js对象的深入理解/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/07/13/js对象的深入理解/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
