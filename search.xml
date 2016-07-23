@@ -62,6 +62,185 @@ console.log(typeof m.b); //function
 </ol>
 <p>模块编译:</p>
 <p>详细参考《深入浅出Nodejs》</p>
+<h4 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h4><h5 id="前面的CommonJS是NodeJS的规范，客户端呢？随着客户端开发越来越复杂，如果没有模块化的话，要管理互相的依赖是非常麻烦的，而AMD便是用于客户端的模块规范，可以采用同步和异步地加载方式加载模块文件。"><a href="#前面的CommonJS是NodeJS的规范，客户端呢？随着客户端开发越来越复杂，如果没有模块化的话，要管理互相的依赖是非常麻烦的，而AMD便是用于客户端的模块规范，可以采用同步和异步地加载方式加载模块文件。" class="headerlink" title="前面的CommonJS是NodeJS的规范，客户端呢？随着客户端开发越来越复杂，如果没有模块化的话，要管理互相的依赖是非常麻烦的，而AMD便是用于客户端的模块规范，可以采用同步和异步地加载方式加载模块文件。"></a>前面的CommonJS是NodeJS的规范，客户端呢？随着客户端开发越来越复杂，如果没有模块化的话，要管理互相的依赖是非常麻烦的，而AMD便是用于客户端的模块规范，可以采用同步和异步地加载方式加载模块文件。</h5><p>关键字：define,require,</p>
+<ol>
+<li>模块定义:全局的define( id?, dependencies?, factory ); </li>
+</ol>
+<p>其中id为模块标识符，dependencies为模块依赖的其他模块，factory为依赖加载完毕后执行的回调函数可以看出，这整个是异步方式加载的。其中id和dependencies都可以省略，factory可以是回调函数，或者js对象。</p>
+<p>a. 对于独立的模块（即不依赖其他模块），省略dependencies：</p>
+<pre><code>define(function(){
+    return {
+        sayHello(){
+            console.log(&apos;hello&apos;);
+        }
+    }
+});
+</code></pre><p>b.对于依赖其他模块的模块：</p>
+<pre><code>define([&apos;jquery&apos;],function(){
+    return {
+        ...
+    }
+});
+</code></pre><p>c. 上述例子，如果直接返回一个对象，factory可以直接是对象的形式：</p>
+<pre><code>define({
+    sayHello(){
+        console.log(&apos;hello&apos;);
+    }
+}
+</code></pre><p>d. AMD的作者本来是想让AMD规范不局限于CommonJS，但在后续版本也能够类似于CommonJS的写法：</p>
+<pre><code>define(function(require,exports,module){
+    require(&apos;...&apos;);
+    ...
+});
+</code></pre><p>这里require不是全局的，在其内部require是同步加载模块的，除了这种写法，还可以这样：</p>
+<pre><code>define([&apos;require&apos;],function(require){
+    ...
+});
+</code></pre><p>这就导致有两种情况的require,全局和局部。这也是后面要讲的AMD与CMD的区别之一。</p>
+<h4 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h4><p>CMD是国内前端前辈玉伯的杰作，只怪前端领域日新月异，变化无常，正当我在写这篇文章时，seajs(CMD描述）已经结束了自己的生涯。</p>
+<ol>
+<li><p>定义模块，类似于AMD的类似于CommonJS的写法，这样使得其和NodeJS兼容性更好。</p>
+<p> define(function(require,exports,module){</p>
+<pre><code>...
+</code></pre><p> });</p>
+</li>
+</ol>
+<p>define()也可以直接传入对象或者字符串:</p>
+<pre><code>define(&apos;this is a string&apos;);
+define({...});
+</code></pre><ol>
+<li>引入模块：</li>
+</ol>
+<p>在define()的factory函数内部，requie作为局部变量使用</p>
+<p>同步加载模块:</p>
+<pre><code>require(&apos;&apos;);
+</code></pre><p>异步加载：</p>
+<pre><code>requie.async(id,callback?);
+</code></pre><p>而对于全局加载的话，CMD的实现者Seajs提供了seajs.use()，这样不同于AMD的既有全局require,又有局部require:</p>
+<pre><code>seajs.use(&apos;./Module.js&apos;);//阻塞加载
+
+seajs.use(&apos;./Module.js&apos;,function(){
+    console.log(&apos;module is loaded&apos;);
+});//异步加载
+</code></pre><p>AMD与CMD区别：(引用自玉伯本人）</p>
+<ol>
+<li>对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。不过 RequireJS 从 2.0 开始，也改成可以延迟执行（根据写法不同，处理方式不同）。CMD 推崇 as lazy as possible.</li>
+<li>CMD 推崇依赖就近，AMD 推崇依赖前置。</li>
+<li><p>AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫 require。CMD 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹。</p>
+</li>
+<li><p>参考<a href="https://github.com/seajs/seajs/issues/277" target="_blank" rel="external">https://github.com/seajs/seajs/issues/277</a></p>
+</li>
+</ol>
+<h4 id="browserify-让客户端使用CommonJS规范写法，让客户端可以使用强大的npm生态系统："><a href="#browserify-让客户端使用CommonJS规范写法，让客户端可以使用强大的npm生态系统：" class="headerlink" title="browserify:让客户端使用CommonJS规范写法，让客户端可以使用强大的npm生态系统："></a>browserify:让客户端使用CommonJS规范写法，让客户端可以使用强大的npm生态系统：</h4><p>borowserify运行用户之间书写符号CommonJS规范的模块定义，然后经由browserify打包成可之间在浏览器运行的bundle文件：</p>
+<pre><code>Module.js:
+let $ = require(&apos;jquery&apos;);
+module.exports = {
+    sayName(){
+        console.log(&apos;my name is LuoXia&apos;);
+};
+
+// main.js:
+let {sayName} = require(&apos;./Module.js&apos;);
+sayName();
+</code></pre><p>然后：</p>
+<pre><code>$ browserify main.js &gt; bundle.js
+</code></pre><p>就可以把main.js及其依赖模块打包到bundle.js，浏览器引入就是了。详细使用方法参考browserify官方文档。</p>
+<h4 id="拥抱ES2015-Module规范"><a href="#拥抱ES2015-Module规范" class="headerlink" title="拥抱ES2015 Module规范"></a>拥抱ES2015 Module规范</h4><p>刀耕火种的年代已久过去，工业化时代已久到了，而es语言规范本身也在不断进步，前面讲述的种种规范都是”野生”的，当模块化话题被带到官方规范，前后端共用一套规范，让开发成本变得更低。</p>
+<p>关键字：export, import</p>
+<p>定义模块：</p>
+<pre><code>// profile.js
+var firstName = &apos;Michael&apos;;
+var lastName = &apos;Jackson&apos;;
+var year = 1958;
+
+export {firstName, lastName, year};
+</code></pre><p>这里export后面并不是对象，而是表示出口的一系列值，可以用as关键字进行重命名：</p>
+<pre><code>export{firstName as name}//对外提供name
+</code></pre><p>注意：</p>
+<pre><code>// 报错
+export 1;
+
+// 报错
+var m = 1;
+export m;
+
+// 报错
+function f() {}
+export f;
+
+// 正确
+export function f() {};
+
+// 正确
+function f() {}
+export {f};
+</code></pre><p>引用模块：</p>
+<pre><code>import {firstName, lastName, year} from &apos;./profile&apos;;
+</code></pre><p>{}内部的变量名需与profile.js模块中的出口变量名一致，顺序没关系。也可以用as重命名：</p>
+<pre><code>import {firstName as name, lastName, year} from &apos;./profile&apos;;
+</code></pre><p>如果在一个模块之中，先输入后输出同一个模块，import语句可以与export语句写在一起。</p>
+<pre><code>export { es6 as default } from &apos;./someModule&apos;;
+
+// 等同于
+import { es6 } from &apos;./someModule&apos;;
+export default es6;
+</code></pre><p>整体加载：</p>
+<pre><code>import * as about from &apos;./profile&apos;;
+console.log(about.firstName);
+</code></pre><p>只执行，无入口：</p>
+<pre><code>import &apos;./someModule&apos;;
+</code></pre><p>默认输出：export default</p>
+<p>有时候我们并不知道模块的API，但提供默认输出，这样就可以直接获取默认输出了。</p>
+<pre><code>// export-default.js
+export default function () {
+  console.log(&apos;foo&apos;);
+}
+</code></pre><p>这时通过import不需要{}因为只有一个变量：</p>
+<pre><code>import lala from &apos;./export-default&apos;;
+</code></pre><p>这样我们使用一些库，框架的时候会非常方便：</p>
+<pre><code>import $ from &apos;jquery&apos;;
+import React from &apos;react&apos;;
+import ReactDOM from &apos;react-dom&apos;;
+</code></pre><h4 id="ES6-Module与CommonJS对比："><a href="#ES6-Module与CommonJS对比：" class="headerlink" title="ES6 Module与CommonJS对比："></a>ES6 Module与CommonJS对比：</h4><ol>
+<li>CommonJS的模块是对象，而es6的模块不是对象，是编译时执行的，使得编译时就能够确定依赖关系和输入输出的变量（软一峰前辈原文）</li>
+</ol>
+<pre><code>// CommonJS模块
+let { stat, exists, readFile } = require(&apos;fs&apos;);
+
+// 等同于
+let _fs = require(&apos;fs&apos;);
+let stat = _fs.stat, exists = _fs.exists, readfile = _fs.readfile;
+</code></pre><p>上面代码的实质是整体加载fs模块（即加载fs的所有方法），生成一个对象（_fs），然后再从这个对象上面读取3个方法。这种加载称为“运行时加载”，因为只有运行时才能得到这个对象，导致完全没办法在编译时做“静态优化”。</p>
+<p>ES6模块不是对象，而是通过export命令显式指定输出的代码，输入时也采用静态命令的形式。</p>
+<pre><code>// ES6模块
+import { stat, exists, readFile } from &apos;fs&apos;;
+</code></pre><p>上面代码的实质是从fs模块加载3个方法，其他方法不加载。这种加载称为“编译时加载”，即ES6可以在编译时就完成模块加载，效率要比CommonJS模块的加载方式高。当然，这也导致了没法引用ES6模块本身，因为它不是对象。</p>
+<ol>
+<li>模块加载实质不同</li>
+</ol>
+<p>CommonJS加载的模块是对值的拷贝，而ES6 Module是对值的引用，这样模块定义文件内部变量的变化会实时反映到依赖文件，而CommonJS不同。</p>
+<pre><code>// lib.js
+export let counter = 3;
+export function incCounter() {
+  counter++;
+}
+
+// main.js
+import { counter, incCounter } from &apos;./lib&apos;;
+console.log(counter); // 3
+incCounter();
+console.log(counter); // 4
+//模块定义文件的变量counter的变化能够实时反映
+</code></pre><ol>
+<li>模块的循环加载处理方式不同：</li>
+</ol>
+<p>循环加载：两个脚本互相依赖</p>
+<pre><code>// a.js
+var b = require(&apos;b&apos;);
+
+// b.js
+var a = require(&apos;a&apos;);
+</code></pre><p>这部分内容在这里不讲了，详情参考《es6入门2》相关内容。</p>
 ]]></content>
     </entry>
     
