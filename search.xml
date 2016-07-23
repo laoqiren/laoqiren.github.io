@@ -6,7 +6,60 @@
     <entry>
       <title><![CDATA[js模块化规范总结篇]]></title>
       <url>http://yoursite.com/2016/07/23/js%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83%E6%80%BB%E7%BB%93%E7%AF%87/</url>
-      <content type="html"><![CDATA[<h4 id="之前一篇文章讲过requirejs-amd规范描述-的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。"><a href="#之前一篇文章讲过requirejs-amd规范描述-的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。" class="headerlink" title="之前一篇文章讲过requirejs(amd规范描述)的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。"></a>之前一篇文章讲过requirejs(amd规范描述)的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。</h4><h4 id="对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西"><a href="#对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西" class="headerlink" title="对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西"></a>对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西</h4><a id="more"></a>]]></content>
+      <content type="html"><![CDATA[<h4 id="之前一篇文章讲过requirejs-amd规范描述-的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。"><a href="#之前一篇文章讲过requirejs-amd规范描述-的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。" class="headerlink" title="之前一篇文章讲过requirejs(amd规范描述)的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。"></a>之前一篇文章讲过requirejs(amd规范描述)的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。</h4><h4 id="对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西"><a href="#对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西" class="headerlink" title="对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西"></a>对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西</h4><a id="more"></a>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><h4 id="模块化开发-引用自lovenyf的博客"><a href="#模块化开发-引用自lovenyf的博客" class="headerlink" title="模块化开发(引用自lovenyf的博客)"></a>模块化开发(引用自lovenyf的博客)</h4><p>模块化是指在解决某一个复杂问题或者一系列的杂糅问题时，依照一种分类的思维把问题进行系统性的分解以之处理。模块化是一种处理复杂系统分解为代码结构更合理，可维护性更高的可管理的模块的方式。可以想象一个巨大的系统代码，被整合优化分割成逻辑性很强的模块时，对于软件是一种何等意义的存在。对于软件行业来说：解耦软件系统的复杂性，使得不管多么大的系统，也可以将管理，开发，维护变得“有理可循”。</p>
+<p>还有一些对于模块化一些专业的定义为：模块化是软件系统的属性，这个系统被分解为一组高内聚，低耦合的模块。那么在理想状态下我们只需要完成自己部分的核心业务逻辑代码，其他方面的依赖可以通过直接加载被人已经写好模块进行使用即可。</p>
+<p>首先，既然是模块化设计，那么作为一个模块化系统所必须的能力：</p>
+<pre><code>1. 定义封装的模块。
+2. 定义新模块对其他模块的依赖。
+3. 可对其他模块的引入支持。
+</code></pre><p>模块化开发的重要性，需要我们制定模块化规范。由于js跨平台的特性，其不同的环境催生出了不同的模块化规范。</p>
+<h4 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h4><h5 id="模块化是如此的重要，而js这门奇葩的语言在es2015之前是没有模块的规范的，模块化在其他语言中是那么的普遍，连css也可以通过import实现模块化，伴随着开发复杂度的不断提升，js的模块化需求迫在眉睫。而Nodejs的CommonJS率先制定了js的模块化标准："><a href="#模块化是如此的重要，而js这门奇葩的语言在es2015之前是没有模块的规范的，模块化在其他语言中是那么的普遍，连css也可以通过import实现模块化，伴随着开发复杂度的不断提升，js的模块化需求迫在眉睫。而Nodejs的CommonJS率先制定了js的模块化标准：" class="headerlink" title="模块化是如此的重要，而js这门奇葩的语言在es2015之前是没有模块的规范的，模块化在其他语言中是那么的普遍，连css也可以通过import实现模块化，伴随着开发复杂度的不断提升，js的模块化需求迫在眉睫。而Nodejs的CommonJS率先制定了js的模块化标准："></a>模块化是如此的重要，而js这门奇葩的语言在es2015之前是没有模块的规范的，模块化在其他语言中是那么的普遍，连css也可以通过import实现模块化，伴随着开发复杂度的不断提升，js的模块化需求迫在眉睫。而Nodejs的CommonJS率先制定了js的模块化标准：</h5><p>三个关键字：require,exports,module</p>
+<ol>
+<li><p>模块定义：</p>
+<p> // sayHello.js<br> function sayHello(){</p>
+<pre><code>console.log(&apos;hello&apos;);
+</code></pre><p> }<br> exports.sayHello = sayHello;<br>exports是作为模块文件唯一出口的对象,而module为全局的对象，其上有一个exports属性和全局的exports指向同一个对象，对于直接导出对象的模块，可以这样简写：</p>
+<p> module.exports = {</p>
+<pre><code>sayName(){
+    console.log(&apos;my name is Luo Xia&apos;);
+}
+...
+</code></pre><p> }</p>
+</li>
+</ol>
+<p>需要注意的是，全局的exports直接指向一个对象是不能改变Module.exports对象的，而Module.exports只要不为空，则最终出口将会忽略在全局exports对象上添加的属性和方法：</p>
+<pre><code>//Module.js
+function a(){
+    console.log(&apos;a&apos;);
+} 
+exports.a = a;
+module.exports = {
+    b(){
+        console.log(&apos;b&apos;);
+    }
+};
+
+//testM.js
+let m = require(&quot;./Module&quot;);
+console.log(typeof m.a); //undefined
+console.log(typeof m.b); //function
+</code></pre><ol>
+<li><p>引入模块依赖:</p>
+<pre><code>require(&apos;./sayHello&apos;);
+</code></pre></li>
+</ol>
+<p>require()传入的模块标识需要分情况，核心模块和文件模块:</p>
+<p>核心模块存在于node源码中，不用文件定位和编译，而文件模块动态加载，可以是npm安装的依赖包下的模块，也可以是自定义的模块文件，对存在于node_modules下的模块文件，不用写路径，会从子目录到顶层目录依次查找该模块文件，而对于用户自定义的不存在与node_modules下的模块，是需要些路径的。</p>
+<p>加载顺序：优先从缓存加载（核心模块缓存优先于文件模块缓存）</p>
+<p>文件定位： </p>
+<ol>
+<li>标识符不含扩展名，按.js,.json,.node顺序尝试自动扩展。</li>
+<li>在node_modules内的包下，识别package.json的main属性，定位该文件，而如果有错或者没有package.json文件，则将index.*文件作为该模块的文件。</li>
+</ol>
+<p>模块编译:</p>
+<p>详细参考《深入浅出Nodejs》</p>
+]]></content>
     </entry>
     
     <entry>
