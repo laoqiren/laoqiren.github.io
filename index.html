@@ -162,7 +162,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/jade/" style="font-size: 10px;">jade</a> <a href="/tags/javascript源码/" style="font-size: 10px;">javascript源码</a> <a href="/tags/js模板引擎/" style="font-size: 10px;">js模板引擎</a> <a href="/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/socket-io/" style="font-size: 10px;">socket.io</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/前端体系/" style="font-size: 10px;">前端体系</a> <a href="/tags/前端模块化/" style="font-size: 10px;">前端模块化</a> <a href="/tags/前端自动化/" style="font-size: 10px;">前端自动化</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a> <a href="/tags/项目总结/" style="font-size: 10px;">项目总结</a>
+                        <a href="/tags/AMD/" style="font-size: 10px;">AMD</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/ES6-Module/" style="font-size: 10px;">ES6 Module</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/jade/" style="font-size: 10px;">jade</a> <a href="/tags/javascript源码/" style="font-size: 10px;">javascript源码</a> <a href="/tags/js模板引擎/" style="font-size: 10px;">js模板引擎</a> <a href="/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/socket-io/" style="font-size: 10px;">socket.io</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/前端体系/" style="font-size: 10px;">前端体系</a> <a href="/tags/前端模块化/" style="font-size: 10px;">前端模块化</a> <a href="/tags/前端自动化/" style="font-size: 10px;">前端自动化</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/数组/" style="font-size: 10px;">数组</a> <a href="/tags/模块化/" style="font-size: 10px;">模块化</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/跨域/" style="font-size: 10px;">跨域</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a> <a href="/tags/项目总结/" style="font-size: 10px;">项目总结</a>
                     </div>
                 </section>
                 
@@ -247,6 +247,71 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-js模块化规范总结篇" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/23/js模块化规范总结篇/" class="article-date">
+      <time datetime="2016-07-23T02:21:59.000Z" itemprop="datePublished">2016-07-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/23/js模块化规范总结篇/">js模块化规范总结篇</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h4 id="之前一篇文章讲过requirejs-amd规范描述-的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。"><a href="#之前一篇文章讲过requirejs-amd规范描述-的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。" class="headerlink" title="之前一篇文章讲过requirejs(amd规范描述)的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。"></a>之前一篇文章讲过requirejs(amd规范描述)的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。</h4><h4 id="对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西"><a href="#对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西" class="headerlink" title="对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西"></a>对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西</h4>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/前端工程/">前端工程</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AMD/">AMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CMD/">CMD</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CommonJS/">CommonJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6-Module/">ES6 Module</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/模块化/">模块化</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/23/js模块化规范总结篇/#more">查看全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
   
     <article id="post-js对象的深入理解" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -573,74 +638,9 @@
 
 
   
-    <article id="post-gulp前端自动化" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/04/26/gulp前端自动化/" class="article-date">
-      <time datetime="2016-04-26T08:16:05.000Z" itemprop="datePublished">2016-04-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/26/gulp前端自动化/">gulp前端自动化</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="gulp前端自动化配置"><a href="#gulp前端自动化配置" class="headerlink" title="gulp前端自动化配置"></a>gulp前端自动化配置</h1><h3 id="使用gulp提高前端开发效率"><a href="#使用gulp提高前端开发效率" class="headerlink" title="使用gulp提高前端开发效率"></a>使用gulp提高前端开发效率</h3>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/前端工程/">前端工程</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端自动化/">前端自动化</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/04/26/gulp前端自动化/#more">查看全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
