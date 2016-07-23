@@ -17,10 +17,12 @@
 <h4 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h4><h5 id="模块化是如此的重要，而js这门奇葩的语言在es2015之前是没有模块的规范的，模块化在其他语言中是那么的普遍，连css也可以通过import实现模块化，伴随着开发复杂度的不断提升，js的模块化需求迫在眉睫。而Nodejs的CommonJS率先制定了js的模块化标准："><a href="#模块化是如此的重要，而js这门奇葩的语言在es2015之前是没有模块的规范的，模块化在其他语言中是那么的普遍，连css也可以通过import实现模块化，伴随着开发复杂度的不断提升，js的模块化需求迫在眉睫。而Nodejs的CommonJS率先制定了js的模块化标准：" class="headerlink" title="模块化是如此的重要，而js这门奇葩的语言在es2015之前是没有模块的规范的，模块化在其他语言中是那么的普遍，连css也可以通过import实现模块化，伴随着开发复杂度的不断提升，js的模块化需求迫在眉睫。而Nodejs的CommonJS率先制定了js的模块化标准："></a>模块化是如此的重要，而js这门奇葩的语言在es2015之前是没有模块的规范的，模块化在其他语言中是那么的普遍，连css也可以通过import实现模块化，伴随着开发复杂度的不断提升，js的模块化需求迫在眉睫。而Nodejs的CommonJS率先制定了js的模块化标准：</h5><p>三个关键字：require,exports,module</p>
 <ol>
 <li><p>模块定义：</p>
-<p> // sayHello.js<br> function sayHello(){</p>
-<pre><code>console.log(&apos;hello&apos;);
-</code></pre><p> }<br> exports.sayHello = sayHello;</p>
-</li>
+<pre><code>// sayHello.js
+function sayHello(){
+    console.log(&apos;hello&apos;);
+}
+exports.sayHello = sayHello;
+</code></pre></li>
 </ol>
 <p>exports是作为模块文件唯一出口的对象,而module为全局的对象，其上有一个exports属性和全局的exports指向同一个对象，对于直接导出对象的模块，可以这样简写：</p>
 <pre><code>module.exports = {

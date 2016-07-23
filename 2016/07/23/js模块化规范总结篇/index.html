@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/23/js模块化规范总结篇/index.html">
 <meta property="og:site_name" content="罗峡的博客">
 <meta property="og:description" content="之前一篇文章讲过requirejs(amd规范描述)的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就">
-<meta property="og:updated_time" content="2016-07-23T04:03:03.966Z">
+<meta property="og:updated_time" content="2016-07-23T04:04:08.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js模块化规范总结篇">
 <meta name="twitter:description" content="之前一篇文章讲过requirejs(amd规范描述)的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就">
@@ -295,10 +295,12 @@
 <h4 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h4><h5 id="模块化是如此的重要，而js这门奇葩的语言在es2015之前是没有模块的规范的，模块化在其他语言中是那么的普遍，连css也可以通过import实现模块化，伴随着开发复杂度的不断提升，js的模块化需求迫在眉睫。而Nodejs的CommonJS率先制定了js的模块化标准："><a href="#模块化是如此的重要，而js这门奇葩的语言在es2015之前是没有模块的规范的，模块化在其他语言中是那么的普遍，连css也可以通过import实现模块化，伴随着开发复杂度的不断提升，js的模块化需求迫在眉睫。而Nodejs的CommonJS率先制定了js的模块化标准：" class="headerlink" title="模块化是如此的重要，而js这门奇葩的语言在es2015之前是没有模块的规范的，模块化在其他语言中是那么的普遍，连css也可以通过import实现模块化，伴随着开发复杂度的不断提升，js的模块化需求迫在眉睫。而Nodejs的CommonJS率先制定了js的模块化标准："></a>模块化是如此的重要，而js这门奇葩的语言在es2015之前是没有模块的规范的，模块化在其他语言中是那么的普遍，连css也可以通过import实现模块化，伴随着开发复杂度的不断提升，js的模块化需求迫在眉睫。而Nodejs的CommonJS率先制定了js的模块化标准：</h5><p>三个关键字：require,exports,module</p>
 <ol>
 <li><p>模块定义：</p>
-<p> // sayHello.js<br> function sayHello(){</p>
-<pre><code>console.log(&apos;hello&apos;);
-</code></pre><p> }<br> exports.sayHello = sayHello;</p>
-</li>
+<pre><code>// sayHello.js
+function sayHello(){
+    console.log(&apos;hello&apos;);
+}
+exports.sayHello = sayHello;
+</code></pre></li>
 </ol>
 <p>exports是作为模块文件唯一出口的对象,而module为全局的对象，其上有一个exports属性和全局的exports指向同一个对象，对于直接导出对象的模块，可以这样简写：</p>
 <pre><code>module.exports = {
@@ -349,7 +351,7 @@ console.log(typeof m.b); //function
         <p><span>本文标题:</span><a href="/2016/07/23/js模块化规范总结篇/">js模块化规范总结篇</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
         <p><span>发布时间:</span>2016年07月23日 - 10时21分</p>
-        <p><span>最后更新:</span>2016年07月23日 - 12时03分</p>
+        <p><span>最后更新:</span>2016年07月23日 - 12时04分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/23/js模块化规范总结篇/" title="js模块化规范总结篇">http://yoursite.com/2016/07/23/js模块化规范总结篇/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/07/23/js模块化规范总结篇/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
