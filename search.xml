@@ -19,16 +19,17 @@
 <li><p>模块定义：</p>
 <p> // sayHello.js<br> function sayHello(){</p>
 <pre><code>console.log(&apos;hello&apos;);
-</code></pre><p> }<br> exports.sayHello = sayHello;<br>exports是作为模块文件唯一出口的对象,而module为全局的对象，其上有一个exports属性和全局的exports指向同一个对象，对于直接导出对象的模块，可以这样简写：</p>
-<p> module.exports = {</p>
-<pre><code>sayName(){
-    console.log(&apos;my name is Luo Xia&apos;);
-}
-...
-</code></pre><p> }</p>
+</code></pre><p> }<br> exports.sayHello = sayHello;</p>
 </li>
 </ol>
-<p>需要注意的是，全局的exports直接指向一个对象是不能改变Module.exports对象的，而Module.exports只要不为空，则最终出口将会忽略在全局exports对象上添加的属性和方法：</p>
+<p>exports是作为模块文件唯一出口的对象,而module为全局的对象，其上有一个exports属性和全局的exports指向同一个对象，对于直接导出对象的模块，可以这样简写：</p>
+<pre><code>module.exports = {
+    sayName(){
+        console.log(&apos;my name is Luo Xia&apos;);
+    }
+    ...
+}
+</code></pre><p>需要注意的是，全局的exports直接指向一个对象是不能改变Module.exports对象的，而Module.exports只要不为空，则最终出口将会忽略在全局exports对象上添加的属性和方法：</p>
 <pre><code>//Module.js
 function a(){
     console.log(&apos;a&apos;);
