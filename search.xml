@@ -205,7 +205,28 @@ new WebpackDevServer(webpack(config), {
 <pre><code>publicPath:&quot;/dist/js&quot;
 
 &lt;script src=&quot;./js/test.bundle.js&quot;&gt;&lt;/script&gt;
-</code></pre>]]></content>
+</code></pre><h5 id="最终测试："><a href="#最终测试：" class="headerlink" title="最终测试："></a>最终测试：</h5><p>我们的app.js文件：</p>
+<pre><code>import $ from &apos;jquery&apos;;
+import React from &apos;react&apos;;
+import ReactDOM from &apos;react-dom&apos;;
+import FooterComponent from &apos;../js/footer&apos;;
+import HeaderComponent from &apos;../js/header&apos;;
+import ContentListComponent from &apos;../js/content-list&apos;;
+import stylesheet from &apos;../style/main.scss&apos;;
+let introContent = [&quot;地址：杭州市杭州经济技术开发区白杨街道2号大街1158号 邮编:310018 电话查号:86915114&quot;,&quot;党委宣传部制作维护 浙ICP备05018777&quot;,&quot;Copyright 2016 杭州电子科技大学版权所有 All right reserved&quot;];
+
+$(document).ready(function(){
+    ReactDOM.render(&lt;div&gt;&lt;HeaderComponent/&gt;&lt;ContentListComponent/&gt;&lt;FooterComponent introContent={introContent}/&gt;&lt;/div&gt;,$(&apos;#container&apos;)[0]);
+});
+</code></pre><p><strong>npm run start</strong></p>
+<p>服务器运行在localhost:3000</p>
+<p><strong>访问<a href="http://localhost:3000/webpack-dev-server/dist/index.html" target="_blank" rel="external">http://localhost:3000/webpack-dev-server/dist/index.html</a></strong>:</p>
+<p><strong>截图1:</strong></p>
+<p><img src="http://7xsi10.com1.z0.glb.clouddn.com/MUP2%250N@BCC9X%7D8EMUSN3YC.png" alt="60-1"></p>
+<p><strong>截图2:</strong></p>
+<p><img src="http://7xsi10.com1.z0.glb.clouddn.com/60-footer.png" alt="60-2"></p>
+<p>当我们更改任意依赖文件内容，页面都能够实时局部热更新。good job!</p>
+]]></content>
     </entry>
     
     <entry>

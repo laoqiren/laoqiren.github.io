@@ -11,10 +11,13 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/25/webpack构建方案/index.html">
 <meta property="og:site_name" content="罗峡的博客">
 <meta property="og:description" content="webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react+ES2015+webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。">
-<meta property="og:updated_time" content="2016-07-25T10:00:09.967Z">
+<meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/MUP2%250N@BCC9X%7D8EMUSN3YC.png">
+<meta property="og:image" content="http://7xsi10.com1.z0.glb.clouddn.com/60-footer.png">
+<meta property="og:updated_time" content="2016-07-25T10:31:08.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack构建方案">
 <meta name="twitter:description" content="webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react+ES2015+webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。">
+<meta name="twitter:image" content="http://7xsi10.com1.z0.glb.clouddn.com/MUP2%250N@BCC9X%7D8EMUSN3YC.png">
   
     <link rel="alternative" href="/atom.xml" title="罗峡的博客" type="application/atom+xml">
   
@@ -483,7 +486,28 @@ new WebpackDevServer(webpack(config), {
 <pre><code>publicPath:&quot;/dist/js&quot;
 
 &lt;script src=&quot;./js/test.bundle.js&quot;&gt;&lt;/script&gt;
-</code></pre>
+</code></pre><h5 id="最终测试："><a href="#最终测试：" class="headerlink" title="最终测试："></a>最终测试：</h5><p>我们的app.js文件：</p>
+<pre><code>import $ from &apos;jquery&apos;;
+import React from &apos;react&apos;;
+import ReactDOM from &apos;react-dom&apos;;
+import FooterComponent from &apos;../js/footer&apos;;
+import HeaderComponent from &apos;../js/header&apos;;
+import ContentListComponent from &apos;../js/content-list&apos;;
+import stylesheet from &apos;../style/main.scss&apos;;
+let introContent = [&quot;地址：杭州市杭州经济技术开发区白杨街道2号大街1158号 邮编:310018 电话查号:86915114&quot;,&quot;党委宣传部制作维护 浙ICP备05018777&quot;,&quot;Copyright 2016 杭州电子科技大学版权所有 All right reserved&quot;];
+
+$(document).ready(function(){
+    ReactDOM.render(&lt;div&gt;&lt;HeaderComponent/&gt;&lt;ContentListComponent/&gt;&lt;FooterComponent introContent={introContent}/&gt;&lt;/div&gt;,$(&apos;#container&apos;)[0]);
+});
+</code></pre><p><strong>npm run start</strong></p>
+<p>服务器运行在localhost:3000</p>
+<p><strong>访问<a href="http://localhost:3000/webpack-dev-server/dist/index.html" target="_blank" rel="external">http://localhost:3000/webpack-dev-server/dist/index.html</a></strong>:</p>
+<p><strong>截图1:</strong></p>
+<p><img src="http://7xsi10.com1.z0.glb.clouddn.com/MUP2%250N@BCC9X%7D8EMUSN3YC.png" alt="60-1"></p>
+<p><strong>截图2:</strong></p>
+<p><img src="http://7xsi10.com1.z0.glb.clouddn.com/60-footer.png" alt="60-2"></p>
+<p>当我们更改任意依赖文件内容，页面都能够实时局部热更新。good job!</p>
+
       
     </div>
     
@@ -494,7 +518,7 @@ new WebpackDevServer(webpack(config), {
         <p><span>本文标题:</span><a href="/2016/07/25/webpack构建方案/">webpack构建方案</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 罗峡的博客 的个人博客">罗峡的博客</a></p>
         <p><span>发布时间:</span>2016年07月25日 - 15时35分</p>
-        <p><span>最后更新:</span>2016年07月25日 - 18时00分</p>
+        <p><span>最后更新:</span>2016年07月25日 - 18时31分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/25/webpack构建方案/" title="webpack构建方案">http://yoursite.com/2016/07/25/webpack构建方案/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/07/25/webpack构建方案/　　作者: 罗峡的博客" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -524,7 +548,7 @@ new WebpackDevServer(webpack(config), {
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react-ES2015-webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。"><span class="toc-number">1.</span> <span class="toc-text">webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react+ES2015+webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么使用webpack？"><span class="toc-number">1.1.</span> <span class="toc-text">为什么使用webpack？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开始使用webpack"><span class="toc-number">1.2.</span> <span class="toc-text">开始使用webpack</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置webpack-config-js"><span class="toc-number">1.3.</span> <span class="toc-text">配置webpack.config.js</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#资源入口及打包输出："><span class="toc-number">1.3.1.</span> <span class="toc-text">资源入口及打包输出：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#资源的处理"><span class="toc-number">1.3.2.</span> <span class="toc-text">资源的处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#资源加载"><span class="toc-number">1.3.3.</span> <span class="toc-text">资源加载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插件的使用："><span class="toc-number">1.3.4.</span> <span class="toc-text">插件的使用：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码分块-code-splitting-："><span class="toc-number">1.3.5.</span> <span class="toc-text">代码分块(code splitting)：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#实时更新（自动化构建）"><span class="toc-number">1.3.6.</span> <span class="toc-text">实时更新（自动化构建）:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实践（ReactJS-ES2015-webpack"><span class="toc-number">1.4.</span> <span class="toc-text">实践（ReactJS+ES2015+webpack):</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#项目目录结构："><span class="toc-number">1.4.1.</span> <span class="toc-text">项目目录结构：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#编写组件"><span class="toc-number">1.4.2.</span> <span class="toc-text">编写组件:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#loaders"><span class="toc-number">1.4.3.</span> <span class="toc-text">loaders:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#入口文件，出口文件，publicPath"><span class="toc-number">1.4.4.</span> <span class="toc-text">入口文件，出口文件，publicPath:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#自动化构建，webpack-dev-server-amp-react-hot-loader"><span class="toc-number">1.4.5.</span> <span class="toc-text">自动化构建，webpack-dev-server&react-hot-loader:</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#命令行webpack-dev-server"><span class="toc-number">1.4.5.1.</span> <span class="toc-text">命令行webpack-dev-server:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#nodeJS-API下的webpack-dev-server"><span class="toc-number">1.4.5.2.</span> <span class="toc-text">nodeJS API下的webpack-dev-server:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#react-hot-loader"><span class="toc-number">1.4.5.3.</span> <span class="toc-text">react-hot-loader:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#关于publicPath，这个我纠结了很久，最后在segamentfault社区前辈的帮助下终于开窍了。"><span class="toc-number">1.4.5.4.</span> <span class="toc-text">关于publicPath，这个我纠结了很久，最后在segamentfault社区前辈的帮助下终于开窍了。</span></a></li></ol></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react-ES2015-webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。"><span class="toc-number">1.</span> <span class="toc-text">webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react+ES2015+webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么使用webpack？"><span class="toc-number">1.1.</span> <span class="toc-text">为什么使用webpack？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开始使用webpack"><span class="toc-number">1.2.</span> <span class="toc-text">开始使用webpack</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置webpack-config-js"><span class="toc-number">1.3.</span> <span class="toc-text">配置webpack.config.js</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#资源入口及打包输出："><span class="toc-number">1.3.1.</span> <span class="toc-text">资源入口及打包输出：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#资源的处理"><span class="toc-number">1.3.2.</span> <span class="toc-text">资源的处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#资源加载"><span class="toc-number">1.3.3.</span> <span class="toc-text">资源加载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#插件的使用："><span class="toc-number">1.3.4.</span> <span class="toc-text">插件的使用：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码分块-code-splitting-："><span class="toc-number">1.3.5.</span> <span class="toc-text">代码分块(code splitting)：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#实时更新（自动化构建）"><span class="toc-number">1.3.6.</span> <span class="toc-text">实时更新（自动化构建）:</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实践（ReactJS-ES2015-webpack"><span class="toc-number">1.4.</span> <span class="toc-text">实践（ReactJS+ES2015+webpack):</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#项目目录结构："><span class="toc-number">1.4.1.</span> <span class="toc-text">项目目录结构：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#编写组件"><span class="toc-number">1.4.2.</span> <span class="toc-text">编写组件:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#loaders"><span class="toc-number">1.4.3.</span> <span class="toc-text">loaders:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#入口文件，出口文件，publicPath"><span class="toc-number">1.4.4.</span> <span class="toc-text">入口文件，出口文件，publicPath:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#自动化构建，webpack-dev-server-amp-react-hot-loader"><span class="toc-number">1.4.5.</span> <span class="toc-text">自动化构建，webpack-dev-server&react-hot-loader:</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#命令行webpack-dev-server"><span class="toc-number">1.4.5.1.</span> <span class="toc-text">命令行webpack-dev-server:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#nodeJS-API下的webpack-dev-server"><span class="toc-number">1.4.5.2.</span> <span class="toc-text">nodeJS API下的webpack-dev-server:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#react-hot-loader"><span class="toc-number">1.4.5.3.</span> <span class="toc-text">react-hot-loader:</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#关于publicPath，这个我纠结了很久，最后在segamentfault社区前辈的帮助下终于开窍了。"><span class="toc-number">1.4.5.4.</span> <span class="toc-text">关于publicPath，这个我纠结了很久，最后在segamentfault社区前辈的帮助下终于开窍了。</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#最终测试："><span class="toc-number">1.4.6.</span> <span class="toc-text">最终测试：</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
