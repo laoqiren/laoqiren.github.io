@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[webpack构建方案]]></title>
       <url>http://yoursite.com/2016/07/25/webpack%E6%9E%84%E5%BB%BA%E6%96%B9%E6%A1%88/</url>
-      <content type="html"><![CDATA[<h4 id="webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react-ES2015-webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。"><a href="#webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react-ES2015-webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。" class="headerlink" title="webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react+ES2015+webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。"></a>webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react+ES2015+webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。</h4><a id="more"></a>]]></content>
+      <content type="html"><![CDATA[<h3 id="webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react-ES2015-webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。"><a href="#webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react-ES2015-webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。" class="headerlink" title="webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react+ES2015+webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。"></a>webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react+ES2015+webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。</h3><a id="more"></a>]]></content>
     </entry>
     
     <entry>
