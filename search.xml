@@ -4,6 +4,12 @@
   
     
     <entry>
+      <title><![CDATA[webpack构建方案]]></title>
+      <url>http://yoursite.com/2016/07/25/webpack%E6%9E%84%E5%BB%BA%E6%96%B9%E6%A1%88/</url>
+      <content type="html"><![CDATA[<h4 id="webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react-ES2015-webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。"><a href="#webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react-ES2015-webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。" class="headerlink" title="webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react+ES2015+webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。"></a>webpack管理模块依赖然后打包输出文件，采用loader机制处理各个模块，并提供开发者环境自动化构建。本文通过实例，记录我的使用总结及遇到的问题，前面介绍一下webpack主要的内容，然后以react+ES2015+webpack为例演示，通过react-hot-loader局部地热更新组件提高开发效率。</h4><a id="more"></a>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[js模块化规范总结篇]]></title>
       <url>http://yoursite.com/2016/07/23/js%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83%E6%80%BB%E7%BB%93%E7%AF%87/</url>
       <content type="html"><![CDATA[<h3 id="之前一篇文章讲过requirejs-amd规范描述-的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。"><a href="#之前一篇文章讲过requirejs-amd规范描述-的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。" class="headerlink" title="之前一篇文章讲过requirejs(amd规范描述)的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。"></a>之前一篇文章讲过requirejs(amd规范描述)的路径问题，这篇文章对js模块化进行总结，AMD和CMD主要用于客户端的模块化，而CommonJS是Nodejs的规范，由于它们的差异性，也延伸出来一些模块化工具，如broswerify能够让客户端书写Commonjs规范的模块化代码，达到前后端模块公用，webpack支持各种规范的模块化方式，而到后来的ES2015模块化标准，它们的规范及差异就是本文要总结的。</h3><h3 id="对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西"><a href="#对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西" class="headerlink" title="对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西"></a>对于webpack的话，最近研究得比较多，我会在后面的另一篇文章中详细总结一下webpack的东西</h3><a id="more"></a>
