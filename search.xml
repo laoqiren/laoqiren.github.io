@@ -80,7 +80,7 @@ require.ensure([], function(require) {
 <h5 id="实时更新（自动化构建）"><a href="#实时更新（自动化构建）" class="headerlink" title="实时更新（自动化构建）:"></a>实时更新（自动化构建）:</h5><pre><code>web-dev-server文件有更新会全局的刷新页面
 
 react-hot-loader监听组件变化，局部刷新
-</code></pre><h4 id="实践（ReactJS-ES2015-webpack"><a href="#实践（ReactJS-ES2015-webpack" class="headerlink" title="实践（ReactJS+ES2015+webpack):"></a>实践（ReactJS+ES2015+webpack):</h4><p>前阵子参与了学习60周年校庆网站的前端开发部分，子页有很多可以复用的部分，所以我把他们实现了组件化</p>
+</code></pre><h4 id="实践（ReactJS-ES2015-webpack"><a href="#实践（ReactJS-ES2015-webpack" class="headerlink" title="实践（ReactJS+ES2015+webpack):"></a>实践（ReactJS+ES2015+webpack):</h4><p>前阵子参与了学校60周年校庆网站的前端开发部分，子页有很多可以复用的部分，所以我把他们实现了组件化</p>
 <h5 id="项目目录结构："><a href="#项目目录结构：" class="headerlink" title="项目目录结构："></a>项目目录结构：</h5><pre><code>---node_modules //npm包
 ---dist //最终输出目录
     --- js //bundle文件
