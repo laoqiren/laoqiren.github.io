@@ -530,7 +530,7 @@
 					text-indent: 3.75em;
 					white-space: nowrap;
 				}
-
+/*
 					ul.icons li a:before {
 						-moz-osx-font-smoothing: grayscale;
 						-webkit-font-smoothing: antialiased;
@@ -539,6 +539,7 @@
 						font-weight: normal;
 						text-transform: none !important;
 					}
+					
 
 					ul.icons li a:before {
 						color: #ffffff;
@@ -560,7 +561,7 @@
 						text-align: center;
 						text-indent: 0;
 					}
-
+*/
 					ul.icons li a:hover {
 						border-color: #ff7496;
 					}
@@ -727,10 +728,13 @@
 		#main .avatar {
 			position: relative;
 			display: block;
+			overflow: hidden;
 			margin-bottom: 1.5em;
 		}
 
 			#main .avatar img {
+				width: 30%;
+				height: 55%;
 				display: block;
 				margin: 0 auto;
 				border-radius: 100%;
@@ -854,3 +858,9 @@
 		body.is-ie #wrapper {
 			height: 100%;
 		}
+ul.cate li{
+	list-style: none;
+	display: inline-block;
+	text-align: center;
+	border-radius: 50%;
+}
