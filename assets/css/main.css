@@ -734,7 +734,7 @@
 
 			#main .avatar img {
 				width: 30%;
-				height: 55%;
+				height: 70%;
 				display: block;
 				margin: 0 auto;
 				border-radius: 100%;
@@ -863,4 +863,8 @@ ul.cate li{
 	display: inline-block;
 	text-align: center;
 	border-radius: 50%;
+}
+ul.cate li a {
+	font-size: 1em;
+	font-family: '微软雅黑';
 }
